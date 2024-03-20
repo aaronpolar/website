@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Aaron Polar</title>
+    <title>ABOUT ME - Aaron Polar</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -57,8 +57,7 @@
         .image-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Center items vertically */
             width: 50px;
         }
         .image-container img {
@@ -68,10 +67,15 @@
         .text-container {
             width: calc(100% - 50px - 20px); /* Adjust width as needed */
         }
+        .text-container h2 {
+            font-size: 24px;
+            margin-top: 0;
+            text-align: center; /* Center the title */
+            text-transform: uppercase; /* All caps */
+        }
         .text-container p {
             font-size: 18px;
             margin-top: 5px;
-            text-align: center;
         }
         footer {
             text-align: center;
@@ -81,7 +85,7 @@
 </head>
 <body>
     <header>
-        <h1>About Me</h1>
+        <h1>ABOUT ME</h1>
         <div class="btn-container">
             <a href="index.html"><button>Home</button></a>
             <a href="aboutme.html"><button>About Me</button></a>
@@ -93,18 +97,16 @@
         <div class="image-container">
             <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
                 <img src="docs/assets/linkedinlogo.jpg" alt="LinkedIn Logo" style="width: 50px;">
+                <p style="margin: 0; text-align: center;">Connect with me on LinkedIn</p>
             </a>
             <a href="mailto:aaronmpolar@gmail.com">
                 <img src="docs/assets/gmaillogo.jpg" alt="Gmail Logo" style="width: 50px;">
+                <p style="margin: 0; text-align: center;">Email me at aaronmpolar@gmail.com</p>
             </a>
             <a href="https://www.github.com/aaronpolar" target="_blank">
                 <img src="docs/assets/githublogo.jpg" alt="GitHub Logo" style="width: 50px;">
+                <p style="margin: 0; text-align: center;">Visit my GitHub profile</p>
             </a>
-        </div>
-        <div class="text-container">
-            <p><strong>Connect with me on LinkedIn</strong></p>
-            <p>Email me at aaronmpolar@gmail.com</p>
-            <p>Visit my GitHub profile</p>
         </div>
     </div>
 </body>
