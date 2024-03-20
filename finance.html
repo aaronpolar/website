@@ -175,6 +175,12 @@
                     priceChangeElement.innerHTML += priceChange;
                 }
             }
+
+            // Add event listener for form submission on Enter key press
+            document.getElementById("tickerForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                submitTicker();
+            });
         </script>
     </div>
 
@@ -198,9 +204,4 @@
         <a href="mailto:aaronmpolar@gmail.com">
             <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
         </a>
-        <a href="https://www.github.com/aaronpolar" target="_blank">
-            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
-        </a>
-    </div>
-</body>
-</html>
+        <a href="https://www.github.com/aaronpolar" target
