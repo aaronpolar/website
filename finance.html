@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINANCE - Aaron Polar</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
-        /* Include CSS styles from index.html */
+        /* Include CSS styles */
         body {
             font-family: baskerville, serif;
             margin: 0;
@@ -21,7 +20,7 @@
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid black;
-            margin-bottom: 20px; /* Added margin-bottom for space between header and content */
+            margin-bottom: 20px;
         }
         h1 {
             margin-top: 5px;
@@ -38,7 +37,7 @@
         }
         button {
             padding: 10px 20px;
-            background-color: #52BE80; /* Use the same color as the Fishing button */
+            background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
@@ -47,49 +46,41 @@
             text-transform: uppercase;
             font-weight: bold;
         }
+        .tradingview-widget-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #tickerForm {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #tickerInput {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #tickerPrice {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #priceChange {
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+        }
         .footer-container {
             text-align: center;
             margin-top: 20px;
             display: flex;
-            justify-content: center; /* Align horizontally */
-            align-items: center; /* Align vertically */
+            justify-content: center;
+            align-items: center;
         }
         .footer-container img {
             width: 50px;
-            margin: 0 10px; /* Add some space between images */
-        }
-        .tradingview-widget-container {
-            width: 100%; /* Set the width of the widget container */
-            max-width: 800px; /* Set a maximum width to avoid being too wide */
-            margin: 0 auto; /* Center the container horizontally */
-        }
-        #tickerForm {
-            text-align: center; /* Align the form center horizontally */
-            margin-top: 20px; /* Add some margin at the top */
-        }
-        #tickerInput {
-            padding: 10px; /* Add padding to the text box */
-            margin-right: 10px; /* Add some space between the text box and the button */
-        }
-        .ticker-price {
-            text-align: center;
-            margin-top: 20px;
-            display: none; /* Initially hide the price */
-        }
-        .ticker-price span {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .ticker-change {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-        .positive-change {
-            color: green;
-        }
-        .negative-change {
-            color: red;
+            margin: 0 10px;
         }
     </style>
 </head>
@@ -104,41 +95,44 @@
         </div>
     </header>
 
-    <!-- Form for submitting ticker -->
-    <form id="tickerForm" onsubmit="submitTicker(); return false;">
+    <!-- TradingView Widget -->
+    <div class="tradingview-widget-container">
+        <div id="tradingview_e0e92"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+            function submitTicker() {
+                var ticker = document.getElementById('tickerInput').value.toUpperCase();
+                new TradingView.widget(
+                    {
+                        "autosize": true,
+                        "symbol": "NASDAQ:" + ticker,
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "hide_legend": true,
+                        "container_id": "tradingview_e0e92"
+                    }
+                );
+                return false; // Prevent form submission
+            }
+        </script>
+    </div>
+
+    <!-- Ticker Input Form -->
+    <form id="tickerForm" onsubmit="return submitTicker()">
         <input type="text" id="tickerInput" placeholder="Enter Ticker" required>
         <button type="submit">Submit</button>
     </form>
 
-    <!-- Your TradingView widget -->
-    <div class="tradingview-widget-container" style="height: 800px;">
-        <div id="tradingview_e0e92"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-            new TradingView.widget(
-            {
-                "autosize": true,
-                "symbol": "NASDAQ:AAPL",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "hide_legend": true,
-                "container_id": "tradingview_e0e92"
-            }
-            );
-        </script>
-    </div>
+    <!-- Display Ticker Price and Price Change -->
+    <div id="tickerPrice"></div>
+    <div id="priceChange"></div>
 
-    <!-- Display ticker price and change -->
-    <div class="ticker-price" id="tickerPrice">
-        <span id="price"></span><br>
-        <span id="change"></span>
-    </div>
-
+    <!-- Footer -->
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -150,36 +144,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-        function submitTicker() {
-            var ticker = document.getElementById("tickerInput").value.toUpperCase();
-            // Replace "tradingview_e0e92" with your TradingView widget ID
-            new TradingView.widget(
-                {
-                    "autosize": true,
-                    "symbol": "NASDAQ:" + ticker,
-                    "interval": "D",
-                    "timezone": "Etc/UTC",
-                    "theme": "light",
-                    "style": "1",
-                    "locale": "en",
-                    "toolbar_bg": "#f1f3f6",
-                    "enable_publishing": false,
-                    "hide_legend": true,
-                    "container_id": "tradingview_e0e92"
-                }
-            );
-            // Fetch and display ticker price
-            fetch("https://api.iextrading.com/1.0/stock/" + ticker + "/quote")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("tickerPrice").style.display = "block";
-                document.getElementById("price").textContent = data.latestPrice.toFixed(2);
-                var change = data.change.toFixed(2);
-                document.getElementById("change").textContent = change;
-                if (change > 0) {
-                    document.getElementById("change").className = "positive-change";
-                    document.getElementById("change").textContent = "(+" + change + ")";
-                } else if (change < 0) {
-                    document.getElementById("change
+</body>
+</html>
