@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaron Polar</title>
+    <title>HOME - Aaron Polar</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
+        /* Include CSS styles from index.html */
         body {
             font-family: baskerville, serif;
             margin: 0;
@@ -20,23 +21,24 @@
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid black;
+            margin-bottom: 20px; /* Added margin-bottom for space between header and content */
         }
         h1 {
-            margin-top: 5px; /* Adjusted margin to start 5px under the header */
+            margin-top: 5px;
             margin-bottom: 5px;
             font-family: baskerville, serif;
             font-size: 48px;
             color: #333;
-            text-transform: uppercase; /* Transform to uppercase */
-            font-weight: bold; /* Make it bold */
+            text-transform: uppercase;
+            font-weight: bold;
         }
         .btn-container {
             text-align: center;
-            padding: 5px; /* Added padding to create a 5px gap around the container */
+            padding: 5px;
         }
         button {
             padding: 10px 20px;
-            background-color: #52BE80; /* Match the Fishing button color */
+            background-color: #52BE80; /* Use the same color as the Fishing button */
             color: white;
             border: none;
             border-radius: 5px;
@@ -49,6 +51,27 @@
             text-align: center;
             margin: 50px auto;
         }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 20px; /* Adjusted gap between containers */
+        }
+        .image-container {
+            width: 45%; /* Adjust width as needed */
+        }
+        .text-container {
+            width: 45%; /* Adjust width as needed */
+        }
+        .text-container h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .text-container p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
         footer {
             text-align: center;
             margin-top: 50px;
@@ -57,7 +80,7 @@
 </head>
 <body>
     <header>
-        <h1>AARON POLAR</h1> <!-- All caps and bold -->
+        <h1>HOME</h1> <!-- Change title to "HOME" -->
         <div class="btn-container">
             <a href="index.html"><button>Home</button></a>
             <a href="aboutme.html"><button>About Me</button></a>
@@ -65,9 +88,14 @@
         </div>
     </header>
     
-    <div id="picture-space">
-        <!-- Space for Picture -->
-        <img src="your-image-url.jpg" alt="Placeholder Image">
+    <div class="container">
+        <div class="image-container">
+            <img src="your-image-url.jpg" alt="Fishing Picture" style="width: 100%;">
+        </div>
+        <div class="text-container">
+            <h2>Fishing Equipment</h2>
+            <p>Bank Fishing Setup</p>
+        </div>
     </div>
 </body>
 </html>
