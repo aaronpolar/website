@@ -16,7 +16,6 @@
             background-color: #FAF9F6;
         }
         header {
-            font-family: baskerville, serif;
             background-color: white;
             padding: 20px 0;
             text-align: center;
@@ -24,7 +23,6 @@
             margin-bottom: 20px;
         }
         h1 {
-            font-family: baskerville, serif;
             margin-top: 5px;
             margin-bottom: 5px;
             font-size: 48px;
@@ -33,12 +31,10 @@
             font-weight: bold;
         }
         .btn-container {
-            font-family: baskerville, serif;
             text-align: center;
             padding: 5px;
         }
         button {
-            font-family: baskerville, serif;
             padding: 10px 20px;
             background-color: #52BE80;
             color: white;
@@ -49,39 +45,38 @@
             font-weight: bold;
         }
         .tradingview-widget-container {
-            font-family: baskerville, serif;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
         }
         #tickerForm {
-            font-family: baskerville, serif;
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
         #tickerInput {
-            font-family: baskerville, serif;
             padding: 10px;
             margin-right: 10px;
         }
         #tickerInfo {
-            font-family: baskerville, serif;
+            font-size: 18px;
             text-align: center;
             margin-top: 20px;
         }
         #tickerPrice {
-            font-family: baskerville, serif;
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
         }
         #priceChange {
-            font-family: baskerville, serif;
             font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #graphContainer {
+            text-align: center;
+            margin-top: 20px;
         }
         .footer-container {
-            font-family: baskerville, serif;
             text-align: center;
             margin-top: 20px;
             display: flex;
@@ -136,10 +131,31 @@
 
                         // Update ticker info
                         updateTickerInfo(price, priceChange);
+
+                        // Load the graph
+                        loadGraph(ticker);
                     })
                     .catch(error => console.error('Error fetching data:', error));
 
                 return false; // Prevent form submission
+            }
+
+            function loadGraph(ticker) {
+                new TradingView.widget(
+                    {
+                        "autosize": true,
+                        "symbol": "NASDAQ:" + ticker,
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "hide_legend": true,
+                        "container_id": "tradingview_e0e92"
+                    }
+                );
             }
         </script>
     </div>
@@ -148,6 +164,12 @@
     <div id="tickerInfo">
         <div id="tickerPrice"></div>
         <div id="priceChange"></div>
+    </div>
+
+    <!-- Graph Container -->
+    <div id="graphContainer">
+        <p>Graph of Ticker:</p>
+        <div id="tradingview_e0e92"></div>
     </div>
 
     <!-- Footer -->
@@ -162,26 +184,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-        // Function to update ticker price and price change
-        function updateTickerInfo(price, priceChange) {
-            var tickerPriceElement = document.getElementById("tickerPrice");
-            var priceChangeElement = document.getElementById("priceChange");
-
-            // Update ticker price
-            tickerPriceElement.innerHTML = "Price: " + price;
-
-            // Update price change
-            priceChangeElement.innerHTML = "Change: ";
-            if (priceChange > 0) {
-                priceChangeElement.innerHTML += "<span class='positive'>" + priceChange + "</span>";
-            } else if (priceChange < 0) {
-                priceChangeElement.innerHTML += "<span class='negative'>" + priceChange + "</span>";
-            } else {
-                priceChangeElement.innerHTML += priceChange;
-            }
-        }
-    </script>
 </body>
 </html>
