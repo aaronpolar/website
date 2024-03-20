@@ -157,6 +157,24 @@
                     }
                 );
             }
+
+            function updateTickerInfo(price, priceChange) {
+                var tickerPriceElement = document.getElementById("tickerPrice");
+                var priceChangeElement = document.getElementById("priceChange");
+
+                // Update ticker price
+                tickerPriceElement.innerHTML = "$" + price;
+
+                // Update price change
+                priceChangeElement.innerHTML = "Change: ";
+                if (priceChange > 0) {
+                    priceChangeElement.innerHTML += "<span class='positive'>" + priceChange + "</span>";
+                } else if (priceChange < 0) {
+                    priceChangeElement.innerHTML += "<span class='negative'>" + priceChange + "</span>";
+                } else {
+                    priceChangeElement.innerHTML += priceChange;
+                }
+            }
         </script>
     </div>
 
