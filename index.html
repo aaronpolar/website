@@ -78,6 +78,22 @@
         #tickerForm {
             margin-bottom: 20px;
         }
+
+        /* Media Queries for Mobile Devices */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 36px; /* Decrease font size for smaller screens */
+            }
+            .btn-container {
+                flex-direction: column; /* Align buttons vertically */
+            }
+            button {
+                margin-bottom: 10px; /* Add margin between buttons */
+            }
+            .tradingview-widget-container {
+                width: 100%; /* Make widget container full width */
+            }
+        }
     </style>
 </head>
 <body>
