@@ -62,16 +62,34 @@
             width: 100%; /* Set the width of the widget container */
             max-width: 800px; /* Set a maximum width to avoid being too wide */
             margin: 0 auto; /* Center the container horizontally */
-            height: 800px; /* Double the height of the widget */
         }
-        .form-container {
-            text-align: center;
-            margin-top: 20px; /* Add space between the widget and the form */
+        #tickerForm {
+            text-align: center; /* Align the form center horizontally */
+            margin-top: 20px; /* Add some margin at the top */
         }
         #tickerInput {
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px; /* Add space between input and button */
+            padding: 10px; /* Add padding to the text box */
+            margin-right: 10px; /* Add some space between the text box and the button */
+        }
+        .ticker-price {
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Initially hide the price */
+        }
+        .ticker-price span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .ticker-change {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .positive-change {
+            color: green;
+        }
+        .negative-change {
+            color: red;
         }
     </style>
 </head>
@@ -86,8 +104,14 @@
         </div>
     </header>
 
+    <!-- Form for submitting ticker -->
+    <form id="tickerForm" onsubmit="submitTicker(); return false;">
+        <input type="text" id="tickerInput" placeholder="Enter Ticker" required>
+        <button type="submit">Submit</button>
+    </form>
+
     <!-- Your TradingView widget -->
-    <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container" style="height: 800px;">
         <div id="tradingview_e0e92"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
         <script type="text/javascript">
@@ -109,12 +133,10 @@
         </script>
     </div>
 
-    <!-- Form for submitting ticker -->
-    <div class="form-container">
-        <form id="tickerForm" onsubmit="submitTicker(); return false;">
-            <input type="text" id="tickerInput" placeholder="Enter Ticker" required>
-            <button type="submit">Submit</button>
-        </form>
+    <!-- Display ticker price and change -->
+    <div class="ticker-price" id="tickerPrice">
+        <span id="price"></span><br>
+        <span id="change"></span>
     </div>
 
     <div class="footer-container">
@@ -131,24 +153,33 @@
 
     <script>
         function submitTicker() {
-            var ticker = document.getElementById("tickerInput").value;
+            var ticker = document.getElementById("tickerInput").value.toUpperCase();
+            // Replace "tradingview_e0e92" with your TradingView widget ID
             new TradingView.widget(
-            {
-                "autosize": true,
-                "symbol": ticker,
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "hide_legend": true,
-                "container_id": "tradingview_e0e92"
-            }
+                {
+                    "autosize": true,
+                    "symbol": "NASDAQ:" + ticker,
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_legend": true,
+                    "container_id": "tradingview_e0e92"
+                }
             );
-        }
-    </script>
-</body>
-</html>
-
+            // Fetch and display ticker price
+            fetch("https://api.iextrading.com/1.0/stock/" + ticker + "/quote")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("tickerPrice").style.display = "block";
+                document.getElementById("price").textContent = data.latestPrice.toFixed(2);
+                var change = data.change.toFixed(2);
+                document.getElementById("change").textContent = change;
+                if (change > 0) {
+                    document.getElementById("change").className = "positive-change";
+                    document.getElementById("change").textContent = "(+" + change + ")";
+                } else if (change < 0) {
+                    document.getElementById("change
