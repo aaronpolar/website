@@ -50,6 +50,26 @@
             text-align: center;
             margin: 50px auto;
         }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .image-container {
+            width: 45%; /* Adjust width as needed */
+        }
+        .text-container {
+            width: 45%; /* Adjust width as needed */
+        }
+        .text-container h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .text-container p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
         footer {
             text-align: center;
             margin-top: 50px;
@@ -58,7 +78,7 @@
 </head>
 <body>
     <header>
-        <h1>FISHING</h1> <!-- Title changed to "FISHING" -->
+        <h1>FISHING</h1>
         <div class="btn-container">
             <a href="index.html"><button>Home</button></a>
             <a href="aboutme.html"><button>About Me</button></a>
@@ -66,9 +86,14 @@
         </div>
     </header>
     
-    <div id="picture-space">
-        <!-- Space for Picture -->
-        <img src="your-image-url.jpg" alt="Placeholder Image">
+    <div class="container">
+        <div class="image-container">
+            <img src="your-image-url.jpg" alt="Fishing Picture" style="width: 100%;">
+        </div>
+        <div class="text-container">
+            <h2>Fishing Equipment</h2>
+            <p>Bank Fishing Setup</p>
+        </div>
     </div>
 </body>
 </html>
