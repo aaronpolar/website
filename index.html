@@ -20,9 +20,11 @@
         }
         h1 {
             margin-top: 0;
+            margin-bottom: 5px;
             font-family: baskerville, serif;
             font-size: 48px;
             color: #333;
+            text-decoration: underline;
         }
         .btn-container {
             text-align: center;
@@ -36,8 +38,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-family: baskerville, serif;
-            text-transform: uppercase; /* Convert text to all uppercase */
-            font-weight: bold; /* Make text bold */
+            text-transform: uppercase;
+            font-weight: bold;
         }
         #picture-space {
             text-align: center;
@@ -47,9 +49,21 @@
             text-align: center;
             margin-top: 50px;
         }
+        /* Style for the square */
+        .vertical-square {
+            position: absolute;
+            left: 5px; /* 5px gap from the left side */
+            top: calc(20px + 5px); /* 5px gap from the header */
+            bottom: 5px; /* 5px gap from the bottom of the page */
+            width: 25%; /* 25% width */
+            background-color: white;
+        }
     </style>
 </head>
 <body>
+    <!-- Square element -->
+    <div class="vertical-square"></div>
+    
     <header>
         <h1>Aaron Polar</h1>
         <div class="btn-container">
