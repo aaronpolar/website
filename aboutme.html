@@ -47,20 +47,17 @@
             text-transform: uppercase;
             font-weight: bold;
         }
-        .image-container {
-            text-align: center; /* Center text horizontally */
+        .link-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; /* Add margin top for space between header and links */
         }
-        .image-container img {
+        .link-container a {
+            margin: 0 10px; /* Adjust spacing between links */
+        }
+        .link-container img {
             width: 50px;
-            margin-bottom: 10px; /* Add some space between images */
-        }
-        .image-container p {
-            font-size: 18px;
-            margin-top: 0;
-        }
-        footer {
-            text-align: center;
-            margin-top: 50px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -73,19 +70,17 @@
             <a href="fishing.html"><button>Fishing</button></a>
         </div>
     </header>
-    
-    <div class="image-container">
+
+    <!-- New section for links -->
+    <div class="link-container">
+        <a href="mailto:aaronmpolar@gmail.com" target="_blank">
+            <img src="docs/assets/gmaillogo.jpg" alt="Gmail Logo">
+        </a>
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.jpg" alt="LinkedIn Logo">
-            <p>Connect with me on LinkedIn</p>
-        </a>
-        <a href="mailto:aaronmpolar@gmail.com">
-            <img src="docs/assets/gmaillogo.jpg" alt="Gmail Logo">
-            <p>Email me at aaronmpolar@gmail.com</p>
         </a>
         <a href="https://www.github.com/aaronpolar" target="_blank">
-            <img src="docs/assets/githublogo.jpg" alt="GitHub Logo">
-            <p>Visit my GitHub profile</p>
+            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
 </body>
