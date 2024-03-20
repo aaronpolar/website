@@ -58,20 +58,6 @@
             padding: 10px;
             margin-right: 10px;
         }
-        #tickerInfo {
-            font-size: 18px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        #tickerPrice {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        #priceChange {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
         #graphContainer {
             text-align: center;
             margin-top: 20px;
@@ -86,13 +72,6 @@
         .footer-container img {
             width: 50px;
             margin: 0 10px;
-        }
-        /* Styles for positive and negative price change */
-        .positive {
-            color: green;
-        }
-        .negative {
-            color: red;
         }
     </style>
 </head>
@@ -117,87 +96,14 @@
     <div class="tradingview-widget-container">
         <div id="tradingview_e0e92"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-            function submitTicker() {
-                var ticker = document.getElementById('tickerInput').value.toUpperCase();
-                var apiKey = 'JOZYF40PMANZK2XT'; // Your Alpha Vantage API key
-                var apiUrl = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=' + apiKey;
-
-                fetch(apiUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch data');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        var price = data['Global Quote']['05. price'];
-                        var priceChange = data['Global Quote']['09. change'];
-
-                        // Update ticker info
-                        updateTickerInfo(price, priceChange);
-
-                        // Load the graph
-                        loadGraph(ticker);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data:', error);
-                        alert('Failed to fetch data. Please try again.');
-                    });
-
-                return false; // Prevent form submission
-            }
-
-            function loadGraph(ticker) {
-                new TradingView.widget(
-                    {
-                        "autosize": true,
-                        "symbol": "NASDAQ:" + ticker,
-                        "interval": "D",
-                        "timezone": "Etc/UTC",
-                        "theme": "light",
-                        "style": "1",
-                        "locale": "en",
-                        "toolbar_bg": "#f1f3f6",
-                        "enable_publishing": false,
-                        "hide_legend": true,
-                        "container_id": "tradingview_e0e92"
-                    }
-                );
-            }
-
-            function updateTickerInfo(price, priceChange) {
-                var tickerPriceElement = document.getElementById("tickerPrice");
-                var priceChangeElement = document.getElementById("priceChange");
-
-                // Update ticker price
-                tickerPriceElement.innerHTML = "$" + price;
-
-                // Update price change
-                priceChangeElement.innerHTML = "Change: ";
-                if (priceChange > 0) {
-                    priceChangeElement.innerHTML += "<span class='positive'>" + priceChange + "</span>";
-                } else if (priceChange < 0) {
-                    priceChangeElement.innerHTML += "<span class='negative'>" + priceChange + "</span>";
-                } else {
-                    priceChangeElement.innerHTML += priceChange;
-                }
-            }
-        </script>
-    </div>
-
-    <!-- Display Ticker Price and Price Change -->
-    <div id="tickerInfo">
-        <div id="tickerPrice"></div>
-        <div id="priceChange"></div>
     </div>
 
     <!-- Graph Container -->
     <div id="graphContainer">
         <p>Graph of Ticker:</p>
-        <div id="tradingview_e0e92"></div>
+        <div id="graph"></div>
     </div>
-    
+
     <!-- Footer -->
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
@@ -210,5 +116,35 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        function submitTicker() {
+            var ticker = document.getElementById('tickerInput').value.toUpperCase();
+            var apiKey = 'JOZYF40PMANZK2XT';
+            var apiUrl = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=' + apiKey;
+
+            loadGraph(ticker);
+
+            return false; // Prevent form submission
+        }
+
+        function loadGraph(ticker) {
+            new TradingView.widget(
+                {
+                    "autosize": true,
+                    "symbol": "NASDAQ:" + ticker,
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_legend": true,
+                    "container_id": "graph"
+                }
+            );
+        }
+    </script>
 </body>
 </html>
