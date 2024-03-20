@@ -58,6 +58,27 @@
             width: 50px;
             margin: 0 10px; /* Add some space between images */
         }
+        .content-container {
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center; /* Vertically center */
+            margin-bottom: 20px; /* Add margin at the bottom */
+        }
+        .content-container img {
+            width: 50%; /* Set image width to 50% of container */
+        }
+        .text-container {
+            width: 50%; /* Set text container width to 50% of container */
+            padding: 0 20px; /* Add padding for spacing */
+            text-align: left; /* Align text to the left */
+        }
+        .text-container ul {
+            list-style-type: none; /* Remove default list styles */
+            padding: 0; /* Remove default padding */
+        }
+        .text-container ul li {
+            margin-bottom: 10px; /* Add spacing between list items */
+        }
     </style>
 </head>
 <body>
@@ -71,14 +92,18 @@
         </div>
     </header>
 
-    <!-- Existing Fishing content -->
-    <div>
-        <img src="docs/assets/bankfishingsetup.jpg" alt="Fishing Setup" width="500">
-        <ul>
-            <li>UglyStik GX2 6.6' Medium and Pfleuger President 3000</li>
-            <li>Bass Pro Shop Tripod Stool</li>
-            <li>KastKing Karryall Tackle Backpack</li>
-        </ul>
+    <!-- Your Fishing content -->
+    <div class="content-container">
+        <img src="docs/assets/bankfishingsetup.jpg" alt="Bank Fishing Setup">
+        <div class="text-container">
+            <h2>Fishing Equipment</h2>
+            <h3>Bank Fishing Setup</h3>
+            <ul>
+                <li>UglyStik GX2 6.6' Medium and Pfleuger President 3000</li>
+                <li>Bass Pro Shop Tripod Stool</li>
+                <li>KastKing Karryall Tackle Backpack</li>
+            </ul>
+        </div>
     </div>
 
     <div class="footer-container">
@@ -89,8 +114,4 @@
             <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
         </a>
         <a href="https://www.github.com/aaronpolar" target="_blank">
-            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
-        </a>
-    </div>
-</body>
-</html>
+            <img src="
