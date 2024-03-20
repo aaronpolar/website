@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>About Me</title>
     <style>
         body {
             font-family: 'Raleway', sans-serif;
@@ -11,23 +11,25 @@
             padding: 0;
             background-color: #FAF9F6;
         }
-        h1 {
+        header {
+            background-color: white;
+            padding: 20px 0;
             text-align: center;
-            margin-top: 50px;
         }
-        .contact-info {
+        h1 {
+            margin-top: 0;
+        }
+        .btn-container {
             text-align: center;
             margin-top: 20px;
         }
-        .contact-info img {
-            width: 50px;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-        .contact-info p {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0;
+        button {
+            padding: 10px 20px;
+            background-color: #ADD8E6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
         footer {
             text-align: center;
@@ -36,19 +38,26 @@
     </style>
 </head>
 <body>
-    <h1>Contact</h1>
+    <header>
+        <h1>About Me</h1>
+        <div class="btn-container">
+            <a href="index.html"><button>Back to Aaron's Fishing Report</button></a>
+            <a href="setup.html"><button>Aaron's Setup</button></a>
+        </div>
+    </header>
     
-    <div class="contact-info">
-        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
-            <img src="linkedin-logo.png" alt="LinkedIn Logo">
-            <p>Connect with me on LinkedIn</p>
-        </a>
+    <div id="picture1">
+        <!-- Picture 1 -->
+        <img src="your-image-url-1.jpg" alt="Picture 1">
     </div>
     
-    <div class="contact-info">
-        <img src="gmail-logo.png" alt="Gmail Logo">
-        <p>aaronmpolar@gmail.com</p>
+    <div id="picture2">
+        <!-- Picture 2 -->
+        <img src="your-image-url-2.jpg" alt="Picture 2">
     </div>
     
     <footer>
-        <a href="index.html">B
+        <a href="index.html">Back to Aaron's Fishing Report</a>
+    </footer>
+</body>
+</html>
