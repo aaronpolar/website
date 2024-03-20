@@ -58,13 +58,22 @@
             width: 50px;
             margin: 0 10px; /* Add some space between images */
         }
-        .video-container {
-            text-align: center;
-            margin-bottom: 20px;
+        .content-container {
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center; /* Vertically center */
+            margin-bottom: 20px; /* Add margin at the bottom */
         }
-        .video-container iframe {
-            display: block;
-            margin: 0 auto; /* Center horizontally */
+        .stock-tracker {
+            width: 50%;
+            text-align: center;
+        }
+        iframe {
+            width: 560px; /* Adjust width as needed */
+            height: 315px; /* Adjust height as needed */
+        }
+        .form-container {
+            text-align: center;
         }
     </style>
 </head>
@@ -78,13 +87,18 @@
         </div>
     </header>
 
-    <!-- Embedded YouTube video -->
-    <div class="video-container">
+    <div class="content-container">
+        <div class="stock-tracker">
+            <div class="form-container">
+                <label for="stockTicker">Enter Stock Ticker:</label>
+                <input type="text" id="stockTicker" name="stockTicker" placeholder="e.g., SWPPX">
+                <button onclick="trackStock()">Track</button>
+            </div>
+            <div id="stockInfo">
+                <!-- Stock information will be displayed here -->
+            </div>
+        </div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/NgJ8KpIArOk" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="links-container">
-        <!-- Content of index.html goes here -->
     </div>
 
     <div class="footer-container">
@@ -98,5 +112,14 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        function trackStock() {
+            var stockTicker = document.getElementById("stockTicker").value;
+            // You can use an API or any other method to fetch stock information and display it here
+            // Example placeholder text
+            document.getElementById("stockInfo").innerHTML = "<p>Stock Ticker: " + stockTicker + "</p>";
+        }
+    </script>
 </body>
 </html>
