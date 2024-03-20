@@ -1,89 +1,213 @@
-<style>
-    /* Include CSS styles */
-    body {
-        font-family: baskerville, serif;
-        margin: 0;
-        padding: 0;
-        background-color: #FAF9F6;
-    }
-    header {
-        background-color: white;
-        padding: 20px 0;
-        text-align: center;
-        border-bottom: 1px solid black;
-        margin-bottom: 20px;
-    }
-    h1 {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        font-size: 48px;
-        color: #333;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-    .btn-container {
-        text-align: center;
-        padding: 5px;
-    }
-    button {
-        padding: 10px 20px;
-        background-color: #52BE80;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-family: baskerville, serif; /* Ensure button text uses Baskerville font */
-    }
-    .tradingview-widget-container {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    #tickerForm {
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    #tickerInput {
-        padding: 10px;
-        margin-right: 10px;
-    }
-    #tickerInfo {
-        font-size: 18px;
-        text-align: center;
-        margin-top: 20px;
-    }
-    #tickerPrice {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    #priceChange {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-    #graphContainer {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .footer-container {
-        text-align: center;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .footer-container img {
-        width: 50px;
-        margin: 0 10px;
-    }
-    /* Styles for positive and negative price change */
-    .positive {
-        color: green;
-    }
-    .negative {
-        color: red;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANCE - Aaron Polar</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Include CSS styles */
+        body {
+            font-family: baskerville, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAF9F6;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid black;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-size: 48px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-container {
+            text-align: center;
+            padding: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #52BE80;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: baskerville, serif; /* Ensure button text uses Baskerville font */
+        }
+        .tradingview-widget-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #tickerForm {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #tickerInput {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #tickerInfo {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #tickerPrice {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #priceChange {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #graphContainer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-container {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer-container img {
+            width: 50px;
+            margin: 0 10px;
+        }
+        /* Styles for positive and negative price change */
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FINANCE</h1>
+        <div class="btn-container">
+            <a href="index.html"><button>Home</button></a>
+            <a href="aboutme.html"><button>About Me</button></a>
+            <a href="fishing.html"><button>Fishing</button></a>
+            <a href="finance.html"><button>Finance</button></a>
+        </div>
+    </header>
+
+    <!-- Ticker Input Form -->
+    <form id="tickerForm" onsubmit="return submitTicker()">
+        <input type="text" id="tickerInput" placeholder="Enter Ticker" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- TradingView Widget -->
+    <div class="tradingview-widget-container">
+        <div id="tradingview_e0e92"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+            function submitTicker() {
+                var ticker = document.getElementById('tickerInput').value.toUpperCase();
+                var apiKey = 'JOZYF40PMANZK2XT'; // Your Alpha Vantage API key
+                var apiUrl = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=' + apiKey;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        var price = data['Global Quote']['05. price'];
+                        var priceChange = data['Global Quote']['09. change'];
+
+                        // Update ticker info
+                        updateTickerInfo(price, priceChange);
+
+                        // Load the graph
+                        loadGraph(ticker);
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+
+                return false; // Prevent form submission
+            }
+
+            function loadGraph(ticker) {
+                new TradingView.widget(
+                    {
+                        "autosize": true,
+                        "symbol": "NASDAQ:" + ticker,
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "hide_legend": true,
+                        "container_id": "tradingview_e0e92"
+                    }
+                );
+            }
+
+            function updateTickerInfo(price, priceChange) {
+                var tickerPriceElement = document.getElementById("tickerPrice");
+                var priceChangeElement = document.getElementById("priceChange");
+
+                // Update ticker price
+                tickerPriceElement.innerHTML = "$" + price;
+
+                // Update price change
+                priceChangeElement.innerHTML = "Change: ";
+                if (priceChange > 0) {
+                    priceChangeElement.innerHTML += "<span class='positive'>" + priceChange + "</span>";
+                } else if (priceChange < 0) {
+                    priceChangeElement.innerHTML += "<span class='negative'>" + priceChange + "</span>";
+                } else {
+                    priceChangeElement.innerHTML += priceChange;
+                }
+            }
+
+            // Add event listener for form submission on Enter key press
+            document.getElementById("tickerForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                submitTicker();
+            });
+        </script>
+    </div>
+
+    <!-- Display Ticker Price and Price Change -->
+    <div id="tickerInfo">
+        <div id="tickerPrice"></div>
+        <div id="priceChange"></div>
+    </div>
+
+    <!-- Graph Container -->
+    <div id="graphContainer">
+        <p>Graph of Ticker:</p>
+        <div id="tradingview_e0e92"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
+            <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
+        </a>
+        <a href="mailto:aaronmpolar@gmail.com">
+            <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
+        </a>
+        <a href="https://www.github.com/aaronpolar" target="_blank">
+            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
+        </a>
+    </div>
+</body>
+</html>
