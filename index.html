@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - Aaron Polar</title>
+    <title>Home - Aaron Polar</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -82,52 +82,16 @@
 </head>
 <body>
     <header>
-        <h1>HOME</h1>
+        <h1>Home</h1>
         <div class="btn-container">
             <a href="index.html"><button>Home</button></a>
             <a href="aboutme.html"><button>About Me</button></a>
             <a href="fishing.html"><button>Fishing</button></a>
+            <a href="finance.html"><button>Finance</button></a> <!-- New Finance Button -->
         </div>
     </header>
 
-    <div class="content-container">
-        <div class="tradingview-widget-container">
-            <form id="tickerForm">
-                <label for="tickerSymbol">Enter Ticker Symbol:</label>
-                <input type="text" id="tickerSymbol" name="tickerSymbol" placeholder="e.g., AAPL">
-                <button type="button" onclick="updateTicker()">Update</button>
-            </form>
-            <div id="tradingview_b3f25"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-                var widget = null;
-
-                function updateTicker() {
-                    var tickerSymbol = document.getElementById("tickerSymbol").value.toUpperCase();
-                    if (widget) {
-                        widget.symbol(tickerSymbol);
-                    } else {
-                        widget = new TradingView.widget(
-                            {
-                                "width": 800,
-                                "height": 400,
-                                "symbol": tickerSymbol,
-                                "interval": "D",
-                                "timezone": "Etc/UTC",
-                                "theme": "light",
-                                "style": "1",
-                                "locale": "en",
-                                "toolbar_bg": "#f1f3f6",
-                                "enable_publishing": false,
-                                "allow_symbol_change": false,
-                                "container_id": "tradingview_b3f25"
-                            }
-                        );
-                    }
-                }
-            </script>
-        </div>
-    </div>
+    <!-- No body content -->
 
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
