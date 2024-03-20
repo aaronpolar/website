@@ -62,21 +62,11 @@
             display: flex;
             justify-content: center; /* Horizontally center */
             align-items: center; /* Vertically center */
+            margin-bottom: 20px; /* Add margin at the bottom */
         }
         .content-container img {
-            width: 50%; /* Set image width to 50% of its container */
-        }
-        .text-container {
-            width: 50%; /* Set text container width to 50% of its container */
-            padding: 0 20px; /* Add padding for spacing */
-            text-align: left; /* Align text to the left */
-        }
-        .text-container ul {
-            list-style-type: none; /* Remove default list styles */
-            padding: 0; /* Remove default padding */
-        }
-        .text-container ul li {
-            margin-bottom: 10px; /* Add spacing between list items */
+            max-width: 1024px; /* Crop the image width to 1024px */
+            height: auto; /* Maintain aspect ratio */
         }
     </style>
 </head>
