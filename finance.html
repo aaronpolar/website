@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance - Aaron Polar</title>
+    <title>FINANCE - Aaron Polar</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -58,31 +58,40 @@
             width: 50px;
             margin: 0 10px; /* Add some space between images */
         }
-        .content-container {
+
+        /* Center form elements */
+        form {
             display: flex;
-            justify-content: center; /* Horizontally center */
-            align-items: center; /* Vertically center */
-            margin-bottom: 20px; /* Add margin at the bottom */
+            flex-direction: column;
+            align-items: center;
         }
-        .tradingview-widget-container {
-            position: relative;
-            width: 800px;
-            height: 400px;
-        }
+
         input[type="text"] {
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            width: 200px;
             border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
         }
-        #tickerForm {
-            margin-bottom: 20px;
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #52BE80;
+            color: white;
+            cursor: pointer;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Finance</h1>
+        <h1>FINANCE</h1>
         <div class="btn-container">
             <a href="index.html"><button>Home</button></a>
             <a href="aboutme.html"><button>About Me</button></a>
@@ -91,44 +100,37 @@
         </div>
     </header>
 
-    <div class="content-container">
+    <!-- Your TradingView widget -->
+    <div>
+        <!-- TradingView widget goes here -->
         <div class="tradingview-widget-container">
-            <form id="tickerForm">
-                <label for="tickerSymbol">Enter Ticker Symbol:</label>
-                <input type="text" id="tickerSymbol" name="tickerSymbol" placeholder="e.g., AAPL">
-                <button type="button" onclick="updateTicker()">Update</button>
-            </form>
-            <div id="tradingview_b3f25"></div>
+            <div id="tradingview_e0e92"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
             <script type="text/javascript">
-                var widget = null;
-
-                function updateTicker() {
-                    var tickerSymbol = document.getElementById("tickerSymbol").value.toUpperCase();
-                    if (widget) {
-                        widget.symbol(tickerSymbol);
-                    } else {
-                        widget = new TradingView.widget(
-                            {
-                                "width": 800,
-                                "height": 400,
-                                "symbol": tickerSymbol,
-                                "interval": "D",
-                                "timezone": "Etc/UTC",
-                                "theme": "light",
-                                "style": "1",
-                                "locale": "en",
-                                "toolbar_bg": "#f1f3f6",
-                                "enable_publishing": false,
-                                "allow_symbol_change": false,
-                                "container_id": "tradingview_b3f25"
-                            }
-                        );
-                    }
+                new TradingView.widget(
+                {
+                    "autosize": true,
+                    "symbol": "NASDAQ:AAPL",
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_legend": true,
+                    "container_id": "tradingview_e0e92"
                 }
+                );
             </script>
         </div>
     </div>
+
+    <!-- Form for submitting ticker -->
+    <form id="tickerForm" action="https://www.tradingview.com/symbols/" method="get" target="_blank">
+        <input type="text" name="symbol" placeholder="Enter Ticker" required>
+        <button type="submit">Submit</button>
+    </form>
 
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
