@@ -90,9 +90,7 @@
             font-size: 24px;
         }
         .log-entry-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
             margin-top: 20px;
         }
         .log-entry-form input,
@@ -149,12 +147,11 @@
     <div class="log-entry-form">
         <h2>Log a New Catch</h2>
         <form id="logForm">
-            <input type="datetime-local" id="datetime" name="datetime" required>
-            <input type="text" id="location" name="location" placeholder="Location" required>
-            <input type="text" id="species" name="species" placeholder="Species" required>
-            <input type="number" id="length" name="length" placeholder="Length (optional)" step="0.01">
-            <input
- type="number" id="weight" name="weight" placeholder="Weight (optional)" step="0.01">
+            <input type="datetime-local" id="datetime" name="datetime" required><br>
+            <input type="text" id="location" name="location" placeholder="Location" required><br>
+            <input type="text" id="species" name="species" placeholder="Species" required><br>
+            <input type="number" id="length" name="length" placeholder="Length (optional)" step="0.01"><br>
+            <input type="number" id="weight" name="weight" placeholder="Weight (optional)" step="0.01"><br>
             <button type="submit">Log Catch</button>
         </form>
     </div>
@@ -187,25 +184,60 @@
         var time = dateTimeParts[1];
 
         var templateParams = {
-            date: date,
-            time: time,
-            location: location,
-            species: species,
-            length: length,
-            weight: weight
-        };
+    date: date,
+    time: time,
+    location: location,
+    species: species,
+    length: length,
+    weight: weight
+};
 
-        emailjs.send('service_fuwd637', 'template_84duy1a', templateParams)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Log entry submitted successfully!');
-                document.getElementById('logForm').reset();
-            }, function(error) {
-                console.log('FAILED...', error);
-                alert('Failed to submit log entry. Please try again later.');
+
+        emailjs.send('
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init({
+                publicKey: "X-_ZqEg3C9PXRAyTq",
             });
-    });
-</script>
+        })();
 
+        document.getElementById('logForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    var datetime = document.getElementById('datetime').value;
+    var location = document.getElementById('location').value;
+    var species = document.getElementById('species').value;
+    var length = document.getElementById('length').value || 'Not specified';
+    var weight = document.getElementById('weight').value || 'Not specified';
+
+    // Splitting datetime into date and time
+    var dateTimeParts = datetime.split('T');
+    var date = dateTimeParts[0];
+    var time = dateTimeParts[1];
+
+    var templateParams = {
+        date: date,
+        time: time,
+        location: location,
+        species: species,
+        length: length,
+        weight: weight
+    };
+
+    emailjs.send('service_fuwd637', 'template_84duy1a', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Log entry submitted successfully!');
+            document.getElementById('logForm').reset();
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to submit log entry. Please try again later.');
+        });
+});
+
+    </script>
 </body>
 </html>
