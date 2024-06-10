@@ -9,7 +9,6 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
-        /* Include CSS styles from index.html */
         body {
             font-family: baskerville, serif;
             margin: 0;
@@ -21,8 +20,8 @@
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid black;
-            margin-bottom: 20px; /* Added margin-bottom for space between header and content */
-            font-family: baskerville, serif; /* Set font to Baskerville */
+            margin-bottom: 20px; 
+            font-family: baskerville, serif;
         }
         h1 {
             margin-top: 5px;
@@ -38,7 +37,7 @@
         }
         button {
             padding: 10px 20px;
-            background-color: #52BE80; /* Use the same color as the Fishing button */
+            background-color: #52BE80; 
             color: white;
             border: none;
             border-radius: 5px;
@@ -51,27 +50,47 @@
             text-align: center;
             margin-top: 20px;
             display: flex;
-            justify-content: center; /* Align horizontally */
-            align-items: center; /* Align vertically */
+            justify-content: center; 
+            align-items: center; 
         }
         .footer-container img {
             width: 50px;
-            margin: 0 10px; /* Add some space between images */
+            margin: 0 10px; 
         }
         .content-container {
             display: flex;
-            justify-content: center; /* Horizontally center */
-            align-items: flex-start; /* Vertically align to top */
-            margin-bottom: 20px; /* Add margin at the bottom */
+            justify-content: center; 
+            align-items: flex-start; 
+            margin-bottom: 20px; 
         }
         .content-container img {
-            width: 400px; /* Set image width to 400px */
-            height: 400px; /* Set image height to 400px */
-            margin-right: 20px; /* Add margin to the right of the image */
+            width: 400px; 
+            height: 400px; 
+            margin-right: 20px; 
         }
         .text-container {
-            margin-top: 0; /* Remove margin from the top of the text */
-            font-family: baskerville, serif; /* Set font to Baskerville */
+            margin-top: 0; 
+            font-family: baskerville, serif; 
+        }
+        .fish-counter {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .counter h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .counter button {
+            padding: 10px 20px;
+            background-color: #52BE80;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -100,6 +119,15 @@
         </div>
     </div>
 
+    <div class="fish-counter">
+        <h2>Fish Counter</h2>
+        <div class="counter">
+            <h2>Fish Caught: <span id="fishCount">0</span></h2>
+            <button id="incrementBtn">Caught One!</button>
+            <button id="decrementBtn" disabled>Released One</button>
+        </div>
+    </div>
+
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -111,5 +139,29 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        let fishCount = 0;
+
+        const fishCountElement = document.getElementById('fishCount');
+        const incrementBtn = document.getElementById('incrementBtn');
+        const decrementBtn = document.getElementById('decrementBtn');
+
+        incrementBtn.addEventListener('click', () => {
+            fishCount++;
+            fishCountElement.textContent = fishCount;
+            decrementBtn.disabled = false;
+        });
+
+        decrementBtn.addEventListener('click', () => {
+            if (fishCount > 0) {
+                fishCount--;
+                fishCountElement.textContent = fishCount;
+            }
+            if (fishCount === 0) {
+                decrementBtn.disabled = true;
+            }
+        });
+    </script>
 </body>
 </html>
