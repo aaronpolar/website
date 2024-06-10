@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log a New Catch - Aaron Polar</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "X-_ZqEg3C9PXRAyTq",
+            });
+        })();
+    </script>
+    <style>
+        /* Include CSS styles from index.html */
+        body {
+            font-family: baskerville, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAF9F6;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid black;
+            margin-bottom: 20px;
+            font-family: baskerville, serif;
+        }
+        h1 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-size: 48px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-container {
+            text-align: center;
+            padding: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #52BE80;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .footer-container {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer-container img {
+            width: 50px;
+            margin: 0 10px;
+        }
+        .log-entry-form {
+            text-align: center;
+            margin: 20px auto; /* Center the form */
+            max-width: 400px; /* Limit form width */
+        }
+        .log-entry-form input,
+        .log-entry-form button {
+            display: block; /* Stack fields on top of each other */
+            padding: 10px;
+            margin: 5px auto; /* Center fields */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: baskerville, serif;
+            font-size: 16px;
+            width: 80%;
+        }
+        .log-entry-form button {
+            background-color: #52BE80;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HOME</h1>
+        <div class="btn-container">
+            <a href="index.html"><button>Home</button></a>
+            <a href="aboutme.html"><button>About Me</button></a>
+            <a href="fishing.html"><button>Fishing</button></a>
+            <a href="finance.html"><button>Finance</button></a>
+        </div>
+    </header>
+
+    <!-- Log entry form -->
+    <div class="log-entry-form">
+        <h2>Log a New Catch</h2>
+        <form id="logForm">
+            <input type="datetime-local" id="datetime" name="datetime" required><br>
+            <input type="text" id="location" name="location" placeholder="Location" required><br>
+            <input type="text" id="species" name="species" placeholder="Species" required><br>
+            <input type="number" id="length" name="length" placeholder="Length (optional)" step="0.01"><br>
+            <input type="number" id="weight" name="weight" placeholder="Weight (optional)" step="0.01"><br>
+            <button type="submit">Log Catch</button>
+        </form>
+    </div>
+
+    <div class="footer-container">
+        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
+            <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
+        </a>
+        <a href="mailto:aaronmpolar@gmail.com">
+            <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
+        </a>
+        <a href="https://www.github.com/aaronpolar" target="_blank">
+            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('logForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var datetime = document.getElementById('datetime').value;
+            var location = document.getElementById('location').value;
+            var species = document.getElementById('species').value;
+            var length = document.getElementById('length').value || 'Not specified';
+            var weight = document.getElementById('weight').value || 'Not specified';
+
+            // Splitting datetime into date and time
+            var dateTimeParts = datetime.split('T');
+            var date = dateTimeParts[0];
+            var time = dateTimeParts[1];
+
+            var templateParams = {
+                date: date,
+                time: time,
+                location: location,
+                species: species,
+                length: length,
+                weight: weight
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Log entry submitted successfully!');
+                    document.getElementById('logForm').reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to submit log entry. Please try again later.');
+                });
+        });
+    </script>
+</body>
+</html>
