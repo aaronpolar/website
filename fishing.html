@@ -8,7 +8,16 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "X-_ZqEg3C9PXRAyTq",
+            });
+        })();
+    </script>
     <style>
+        /* Include CSS styles from index.html */
         body {
             font-family: baskerville, serif;
             margin: 0;
@@ -20,7 +29,7 @@
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid black;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
             font-family: baskerville, serif;
         }
         h1 {
@@ -37,7 +46,7 @@
         }
         button {
             padding: 10px 20px;
-            background-color: #52BE80; 
+            background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
@@ -50,27 +59,27 @@
             text-align: center;
             margin-top: 20px;
             display: flex;
-            justify-content: center; 
-            align-items: center; 
+            justify-content: center;
+            align-items: center;
         }
         .footer-container img {
             width: 50px;
-            margin: 0 10px; 
+            margin: 0 10px;
         }
         .content-container {
             display: flex;
-            justify-content: center; 
-            align-items: flex-start; 
-            margin-bottom: 20px; 
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 20px;
         }
         .content-container img {
-            width: 400px; 
-            height: 400px; 
-            margin-right: 20px; 
+            width: 400px;
+            height: 400px;
+            margin-right: 20px;
         }
         .text-container {
-            margin-top: 0; 
-            font-family: baskerville, serif; 
+            margin-top: 0;
+            font-family: baskerville, serif;
         }
         .fish-counter {
             text-align: center;
@@ -80,17 +89,27 @@
             margin-bottom: 10px;
             font-size: 24px;
         }
-        .counter button {
-            padding: 10px 20px;
+        .log-entry-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .log-entry-form input,
+        .log-entry-form button {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: baskerville, serif;
+            font-size: 16px;
+            width: 80%;
+        }
+        .log-entry-form button {
             background-color: #52BE80;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            margin: 5px;
-            font-family: baskerville, serif;
-            text-transform: uppercase;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -105,7 +124,7 @@
         </div>
     </header>
 
-    <!-- Your Fishing content -->
+    <!-- Fishing content -->
     <div class="content-container">
         <img src="docs/assets/bankfishingsetup.jpg" alt="Bank Fishing Setup">
         <div class="text-container">
@@ -123,9 +142,21 @@
         <h2>Fish Counter</h2>
         <div class="counter">
             <h2>Fish Caught: <span id="fishCount">0</span></h2>
-            <button id="incrementBtn">Caught One!</button>
-            <button id="decrementBtn" disabled>Released One</button>
         </div>
+    </div>
+
+    <!-- Log entry form -->
+    <div class="log-entry-form">
+        <h2>Log a New Catch</h2>
+        <form id="logForm">
+            <input type="datetime-local" id="datetime" name="datetime" required>
+            <input type="text" id="location" name="location" placeholder="Location" required>
+            <input type="text" id="species" name="species" placeholder="Species" required>
+            <input type="number" id="length" name="length" placeholder="Length (optional)" step="0.01">
+            <input
+ type="number" id="weight" name="weight" placeholder="Weight (optional)" step="0.01">
+            <button type="submit">Log Catch</button>
+        </form>
     </div>
 
     <div class="footer-container">
@@ -141,27 +172,40 @@
     </div>
 
     <script>
-        let fishCount = 0;
+    document.getElementById('logForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var datetime = document.getElementById('datetime').value;
+        var location = document.getElementById('location').value;
+        var species = document.getElementById('species').value;
+        var length = document.getElementById('length').value || 'Not specified';
+        var weight = document.getElementById('weight').value || 'Not specified';
 
-        const fishCountElement = document.getElementById('fishCount');
-        const incrementBtn = document.getElementById('incrementBtn');
-        const decrementBtn = document.getElementById('decrementBtn');
+        // Splitting datetime into date and time
+        var dateTimeParts = datetime.split('T');
+        var date = dateTimeParts[0];
+        var time = dateTimeParts[1];
 
-        incrementBtn.addEventListener('click', () => {
-            fishCount++;
-            fishCountElement.textContent = fishCount;
-            decrementBtn.disabled = false;
-        });
+        var templateParams = {
+            date: date,
+            time: time,
+            location: location,
+            species: species,
+            length: length,
+            weight: weight
+        };
 
-        decrementBtn.addEventListener('click', () => {
-            if (fishCount > 0) {
-                fishCount--;
-                fishCountElement.textContent = fishCount;
-            }
-            if (fishCount === 0) {
-                decrementBtn.disabled = true;
-            }
-        });
-    </script>
+        emailjs.send('service_fuwd637', 'template_84duy1a', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Log entry submitted successfully!');
+                document.getElementById('logForm').reset();
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('Failed to submit log entry. Please try again later.');
+            });
+    });
+</script>
+
 </body>
 </html>
