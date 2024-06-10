@@ -55,6 +55,18 @@
             text-transform: uppercase;
             font-weight: bold;
         }
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 10px;
+        }
         .footer-container {
             text-align: center;
             margin-top: 20px;
@@ -91,12 +103,14 @@
         }
         .log-entry-form {
             text-align: center;
-            margin-top: 20px;
+            margin: 20px auto; /* Center the form */
+            max-width: 400px; /* Limit form width */
         }
         .log-entry-form input,
         .log-entry-form button {
+            display: block; /* Stack fields on top of each other */
             padding: 10px;
-            margin: 5px;
+            margin: 5px auto; /* Center fields */
             border: 1px solid #ccc;
             border-radius: 5px;
             font-family: baskerville, serif;
@@ -117,7 +131,8 @@
         <div class="btn-container">
             <a href="index.html"><button>Home</button></a>
             <a href="aboutme.html"><button>About Me</button></a>
-            <a href="fishing.html"><button>Fishing</button></a>
+            <a href="fishing_equipment.html"><button class="nav-button">Fishing Equipment</button></a>
+            <a href="fishinglog.html"><button class="nav-button">Log a New Catch</button></a>
             <a href="finance.html"><button>Finance</button></a>
         </div>
     </header>
@@ -136,19 +151,6 @@
         </div>
     </div>
 
-    <!-- Log entry form -->
-    <div class="log-entry-form">
-        <h2>Log a New Catch</h2>
-        <form id="logForm">
-            <input type="datetime-local" id="datetime" name="datetime" required><br>
-            <input type="text" id="location" name="location" placeholder="Location" required><br>
-            <input type="text" id="species" name="species" placeholder="Species" required><br>
-            <input type="number" id="length" name="length" placeholder="Length (optional)" step="0.01"><br>
-            <input type="number" id="weight" name="weight" placeholder="Weight (optional)" step="0.01"><br>
-            <button type="submit">Log Catch</button>
-        </form>
-    </div>
-
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -160,77 +162,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-    document.getElementById('logForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        var datetime = document.getElementById('datetime').value;
-        var location = document.getElementById('location').value;
-        var species = document.getElementById('species').value;
-        var length = document.getElementById('length').value || 'Not specified';
-        var weight = document.getElementById('weight').value || 'Not specified';
-
-        // Splitting datetime into date and time
-        var dateTimeParts = datetime.split('T');
-        var date = dateTimeParts[0];
-        var time = dateTimeParts[1];
-
-        var templateParams = {
-    date: date,
-    time: time,
-    location: location,
-    species: species,
-    length: length,
-    weight: weight
-};
-
-
-        emailjs.send('
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init({
-                publicKey: "X-_ZqEg3C9PXRAyTq",
-            });
-        })();
-
-        document.getElementById('logForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    var datetime = document.getElementById('datetime').value;
-    var location = document.getElementById('location').value;
-    var species = document.getElementById('species').value;
-    var length = document.getElementById('length').value || 'Not specified';
-    var weight = document.getElementById('weight').value || 'Not specified';
-
-    // Splitting datetime into date and time
-    var dateTimeParts = datetime.split('T');
-    var date = dateTimeParts[0];
-    var time = dateTimeParts[1];
-
-    var templateParams = {
-        date: date,
-        time: time,
-        location: location,
-        species: species,
-        length: length,
-        weight: weight
-    };
-
-    emailjs.send('service_fuwd637', 'template_84duy1a', templateParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            alert('Log entry submitted successfully!');
-            document.getElementById('logForm').reset();
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('Failed to submit log entry. Please try again later.');
-        });
-});
-
-    </script>
 </body>
 </html>
