@@ -105,10 +105,9 @@
         }
 
         .fixed-buttons {
-            background-color: #333;
             padding: 10px 0;
             display: flex;
-            justify-content: space-around;
+            justify-content: center; /* Center buttons horizontally */
         }
 
         .fixed-buttons a {
@@ -117,9 +116,11 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 16px;
-            background-color: grey;
             padding: 10px 20px;
             border-radius: 5px;
+            background-color: #D3D3D3; /* Lighter grey color */
+            border: none; /* Remove button border */
+            margin: 0 10px; /* Add margin around buttons */
         }
     </style>
 </head>
@@ -137,8 +138,8 @@
     </div>
 
     <div class="fixed-buttons">
-        <a href="fishing_equipment.html" class="grey-button">Fishing Equipment</a>
-        <a href="fishinglog.html" class="grey-button">Log a Catch</a>
+        <a href="fishing_equipment.html">Fishing Equipment</a>
+        <a href="fishing_log.html">Log a Catch</a>
     </div>
 
     <div class="footer-container">
