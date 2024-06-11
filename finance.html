@@ -3,109 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCE - Aaron Polar</title>
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>HOME - Aaron Polar</title>
     <style>
-        /* Include CSS styles */
         body {
             font-family: baskerville, serif;
             margin: 0;
             padding: 0;
             background-color: #FAF9F6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        header {
+
+        .header {
             background-color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid black;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        h1 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 48px;
-            color: #333;
-            text-transform: uppercase;
+
+        .header-left {
+            margin-right: auto;
+            width: calc(100% / 3); /* Divide the page into thirds */
+        }
+
+        .header-left a {
+            text-decoration: none;
+            color: black;
             font-weight: bold;
+            font-size: 24px;
+            display: block; /* Display as block to stack text */
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Align text to the center */
         }
-        .btn-container {
-            text-align: center;
-            padding: 5px;
+
+        .header-right {
+            margin-left: auto;
+            display: flex; /* Ensure buttons are in a row */
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
-        button {
-            padding: 10px 20px;
+
+        .green-button {
             background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            padding: 10px 20px;
+            font-family: baskerville, serif;
             text-transform: uppercase;
             font-weight: bold;
-            font-family: baskerville, serif; /* Baskerville font */
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+            text-align: center; /* Center text in buttons */
         }
-        .tradingview-widget-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        #tickerForm {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        #tickerInput {
-            padding: 10px;
-            margin-right: 10px;
-        }
-        #graphContainer {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .footer-container {
-            text-align: center;
-            margin-top: 20px;
+
+        /* Style for the text */
+        .header-text {
+            margin-left: calc(100% / 3); /* Space between text and buttons */
+            flex: 1; /* Take up remaining space */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* Stack text vertically */
+            align-items: center; /* Align text to the center */
         }
+
+        .header-text p {
+            margin: 0; /* Remove default margin */
+            font-size: 24px;
+        }
+
+        /* Style for the image */
+        .header-image img {
+            width: 150px; /* Set image width */
+        }
+
+        .footer-container {
+            position: fixed; /* Fixed position to keep it at the bottom */
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333; /* Background color for better visibility */
+            text-align: center;
+            padding: 10px 0; /* Padding for better spacing */
+        }
+
         .footer-container img {
-            width: 50px;
-            margin: 0 10px;
+            width: 50px; /* Set image width to 50px */
+            margin: 0 10px; /* Add space between images */
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
+
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .header-text {
+                display: block; /* Display text on mobile */
+                margin: 10px 20px; /* Add margin around text on mobile */
+                align-items: center; /* Center text vertically on mobile */
+            }
+
+            .header-text p {
+                font-size: 20px; /* Decrease font size for mobile */
+                text-align: center; /* Center text horizontally on mobile */
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>FINANCE</h1>
-        <div class="btn-container">
-            <a href="index.html"><button>Home</button></a>
-            <a href="aboutme.html"><button>About Me</button></a>
-            <a href="fishing.html"><button>Fishing</button></a>
-            <a href="finance.html"><button>Finance</button></a>
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html">AARON</a>
+            <a href="index.html">POLAR</a>
         </div>
-    </header>
-
-    <!-- Ticker Input Form -->
-    <form id="tickerForm" onsubmit="return submitTicker()">
-        <input type="text" id="tickerInput" placeholder="Enter Ticker" required>
-        <button type="submit">Submit</button>
-    </form>
-
-    <!-- TradingView Widget -->
-    <div class="tradingview-widget-container">
-        <div id="tradingview_e0e92"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <div class="header-right">
+            <button class="green-button">About Me</button>
+            <button class="green-button">Fishing</button>
+            <button class="green-button">Finance</button>
+        </div>
     </div>
 
-    <!-- Graph Container -->
-    <div id="graphContainer">
-        <p>Graph of Ticker:</p>
-        <div id="graph"></div>
+    <div class="header-image">
+        <img src="IMG_3471.JPG" alt="Image" />
     </div>
 
-    <!-- Footer -->
+    <div class="header-text">
+        <p>Hey there! I'm Aaron Polar from San Francisco, CA. I put together this website on March 12, 2024, to share my love for fishing and finance.</p>
+    </div>
+
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -117,48 +162,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-        function submitTicker() {
-            var ticker = document.getElementById('tickerInput').value.toUpperCase();
-            var apiKey = 'JOZYF40PMANZK2XT';
-            var apiUrl = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=' + apiKey;
-
-            fetch(apiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch data');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    loadGraph(ticker);
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                    alert('Failed to fetch data. Please try again.');
-                });
-
-            return false; // Prevent form submission
-        }
-
-        function loadGraph(ticker) {
-            new TradingView.widget(
-                {
-                    "autosize": true,
-                    "symbol": "NASDAQ:" + ticker,
-                    "interval": "D",
-                    "timezone": "Etc/UTC",
-                    "theme": "light",
-                    "style": "1",
-                    "locale": "en",
-                    "toolbar_bg": "#f1f3f6",
-                    "enable_publishing": false,
-                    "hide_legend": true,
-                    "container_id": "graph"
-                }
-            );
-        }
-    </script>
 </body>
 </html>
