@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FISHING - Aaron Polar</title>
+    <title>HOME - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -77,6 +77,7 @@
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
             color: white;
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         .footer-container img {
@@ -105,10 +106,6 @@
         }
 
         .fixed-buttons {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
             background-color: #333;
             padding: 10px 0;
             display: flex;
@@ -128,6 +125,11 @@
     </style>
 </head>
 <body>
+    <div class="fixed-buttons">
+        <a href="fishing_equipment.html" class="grey-button">Fishing Equipment</a>
+        <a href="fishing_log.html" class="grey-button">Log a Catch</a>
+    </div>
+
     <div class="header">
         <div class="header-left">
             <a href="index.html">AARON</a>
@@ -144,23 +146,16 @@
         <img src="docs/assets/IMG_3471.JPG" alt="Image" />
     </div>
 
-    <div class="fixed-buttons">
-        <a href="fishing_equipment.html" class="grey-button">Fishing Equipment</a>
-        <a href="fishing_log.html" class="grey-button">Log a Catch</a>
-    </div>
-
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
         </a>
         <a href="mailto:aaronmpolar@gmail.com">
             <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
-</a>
-<a href="https://www.github.com/aaronpolar" target="_blank">
-<img src="docs/assets/githublogo.png" alt="GitHub Logo">
-</a>
-</div>
-
+        </a>
+        <a href="https://www.github.com/aaronpolar" target="_blank">
+            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
+        </a>
+    </div>
 </body>
 </html>
-
