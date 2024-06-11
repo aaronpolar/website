@@ -40,6 +40,8 @@
         .header-right {
             margin-left: auto;
             display: flex; /* Ensure buttons are in a row on desktop */
+            flex-direction: column; /* Stack buttons vertically on mobile */
+            align-items: center; /* Center buttons horizontally on mobile */
         }
 
         .green-button {
@@ -52,13 +54,9 @@
             text-transform: uppercase;
             font-weight: bold;
             cursor: pointer;
-            margin-right: 10px;
+            margin-top: 10px; /* Add space between buttons */
             font-size: 16px;
-        }
-
-        /* Align buttons in a row */
-        .header-right .green-button {
-            display: inline-block;
+            width: 100%; /* Make buttons full width on mobile */
         }
 
         /* Style for the text */
@@ -88,18 +86,6 @@
             width: 20px; /* Set small image width */
             margin: 0 10px; /* Add space between images */
         }
-
-        /* Media query for mobile devices */
-        @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-            }
-
-            .green-button {
-                width: 100%; /* Make buttons full width */
-                margin: 5px 0; /* Add margin between buttons */
-            }
-        }
     </style>
 </head>
 <body>
@@ -108,10 +94,10 @@
             <a href="index.html">HOME</a>
         </div>
         <div class="header-right">
-            <button class="green-button">Home</button>
             <button class="green-button">About Me</button>
             <button class="green-button">Fishing</button>
             <button class="green-button">Finance</button>
+            <button class="green-button">Contact</button>
         </div>
     </div>
 
