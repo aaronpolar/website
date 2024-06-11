@@ -4,76 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME - Aaron Polar</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
-        /* Include CSS styles from index.html */
         body {
             font-family: baskerville, serif;
             margin: 0;
             padding: 0;
             background-color: #FAF9F6;
         }
-        header {
+
+        .header {
             background-color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid black;
-            margin-bottom: 20px; /* Added margin-bottom for space between header and content */
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
-        h1 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-family: baskerville, serif;
-            font-size: 48px;
-            color: #333;
-            text-transform: uppercase;
+
+        .header-left {
+            margin-right: auto;
+        }
+
+        .header-left a {
+            text-decoration: none;
+            color: black;
             font-weight: bold;
+            font-size: 24px;
         }
-        .btn-container {
-            text-align: center;
-            padding: 5px;
+
+        .header-right {
+            margin-left: auto;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #52BE80; /* Use the same color as the Fishing button */
+
+        .green-button {
+            background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            padding: 10px 20px;
             font-family: baskerville, serif;
             text-transform: uppercase;
             font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 16px;
         }
-        .footer-container {
-            text-align: center;
-            margin-top: 20px;
+
+        /* Align buttons in a row */
+        .header-right .green-button {
+            display: inline-block;
+        }
+
+        /* Style for the text */
+        .header-text {
             display: flex;
-            justify-content: center; /* Align horizontally */
-            align-items: center; /* Align vertically */
+            align-items: center;
+            margin-left: 40px; /* Add margin to separate image and text */
         }
-        .footer-container img {
-            width: 50px;
-            margin: 0 10px; /* Add some space between images */
+
+        .header-text p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Style for the image */
+        .header-image img {
+            width: 150px; /* Set image width */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>HOME</h1>
-        <div class="btn-container">
-            <a href="index.html"><button>Home</button></a>
-            <a href="aboutme.html"><button>About Me</button></a>
-            <a href="fishing.html"><button>Fishing</button></a>
-            <a href="finance.html"><button>Finance</button></a>
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html">HOME</a>
         </div>
-    </header>
+        <div class="header-right">
+            <button class="green-button">Home</button>
+            <button class="green-button">About Me</button>
+            <button class="green-button">Fishing</button>
+            <button class="green-button">Finance</button>
+        </div>
+    </div>
 
-<div style="text-align: center; padding: 0 20px;">
-    <p style="font-size: 20px; font-weight: bold;">Hey there! I'm Aaron Polar from San Francisco, CA. I put together this website on March 12, 2024, to share my love for fishing and finance.</p>
-</div>
+    <div class="header-image">
+        <img src="IMG_3471.JPG" alt="Image" />
+    </div>
+
+    <div class="header-text">
+        <p>Hey there! I'm Aaron Polar from San Francisco, CA. I put together this website on March 12, 2024, to share my love for fishing and finance.</p>
+    </div>
 
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
