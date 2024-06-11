@@ -28,6 +28,7 @@
 
         .header-left {
             margin-right: auto;
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
 
         .header-left a {
@@ -35,6 +36,7 @@
             color: black;
             font-weight: bold;
             font-size: 24px;
+            display: block; /* Display as block to stack text */
         }
 
         .header-right {
@@ -42,6 +44,7 @@
             display: flex; /* Ensure buttons are in a row */
             justify-content: flex-end; /* Align buttons to the right */
             align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
 
         .green-button {
@@ -57,12 +60,20 @@
             margin-left: 10px;
             font-size: 16px;
             text-align: center; /* Center text in buttons */
-            flex: 1; /* Equal width for all buttons */
         }
 
         /* Style for the text */
         .header-text {
-            display: none; /* Hide text by default */
+            margin-left: calc(100% / 3); /* Space between text and buttons */
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            align-items: flex-start; /* Align text to the left */
+        }
+
+        .header-text p {
+            margin: 0; /* Remove default margin */
+            font-size: 24px;
         }
 
         /* Style for the image */
@@ -103,6 +114,12 @@
             .header-text {
                 display: block; /* Display text on mobile */
                 margin: 10px 20px; /* Add margin around text on mobile */
+                align-items: center; /* Center text vertically on mobile */
+            }
+
+            .header-text p {
+                font-size: 20px; /* Decrease font size for mobile */
+                text-align: center; /* Center text horizontally on mobile */
             }
         }
     </style>
@@ -110,7 +127,8 @@
 <body>
     <div class="header">
         <div class="header-left">
-            <a href="index.html">AARON POLAR</a>
+            <a href="index.html">Aaron</a>
+            <a href="index.html">Polar</a>
         </div>
         <div class="header-right">
             <button class="green-button">About Me</button>
