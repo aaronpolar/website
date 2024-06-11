@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - Aaron Polar</title>
+    <title>FINANCE - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -50,7 +50,7 @@
         }
 
         .green-button {
-            background-color: #52BE80;
+            background-color: #05472A; /* Updated color */
             color: white;
             border: none;
             border-radius: 5px;
@@ -62,35 +62,38 @@
             margin-left: 10px;
             font-size: 16px;
             text-align: center; /* Center text in buttons */
+            text-decoration: none; /* Remove underline */
         }
 
         /* Style for the text */
         .header-text {
+            margin: 20px 0; /* Add margin at the top and bottom */
             margin-left: calc(100% / 3); /* Space between text and buttons */
             flex: 1; /* Take up remaining space */
             display: flex;
             flex-direction: column; /* Stack text vertically */
             align-items: center; /* Align text to the center */
+            padding: 0 40px; /* Add padding to the sides */
         }
 
         .header-text p {
-            margin: 0; /* Remove default margin */
+            margin: 20px 0; /* Add margin around paragraphs */
             font-size: 24px;
+            text-align: center; /* Center text */
         }
 
         /* Style for the image */
         .header-image img {
             width: 150px; /* Set image width */
+            margin-bottom: 20px; /* Add space below image */
         }
 
         .footer-container {
-            position: fixed; /* Fixed position to keep it at the bottom */
-            left: 0;
-            bottom: 0;
             width: 100%;
             background-color: #333; /* Background color for better visibility */
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
+            color: white;
         }
 
         .footer-container img {
@@ -119,12 +122,14 @@
 
             .header-text {
                 display: block; /* Display text on mobile */
-                margin: 10px 20px; /* Add margin around text on mobile */
+                margin: 20px 20px; /* Add margin around text on mobile */
                 align-items: center; /* Center text vertically on mobile */
+                padding: 0; /* Remove padding on mobile */
             }
 
             .header-text p {
-                font-size: 20px; /* Decrease font size for mobile */
+                font-size: 20px; /* Decre
+            font-size: 20px; /* Decrease font size for mobile */
                 text-align: center; /* Center text horizontally on mobile */
             }
         }
@@ -137,18 +142,14 @@
             <a href="index.html">POLAR</a>
         </div>
         <div class="header-right">
-            <button class="green-button">About Me</button>
-            <button class="green-button">Fishing</button>
-            <button class="green-button">Finance</button>
+            <a href="aboutme.html" class="green-button">About Me</a>
+            <a href="fishing.html" class="green-button">Fishing</a>
+            <a href="finance.html" class="green-button">Finance</a>
         </div>
     </div>
 
-    <div class="header-image">
-        <img src="IMG_3471.JPG" alt="Image" />
-    </div>
-
     <div class="header-text">
-        <p>Hey there! I'm Aaron Polar from San Francisco, CA. I put together this website on March 12, 2024, to share my love for fishing and finance.</p>
+        <p>COMING SOON!</p>
     </div>
 
     <div class="footer-container">
