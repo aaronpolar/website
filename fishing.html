@@ -13,6 +13,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative; /* Ensure relative positioning for footer */
         }
 
         .header {
@@ -67,7 +68,11 @@
 
         /* Style for the image */
         .header-image img {
-            display: none; /* Hide the image */
+            display: block; /* Display the image */
+            width: 100%; /* Ensure the image fills the container */
+            border: 20px solid #FFF; /* Add border around the image */
+            margin: 20px auto; /* Center the image with margin top and bottom */
+            max-width: calc(100% - 40px); /* Set max-width to prevent overflow */
         }
 
         .footer-container {
@@ -76,7 +81,8 @@
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
             color: white;
-            margin-top: auto; /* Push footer to the bottom */
+            position: absolute; /* Position the footer at the bottom */
+            bottom: 0; /* Stick the footer to the bottom */
         }
 
         .footer-container img {
@@ -145,6 +151,8 @@
         <a href="fishinglog.html">Log a Catch</a>
     </div>
 
+    <img src="fishingbackground.jpg" alt="Fishing Background Image" class="header-image">
+
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -156,7 +164,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <img src="docs/assets/fishingbackground.jpg" alt="Fishing Background Image" style="width: calc(100% - 40px); max-width: 100%; border: 20px solid #FFF; margin: 20px;">
 </body>
 </html>
