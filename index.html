@@ -28,6 +28,7 @@
 
         .header-left {
             margin-right: auto;
+            margin-left: 10px; /* Add gap between left edge and text */
         }
 
         .header-left a {
@@ -40,6 +41,8 @@
         .header-right {
             margin-left: auto;
             display: flex; /* Ensure buttons are in a row */
+            width: 100%; /* Make buttons take the full width */
+            justify-content: flex-end; /* Align buttons to the right */
         }
 
         .green-button {
@@ -61,7 +64,8 @@
         .header-text {
             display: flex;
             align-items: center;
-            margin-left: 40px; /* Add margin to separate image and text */
+            margin-left: 10px; /* Add gap between text and buttons */
+            margin-right: 10px; /* Add gap between text and buttons */
         }
 
         .header-text p {
@@ -97,6 +101,11 @@
                 margin-bottom: 5px; /* Add space between buttons on mobile */
                 width: 100%; /* Make buttons full width on mobile */
             }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
         }
     </style>
 </head>
@@ -113,7 +122,7 @@
     </div>
 
     <div class="header-image">
-        <img src="docs/assets/IMG_3471.JPG" alt="Image" />
+        <img src="IMG_3471.JPG" alt="Image" />
     </div>
 
     <div class="header-text">
