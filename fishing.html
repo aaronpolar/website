@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FISHING - Aaron Polar</title>
     <style>
-        @font-face {
-            font-family: 'URW Chancery L';
-            src: url('path_to_your_font_file/urw-chancery-l.woff2') format('woff2'), 
-                 url('path_to_your_font_file/urw-chancery-l.woff') format('woff');
-        }
-
         body {
             font-family: baskerville, serif;
             margin: 0;
@@ -19,7 +13,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            position: relative;
+            position: relative; /* Ensure relative positioning for footer */
         }
 
         .header {
@@ -72,27 +66,13 @@
             text-decoration: none; /* Remove underline */
         }
 
-        .header-image {
-            position: relative; /* Ensure positioning context for the text */
-        }
-
+        /* Style for the image */
         .header-image img {
             display: block; /* Display the image */
             width: 100%; /* Ensure the image fills the container */
             border: 20px solid #FFF; /* Add border around the image */
             margin: 20px auto 0; /* Center the image with margin top and bottom */
             max-width: calc(100% - 40px); /* Set max-width to prevent overflow */
-        }
-
-        .header-image .image-text {
-            position: absolute;
-            top: 50%;
-            left: 40%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-family: 'URW Chancery L', cursive;
-            font-size: 30vw; /* 30% of the viewport width */
-            text-align: center;
         }
 
         .footer-container {
@@ -151,11 +131,6 @@
             .fixed-buttons {
                 margin-top: 10px; /* Add margin at the top on mobile */
             }
-
-            .header-image .image-text {
-                font-size: 20vw; /* Adjust text size for mobile */
-                left: 50%;
-            }
         }
     </style>
 </head>
@@ -178,13 +153,7 @@
         <a href="personal_bests.html">Personal Bests</a>
     </div>
 
-    <div class="header-image">
-        <img src="docs/assets/fishingbackground.jpg" alt="Fishing Background Image">
-        <div class="image-text">
-            San Pablo Reservoir, CA<br>
-            February 8, 2024
-        </div>
-    </div>
+    <img src="docs/assets/fishingbackground.jpg" alt="Fishing Background Image" class="header-image">
 
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
