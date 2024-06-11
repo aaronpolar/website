@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - Aaron Polar</title>
+    <title>FISHING - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -87,20 +87,23 @@
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
-            }
-
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
+                display: none; /* Hide header buttons on mobile */
             }
 
             .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+                text-align: center; /* Center text on mobile */
+            }
+
+            .fixed-buttons {
+                padding: 10px 0;
+                text-align: center; /* Center buttons on mobile */
+            }
+
+            .fixed-buttons a {
+                display: block; /* Display buttons as block to stack vertically */
+                margin: 5px 0; /* Add margin between buttons on mobile */
+                width: 80%; /* Set button width on mobile */
+                margin: 10px auto; /* Center buttons horizontally */
             }
         }
 
@@ -139,7 +142,7 @@
 
     <div class="fixed-buttons">
         <a href="fishing_equipment.html">Fishing Equipment</a>
-        <a href="fishing_log.html">Log a Catch</a>
+        <a href="fishinglog.html">Log a Catch</a>
     </div>
 
     <div class="footer-container">
