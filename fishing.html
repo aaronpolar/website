@@ -3,97 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FISHING - Aaron Polar</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init({
-                publicKey: "X-_ZqEg3C9PXRAyTq",
-            });
-        })();
-    </script>
+    <title>HOME - Aaron Polar</title>
     <style>
-        /* Include CSS styles from index.html */
         body {
             font-family: baskerville, serif;
             margin: 0;
             padding: 0;
             background-color: #FAF9F6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        header {
+
+        .header {
             background-color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid black;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            font-family: baskerville, serif;
         }
-        h1 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 48px;
-            color: #333;
-            text-transform: uppercase;
+
+        .header-left {
+            margin-right: auto;
+            width: calc(100% / 3); /* Divide the page into thirds */
+        }
+
+        .header-left a {
+            text-decoration: none;
+            color: black;
             font-weight: bold;
+            font-size: 24px;
+            display: block; /* Display as block to stack text */
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Align text to the center */
         }
-        .btn-container {
-            text-align: center;
-            padding: 5px;
+
+        .header-right {
+            margin-left: auto;
+            display: flex; /* Ensure buttons are in a row */
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
-        button {
-            padding: 10px 20px;
+
+        .green-button {
             background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-family: baskerville, serif;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        .nav-button {
             padding: 10px 20px;
-            background-color: #ccc;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             font-family: baskerville, serif;
             text-transform: uppercase;
             font-weight: bold;
-            margin-right: 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+            text-align: center; /* Center text in buttons */
+            text-decoration: none; /* Remove underline */
         }
+
+        /* Style for the image */
+        .header-image img {
+            width: 150px; /* Set image width */
+            margin-bottom: 20px; /* Add space below image */
+        }
+
         .footer-container {
+            width: 100%;
+            background-color: #333; /* Background color for better visibility */
             text-align: center;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 10px 0; /* Padding for better spacing */
+            color: white;
         }
+
         .footer-container img {
-            width: 50px;
-            margin: 0 10px;
+            width: 25px; /* Set image width to 25px for a quarter size */
+            margin: 0 5px; /* Add space between images */
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
+
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+        }
+
+        .fixed-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .fixed-buttons a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            background-color: grey;
+            padding: 10px 20px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>FISHING</h1>
-        <div class="btn-container">
-            <a href="index.html"><button>Home</button></a>
-            <a href="aboutme.html"><button>About Me</button></a>
-            <a href="fishing.html"><button>Fishing</button></a>
-            <a href="finance.html"><button>Finance</button></a>
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html">AARON</a>
+            <a href="index.html">POLAR</a>
         </div>
-    </header>
+        <div class="header-right">
+            <a href="aboutme.html" class="green-button">About Me</a>
+            <a href="fishing.html" class="green-button">Fishing</a>
+            <a href="finance.html" class="green-button">Finance</a>
+        </div>
+    </div>
 
-    <div class="btn-container">
-        <a href="fishing_equipment.html"><button class="nav-button">Fishing Equipment</button></a>
-        <a href="fishinglog.html"><button class="nav-button">Log a New Catch</button></a>
+    <div class="header-image">
+        <img src="docs/assets/IMG_3471.JPG" alt="Image" />
+    </div>
+
+    <div class="fixed-buttons">
+        <a href="fishing_equipment.html" class="grey-button">Fishing Equipment</a>
+        <a href="fishing_log.html" class="grey-button">Log a Catch</a>
     </div>
 
     <div class="footer-container">
@@ -102,10 +155,12 @@
         </a>
         <a href="mailto:aaronmpolar@gmail.com">
             <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
-        </a>
-        <a href="https://www.github.com/aaronpolar" target="_blank">
-            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
-        </a>
-    </div>
+</a>
+<a href="https://www.github.com/aaronpolar" target="_blank">
+<img src="docs/assets/githublogo.png" alt="GitHub Logo">
+</a>
+</div>
+
 </body>
 </html>
+
