@@ -39,6 +39,7 @@
 
         .header-right {
             margin-left: auto;
+            display: flex; /* Ensure buttons are in a row on desktop */
         }
 
         .green-button {
@@ -87,6 +88,18 @@
             width: 20px; /* Set small image width */
             margin: 0 10px; /* Add space between images */
         }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+            }
+
+            .green-button {
+                width: 100%; /* Make buttons full width */
+                margin: 5px 0; /* Add margin between buttons */
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,7 +116,7 @@
     </div>
 
     <div class="header-image">
-        <img src="docs/assets/IMG_3471.JPG" alt="Image" />
+        <img src="IMG_3471.JPG" alt="Image" />
     </div>
 
     <div class="header-text">
