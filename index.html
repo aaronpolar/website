@@ -39,9 +39,7 @@
 
         .header-right {
             margin-left: auto;
-            display: flex; /* Ensure buttons are in a row on desktop */
-            flex-direction: column; /* Stack buttons vertically on mobile */
-            align-items: center; /* Center buttons horizontally on mobile */
+            display: flex; /* Ensure buttons are in a row */
         }
 
         .green-button {
@@ -54,9 +52,8 @@
             text-transform: uppercase;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px; /* Add space between buttons */
+            margin-right: 10px;
             font-size: 16px;
-            width: 100%; /* Make buttons full width on mobile */
         }
 
         /* Style for the text */
@@ -85,6 +82,15 @@
         .footer-container img {
             width: 20px; /* Set small image width */
             margin: 0 10px; /* Add space between images */
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-start; /* Align buttons to the left on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
         }
     </style>
 </head>
