@@ -40,8 +40,6 @@
         .header-right {
             margin-left: auto;
             display: flex; /* Ensure buttons are in a row */
-            flex-direction: column; /* Stack buttons vertically on mobile */
-            align-items: center; /* Align buttons to the left on mobile */
         }
 
         .green-button {
@@ -56,7 +54,6 @@
             cursor: pointer;
             margin-right: 10px;
             font-size: 16px;
-            width: 100%; /* Make buttons full width on mobile */
             text-align: center; /* Center text in buttons */
         }
 
@@ -91,12 +88,14 @@
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-start; /* Align buttons to the left on mobile */
                 margin-top: 10px; /* Add margin between buttons and text */
             }
 
             .green-button {
                 margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: auto; /* Make buttons take the minimum width on mobile */
+                width: 100%; /* Make buttons full width on mobile */
             }
         }
     </style>
