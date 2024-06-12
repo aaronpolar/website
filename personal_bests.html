@@ -150,8 +150,9 @@
         }
 
         .centered-image {
-            width: 25%;
-            margin: 10px 0;
+            width: 25vw; /* Set width to 25% of the viewport width */
+            height: 25vw; /* Set a fixed height based on the width */
+            object-fit: cover; /* Ensure image covers the entire container */
         }
 
         @media (min-width: 768px) {
@@ -159,10 +160,18 @@
                 width: 25vw; /* Set width to 25% of the viewport width on desktop */
                 height: 25vw; /* Set a fixed height based on the width on desktop */
             }
+            .centered-image {
+                width: 25vw; /* Set width to 25% of the viewport width on desktop */
+                height: 25vw; /* Set a fixed height based on the width on desktop */
+            }
         }
 
         @media (max-width: 768px) {
             .slides {
+                width: 50vw; /* Set width to 50% of the viewport width on mobile */
+                height: 50vw; /* Set a fixed height based on the width on mobile */
+            }
+            .centered-image {
                 width: 50vw; /* Set width to 50% of the viewport width on mobile */
                 height: 50vw; /* Set a fixed height based on the width on mobile */
             }
@@ -206,33 +215,34 @@
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
-</a>
-<a href="mailto:aaronmpolar@gmail.com">
-<img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
-</a>
-<a href="https://www.github.com/aaronpolar" target="_blank">
-<img src="docs/assets/githublogo.png" alt="GitHub Logo">
-</a>
-</div>
-<script>
-    let slideIndex = 0;
+        </a>
+        <a href="mailto:aaronmpolar@gmail.com">
+            <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
+        </a>
+        <a href="https://www.github.com/aaronpolar" target="_blank">
+            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
+        </a>
+    </div>
 
-    function showSlides() {
-        let slides = document.getElementsByClassName("slides");
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "flex";  
+            setTimeout(showSlides, 15000); // Change image every 15 seconds
         }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        slides[slideIndex-1].style.display = "flex";  
-        setTimeout(showSlides, 15000); // Change image every 15 seconds
-    }
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-    showSlides();
-</script>
+        showSlides();
+    </script>
 </body>
 </html>
