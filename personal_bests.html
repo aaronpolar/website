@@ -86,15 +86,17 @@
         }
 
         .slideshow-container {
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
             max-width: 100%;
-            margin: auto; /* Center the container horizontally */
             overflow: hidden; /* Hide overflowing content */
         }
 
         .slides {
             display: flex; /* Display slides in a row */
             transition: transform 0.5s ease; /* Smooth slide transition */
+            margin-bottom: 20px; /* Add margin between slides and captions */
         }
 
         .slides img {
@@ -107,11 +109,6 @@
             font-size: 18px;
             padding: 10px 0;
             height: 40px;
-        }
-
-        .best-catch img {
-            width: 25%; /* Set image width to 25% of container */
-            margin: 20px 0; /* Add margin around image */
         }
 
         .scroll-button {
@@ -191,9 +188,6 @@
             </div>
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
-        </div>
-        <div class="best-catch">
-            <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch">
         </div>
     </div>
 
