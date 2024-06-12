@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FISHING - Aaron Polar</title>
+    <title>PERSONAL BESTS - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -12,8 +12,9 @@
             background-color: #FAF9F6;
             display: flex;
             flex-direction: column;
+            align-items: center;
             min-height: 100vh;
-            position: relative; /* Ensure relative positioning for footer */
+            position: relative;
         }
 
         .header {
@@ -25,11 +26,12 @@
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .header-left {
             margin-right: auto;
-            width: calc(100% / 3); /* Divide the page into thirds */
+            width: calc(100% / 3);
         }
 
         .header-left a {
@@ -37,21 +39,22 @@
             color: black;
             font-weight: bold;
             font-size: 24px;
-            display: block; /* Display as block to stack text */
-            text-transform: uppercase; /* Convert text to all caps */
-            text-align: center; /* Align text to the center */
+            display: block;
+            text-transform: uppercase;
+            text-align: center;
         }
 
         .header-right {
             margin-left: auto;
-            display: flex; /* Ensure buttons are in a row */
-            justify-content: flex-end; /* Align buttons to the right */
-            align-items: center; /* Center vertically */
-            width: calc(100% / 3); /* Divide the page into thirds */
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: calc(100% / 3);
+            padding: 0 10px;
         }
 
         .green-button {
-            background-color: #05472A; /* Updated color */
+            background-color: #05472A;
             color: white;
             border: none;
             border-radius: 5px;
@@ -62,74 +65,63 @@
             cursor: pointer;
             margin-left: 10px;
             font-size: 16px;
-            text-align: center; /* Center text in buttons */
-            text-decoration: none; /* Remove underline */
-        }
-
-        /* Style for the image */
-        .header-image img {
-            display: block; /* Display the image */
-            width: 100%; /* Ensure the image fills the container */
-            border: 20px solid #FFF; /* Add border around the image */
-            margin: 20px auto 0; /* Center the image with margin top and bottom */
-            max-width: calc(100% - 40px); /* Set max-width to prevent overflow */
+            text-align: center;
+            text-decoration: none;
         }
 
         .footer-container {
             width: 100%;
-            background-color: #333; /* Background color for better visibility */
+            background-color: #333;
             text-align: center;
-            padding: 10px 0; /* Padding for better spacing */
+            padding: 10px 0;
             color: white;
-            position: absolute; /* Position the footer at the bottom */
-            bottom: 0; /* Stick the footer to the bottom */
-            margin-top: 0; /* Remove margin above the footer */
+            position: absolute;
+            bottom: 0;
+            margin-top: 0;
         }
 
         .footer-container img {
-            width: 25px; /* Set image width to 25px for a quarter size */
-            margin: 0 5px; /* Add space between images */
+            width: 25px;
+            margin: 0 5px;
         }
 
-        .fixed-buttons {
-            display: flex;
-            justify-content: center;
+        .content {
+            text-align: center;
             margin: 20px 0;
         }
 
-        .fixed-buttons a {
-            text-decoration: none;
-            color: black;
+        .content img {
+            width: 25%;
+            margin: 20px 0;
+        }
+
+        .best-catch {
+            font-size: 36px;
             font-weight: bold;
-            text-transform: uppercase;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #D3D3D3; /* Lighter grey color */
-            border: none; /* Remove button border */
-            margin: 0 5px; /* Add margin around buttons */
+            margin: 20px 0;
         }
 
         @media (max-width: 768px) {
             .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
+                flex-direction: column;
+                align-items: flex-end;
+                margin-top: 10px;
+                padding: 0 10px;
             }
 
             .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
+                margin-bottom: 5px;
+                width: 100%;
+                margin-left: 0;
             }
 
             .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+                margin-left: 10px;
+                margin-right: auto;
             }
 
-            .fixed-buttons {
-                margin-top: 10px; /* Add margin at the top on mobile */
+            .content img {
+                width: 50%;
             }
         }
     </style>
@@ -147,13 +139,13 @@
         </div>
     </div>
 
-    <div class="fixed-buttons">
-        <a href="fishing_equipment.html">Fishing Equipment</a>
-        <a href="fishinglog.html">Log a Catch</a>
-        <a href="personal_bests.html">Personal Bests</a>
+    <div class="content">
+        <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
+        <p>First caught fish on February 19, 2024,<br>Rainbow Trout 2.2lbs ~13-14 inches</p>
+        <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+        <div class="best-catch">My Best Catch</div>
+        <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch">
     </div>
-
-    <img src="docs/assets/fishingbackground.jpg" alt="Fishing Background Image" class="header-image">
 
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
