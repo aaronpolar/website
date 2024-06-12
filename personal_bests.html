@@ -83,39 +83,59 @@
             text-align: center;
             margin: 20px 0;
             flex: 1; /* Allow the content to grow and push the footer down */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .slideshow-container {
             position: relative;
             max-width: 100%;
-            margin-bottom: 20px;
+            margin: auto; /* Center the container horizontally */
+            overflow: hidden; /* Hide overflowing content */
         }
 
         .slides {
-            display: none;
+            display: flex; /* Display slides in a row */
+            transition: transform 0.5s ease; /* Smooth slide transition */
         }
 
         .slides img {
-            width: 25%;
-            margin: 20px 0;
+            width: 25%; /* Set image width to 25% of container */
+            margin: 20px 0; /* Add margin around images */
         }
 
         .caption {
             text-align: center;
             font-size: 18px;
             padding: 10px 0;
+            height: 40px;
         }
 
         .best-catch img {
-            width: 25%;
-            margin: 20px 0;
+            width: 25%; /* Set image width to 25% of container */
+            margin: 20px 0; /* Add margin around image */
         }
 
-        .best-catch {
-            text-align: center;
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .scroll-button-left {
+            left: 10%;
+        }
+
+        .scroll-button-right {
+            right: 10%;
         }
 
         @media (max-width: 768px) {
@@ -169,9 +189,10 @@
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
                 <div class="caption">First Smallmouth Bass, Folsom Lake, CA, May 26, 2024</div>
             </div>
+            <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
+            <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
         </div>
         <div class="best-catch">
-            <div class="caption">My Best Catch</div>
             <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch">
         </div>
     </div>
