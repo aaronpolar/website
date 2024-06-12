@@ -71,9 +71,7 @@
             text-align: center;
             padding: 10px 0;
             color: white;
-            position: absolute;
-            bottom: 0;
-            margin-top: 0;
+            margin-top: auto;
         }
 
         .footer-container img {
@@ -84,17 +82,35 @@
         .content {
             text-align: center;
             margin: 20px 0;
+            flex: 1; /* Allow the content to grow and push the footer down */
         }
 
-        .content img {
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .slides {
+            display: none;
+        }
+
+        .slides img {
             width: 25%;
             margin: 20px 0;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 0;
+            height: 40px;
         }
 
         .best-catch {
             font-size: 36px;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         @media (max-width: 768px) {
@@ -115,7 +131,7 @@
                 margin-right: auto; /* Ensure text and buttons are aligned to the right */
             }
 
-            .content img {
+            .slides img {
                 width: 50%;
             }
         }
@@ -135,9 +151,20 @@
     </div>
 
     <div class="content">
-        <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
-        <p>First caught fish on February 19, 2024,<br>Rainbow Trout 2.2lbs ~13-14 inches</p>
-        <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+        <div class="slideshow-container">
+            <div class="slides">
+                <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
+                <div class="caption">First caught fish on February 19, 2024, Rainbow Trout, San Pablo Reservoir, CA, 2.2lbs, ~13-14 inches</div>
+            </div>
+            <div class="slides">
+                <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+                <div class="caption">First caught fish on February 19, 2024, Rainbow Trout, San Pablo Reservoir, CA, 2.2lbs, ~13-14 inches</div>
+            </div>
+            <div class="slides">
+                <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
+                <div class="caption">First Smallmouth Bass, Folsom Lake, CA, May 26, 2024</div>
+            </div>
+        </div>
         <div class="best-catch">My Best Catch</div>
         <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch">
     </div>
@@ -153,5 +180,21 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+    </script>
 </body>
 </html>
