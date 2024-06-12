@@ -3,81 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log a New Catch - Aaron Polar</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init({
-                publicKey: "X-_ZqEg3C9PXRAyTq",
-            });
-        })();
-    </script>
+    <title>HOME - Aaron Polar</title>
     <style>
-        /* Include CSS styles from index.html */
         body {
             font-family: baskerville, serif;
             margin: 0;
-            padding: 0;
+            padding: 20;
             background-color: #FAF9F6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        header {
+
+        .header {
             background-color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid black;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            font-family: baskerville, serif;
         }
-        h1 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 48px;
-            color: #333;
-            text-transform: uppercase;
+
+        .header-left {
+            margin-right: auto;
+            width: calc(100% / 3); /* Divide the page into thirds */
+        }
+
+        .header-left a {
+            text-decoration: none;
+            color: black;
             font-weight: bold;
+            font-size: 24px;
+            display: block; /* Display as block to stack text */
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Align text to the center */
         }
-        .btn-container {
-            text-align: center;
-            padding: 5px;
+
+        .header-right {
+            margin-left: auto;
+            display: flex; /* Ensure buttons are in a row */
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
-        button {
-            padding: 10px 20px;
+
+        .green-button {
             background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-family: baskerville, serif;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        .nav-button {
             padding: 10px 20px;
-            background-color: #ccc;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             font-family: baskerville, serif;
             text-transform: uppercase;
             font-weight: bold;
-            margin-right: 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+            text-align: center; /* Center text in buttons */
         }
-        .footer-container {
-            text-align: center;
-            margin-top: 20px;
+
+        /* Style for the text */
+        .header-text {
+            margin-left: calc(100% / 3); /* Space between text and buttons */
+            flex: 1; /* Take up remaining space */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* Stack text vertically */
+            align-items: center; /* Align text to the center */
         }
+
+        .header-text p {
+            margin: 0; /* Remove default margin */
+            font-size: 24px;
+        }
+
+        /* Style for the image */
+        .header-image img {
+            width: 150px; /* Set image width */
+        }
+
+        .footer-container {
+            position: fixed; /* Fixed position to keep it at the bottom */
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333; /* Background color for better visibility */
+            text-align: center;
+            padding: 10px 0; /* Padding for better spacing */
+        }
+
         .footer-container img {
-            width: 50px;
-            margin: 0 10px;
+            width: 25px; /* Set image width to 25px for a quarter size */
+            margin: 0 5px; /* Add space between images */
         }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
+
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .header-text {
+                display: block; /* Display text on mobile */
+                margin: 10px 20px; /* Add margin around text on mobile */
+                align-items: center; /* Center text vertically on mobile */
+            }
+
+            .header-text p {
+                font-size: 20px; /* Decrease font size for mobile */
+                text-align: center; /* Center text horizontally on mobile */
+            }
+        }
+    </style>
         .log-entry-form {
             text-align: center;
             margin: 20px auto; /* Center the form */
