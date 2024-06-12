@@ -94,12 +94,11 @@
         }
 
         .slides {
-            display: flex; /* Display slides in a row */
+            display: none; /* Hide slides by default */
             justify-content: center; /* Center images horizontally */
             align-items: center; /* Center images vertically */
-            transition: transform 0.5s ease; /* Smooth slide transition */
             margin-bottom: 20px; /* Add margin between slides and captions */
-            height: 300px; /* Set a fixed height for all images */
+            height: 25vh; /* Set a fixed height for all images */
         }
 
         .slides img {
@@ -136,6 +135,21 @@
 
         .scroll-button-right {
             right: 10%;
+        }
+
+        .centered-content {
+            text-align: center;
+        }
+
+        .centered-text {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .centered-image {
+            width: 25%;
+            margin: 10px 0;
         }
 
         @media (max-width: 768px) {
@@ -192,41 +206,42 @@
     </div>
 
     <div class="centered-content">
-        <h1 style="font-size: 32px; font-weight: bold;">My Best Catch</h1>
-        <img src="docs/assets/mybestcatch.jpg" style="width: 25%; margin: 10px 0;">
+        <h1 class="centered-text">My Best Catch</h1>
+        <img src="docs/assets/mybestcatch.jpg" class="centered-image">
     </div>
 
     <div class="footer-container">
-        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
-            <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
-        </a>
-        <a href="mailto:aaronmpolar@gmail.com">
-            <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
-        </a>
-        <a href="https://www.github.com/aaronpolar" target="_blank">
-            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
-        </a>
-    </div>
+        <div class="footer-container">
+    <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
+        <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
+    </a>
+    <a href="mailto:aaronmpolar@gmail.com">
+        <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
+    </a>
+    <a href="https://www.github.com/aaronpolar" target="_blank">
+        <img src="docs/assets/githublogo.png" alt="GitHub Logo">
+    </a>
+</div>
 
-    <script>
-        let slideIndex = 0;
+<script>
+    let slideIndex = 0;
 
-        function showSlides() {
-            let slides = document.getElementsByClassName("slides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "flex";  
-            setTimeout(showSlides, 15000); // Change image every 15 seconds
+    function showSlides() {
+        let slides = document.getElementsByClassName("slides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
         }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "flex";  
+        setTimeout(showSlides, 15000); // Change image every 15 seconds
+    }
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
 
-        showSlides();
-    </script>
+    showSlides();
+</script>
 </body>
 </html>
