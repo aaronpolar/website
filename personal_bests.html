@@ -98,14 +98,14 @@
             justify-content: center; /* Center images horizontally */
             align-items: center; /* Center images vertically */
             margin-bottom: 20px; /* Add margin between slides and captions */
-            height: 25vw; /* Set a fixed height based on the width */
-            max-height: 25vh; /* Set maximum height to prevent squishing on mobile */
             width: 25vw; /* Set width to 25% of the viewport width */
+            height: 25vw; /* Set a fixed height based on the width */
         }
 
         .slides img {
             width: 100%; /* Set images to full width */
             height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
+            object-fit: cover; /* Ensure image covers the entire container */
         }
 
         .caption {
@@ -154,33 +154,17 @@
             margin: 10px 0;
         }
 
-        @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
-            }
-
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
-
+        @media (min-width: 768px) {
             .slides {
-                height: 25vw; /* Set a fixed height based on the width */
-                max-height: 25vh; /* Set maximum height to prevent squishing on mobile */
-                width: 25vw; /* Set width to 25% of the viewport width */
+                width: 25vw; /* Set width to 25% of the viewport width on desktop */
+                height: 25vw; /* Set a fixed height based on the width on desktop */
             }
+        }
 
-            .slides img {
-                width: 100%; /* Set images to full width */
-                height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
+        @media (max-width: 768px) {
+            .slides {
+                width: 50vw; /* Set width to 50% of the viewport width on mobile */
+                height: 50vw; /* Set a fixed height based on the width on mobile */
             }
         }
     </style>
@@ -218,20 +202,18 @@
         <h1 class="centered-text">My Best Catch</h1>
         <img src="docs/assets/mybestcatch.jpg" class="centered-image">
     </div>
-</div>
 
-<div class="footer-container">
-    <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
-        <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
-    </a>
-    <a href="mailto:aaronmpolar@gmail.com">
-        <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
-    </a>
-    <a href="https://www.github.com/aaronpolar" target="_blank">
-        <img src="docs/assets/githublogo.png" alt="GitHub Logo">
-    </a>
+    <div class="footer-container">
+        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
+            <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
+</a>
+<a href="mailto:aaronmpolar@gmail.com">
+<img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
+</a>
+<a href="https://www.github.com/aaronpolar" target="_blank">
+<img src="docs/assets/githublogo.png" alt="GitHub Logo">
+</a>
 </div>
-
 <script>
     let slideIndex = 0;
 
