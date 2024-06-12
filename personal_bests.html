@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERSONAL BESTS - Aaron Polar</title>
+    <title>HOME - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
             margin: 0;
-            padding: 0;
+            padding: 20;
             background-color: #FAF9F6;
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
-            position: relative;
         }
 
         .header {
@@ -26,12 +24,11 @@
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            width: 100%;
         }
 
         .header-left {
             margin-right: auto;
-            width: calc(100% / 3);
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
 
         .header-left a {
@@ -39,22 +36,21 @@
             color: black;
             font-weight: bold;
             font-size: 24px;
-            display: block;
-            text-transform: uppercase;
-            text-align: center;
+            display: block; /* Display as block to stack text */
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Align text to the center */
         }
 
         .header-right {
             margin-left: auto;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            width: calc(100% / 3);
-            padding: 0 10px;
+            display: flex; /* Ensure buttons are in a row */
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
 
         .green-button {
-            background-color: #05472A;
+            background-color: #52BE80;
             color: white;
             border: none;
             border-radius: 5px;
@@ -65,63 +61,71 @@
             cursor: pointer;
             margin-left: 10px;
             font-size: 16px;
-            text-align: center;
-            text-decoration: none;
+            text-align: center; /* Center text in buttons */
+        }
+
+        /* Style for the text */
+        .header-text {
+            margin-left: calc(100% / 3); /* Space between text and buttons */
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            align-items: center; /* Align text to the center */
+        }
+
+        .header-text p {
+            margin: 0; /* Remove default margin */
+            font-size: 24px;
+        }
+
+        /* Style for the image */
+        .header-image img {
+            width: 150px; /* Set image width */
         }
 
         .footer-container {
-            width: 100%;
-            background-color: #333;
-            text-align: center;
-            padding: 10px 0;
-            color: white;
-            position: absolute;
+            position: fixed; /* Fixed position to keep it at the bottom */
+            left: 0;
             bottom: 0;
-            margin-top: 0;
+            width: 100%;
+            background-color: #333; /* Background color for better visibility */
+            text-align: center;
+            padding: 10px 0; /* Padding for better spacing */
         }
 
         .footer-container img {
-            width: 25px;
-            margin: 0 5px;
+            width: 25px; /* Set image width to 25px for a quarter size */
+            margin: 0 5px; /* Add space between images */
         }
 
-        .content {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .content img {
-            width: 25%;
-            margin: 20px 0;
-        }
-
-        .best-catch {
-            font-size: 36px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
+        /* Media query for mobile devices */
         @media (max-width: 768px) {
             .header-right {
-                flex-direction: column;
-                align-items: flex-end;
-                margin-top: 10px;
-                padding: 0 10px;
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
             }
 
             .green-button {
-                margin-bottom: 5px;
-                width: 100%;
-                margin-left: 0;
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
             }
 
             .header-left {
-                margin-left: 10px;
-                margin-right: auto;
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
             }
 
-            .content img {
-                width: 50%;
+            .header-text {
+                display: block; /* Display text on mobile */
+                margin: 10px 20px; /* Add margin around text on mobile */
+                align-items: center; /* Center text vertically on mobile */
+            }
+
+            .header-text p {
+                font-size: 20px; /* Decrease font size for mobile */
+                text-align: center; /* Center text horizontally on mobile */
             }
         }
     </style>
@@ -133,11 +137,12 @@
             <a href="index.html">POLAR</a>
         </div>
         <div class="header-right">
-            <a href="aboutme.html" class="green-button">About Me</a>
-            <a href="fishing.html" class="green-button">Fishing</a>
-            <a href="finance.html" class="green-button">Finance</a>
+            <button class="green-button">About Me</button>
+            <button class="green-button">Fishing</button>
+            <button class="green-button">Finance</button>
         </div>
     </div>
+
 
     <div class="content">
         <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
