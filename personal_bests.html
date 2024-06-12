@@ -12,9 +12,7 @@
             background-color: #FAF9F6;
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
-            position: relative;
         }
 
         .header {
@@ -26,13 +24,11 @@
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            width: 100%;
         }
 
         .header-left {
-            width: calc(100% / 3);
-            display: flex;
-            justify-content: center;
+            margin-right: auto;
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
 
         .header-left a {
@@ -40,19 +36,21 @@
             color: black;
             font-weight: bold;
             font-size: 24px;
-            text-transform: uppercase;
-            text-align: center;
+            display: block; /* Display as block to stack text */
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Align text to the center */
         }
 
         .header-right {
-            width: calc(100% / 3);
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            margin-left: auto;
+            display: flex; /* Ensure buttons are in a row */
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
         }
 
         .green-button {
-            background-color: #05472A;
+            background-color: #05472A; /* Updated color */
             color: white;
             border: none;
             border-radius: 5px;
@@ -63,8 +61,8 @@
             cursor: pointer;
             margin-left: 10px;
             font-size: 16px;
-            text-align: center;
-            text-decoration: none;
+            text-align: center; /* Center text in buttons */
+            text-decoration: none; /* Remove underline */
         }
 
         .footer-container {
@@ -100,28 +98,21 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .header-left, .header-right {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                margin: 10px 0;
-            }
-
             .header-right {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
             }
 
             .green-button {
-                margin-bottom: 5px;
-                width: 100%;
-                margin-left: 0;
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
             }
 
             .content img {
@@ -144,11 +135,11 @@
     </div>
 
     <div class="content">
-        <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
+        <img src="fishingintherain.jpg" alt="Fishing in the Rain">
         <p>First caught fish on February 19, 2024,<br>Rainbow Trout 2.2lbs ~13-14 inches</p>
-        <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+        <img src="pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
         <div class="best-catch">My Best Catch</div>
-        <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch">
+        <img src="mybestcatch.jpg" alt="My Best Catch">
     </div>
 
     <div class="footer-container">
