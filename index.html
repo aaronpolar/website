@@ -108,12 +108,12 @@
             margin-top: auto; /* Push stats to the bottom */
             padding: 20px 0; /* Add padding */
             border-top: 1px solid #333; /* Add a border at the top */
+            text-align: center; /* Center text */
         }
 
         .personal-stats p {
             font-size: 24px; /* Increase font size for "Personal Stats" */
             font-weight: bold; /* Make "Personal Stats" bold */
-            text-align: center; /* Center text */
             margin-bottom: 10px; /* Add space below "Personal Stats" */
         }
 
@@ -167,29 +167,28 @@
     </div>
 
     <div class="personal-stats">
-        <p>Personal Stats</p>
+        <p>Personal Stats:</p>
         <div class="stats-container">
             <div class="stat">
                 <div class="stat-title">Fish Caught</div>
-                <div class="stat-number">6</div>
+                <div class="stat-number">0</div>
             </div>
             <div class="stat">
                 <div class="stat-title">Years in Finance</div>
-                <div class="stat-number">1</div>
+                <div class="stat-number">0</div>
             </div>
             <div class="stat">
                 <div class="stat-title">Yelp Reviews Written</div>
-                <div class="stat-number">31</div>
+                <div class="stat-number">0</div>
             </div>
             <div class="stat">
                 <div class="stat-title">Lines of Code Written</div>
-                <div class="stat-number">500+</div>
+                <div class="stat-number">0</div>
             </div>
         </div>
     </div>
 
     <div class="footer-container">
-        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
         </a>
         <a href="mailto:aaronmpolar@gmail.com">
@@ -199,5 +198,52 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        // Function to count up to a target number
+        function countUp(element, target, duration) {
+            let start = 0;
+            let increment = target / duration;
+            let current = start;
+            let timer = setInterval(function () {
+                current += increment;
+                element.textContent = Math.floor(current);
+                if (current >= target) {
+                    clearInterval(timer);
+                    element.textContent = target;
+                }
+            }, 10);
+        }
+
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to initialize counting when element is in viewport
+        function initCountUpWhenVisible(element, target, duration) {
+            let count = false;
+            window.addEventListener('scroll', function () {
+                if (!count && isElementInViewport(element)) {
+                    countUp(element, target, duration);
+                    count = true;
+                }
+            });
+        }
+
+        // Initialize counting for each stat when it becomes visible
+        let stats = document.querySelectorAll('.stat-number');
+        stats.forEach(function (stat) {
+            let target = parseInt(stat.textContent);
+            stat.textContent = '0'; // Start from 0
+            initCountUpWhenVisible(stat, target, 1000); // Count up to the target in 1 second
+        });
+    </script>
 </body>
 </html>
