@@ -87,18 +87,54 @@
 
         .slideshow-container {
             display: flex;
-            justify-content: center; /* Center images horizontally */
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
             max-width: 100%;
             overflow: hidden; /* Hide overflowing content */
         }
 
         .slides {
             display: flex; /* Display slides in a row */
+            justify-content: center; /* Center images horizontally */
+            align-items: center; /* Center images vertically */
+            transition: transform 0.5s ease; /* Smooth slide transition */
+            margin-bottom: 20px; /* Add margin between slides and captions */
         }
 
         .slides img {
             width: 25%; /* Set image width to 25% of container */
             margin: 20px 0; /* Add margin around images */
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 0;
+            height: 40px;
+        }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .scroll-button-left {
+            left: 10%;
+        }
+
+        .scroll-button-right {
+            right: 10%;
         }
 
         @media (max-width: 768px) {
@@ -142,12 +178,15 @@
         <div class="slideshow-container">
             <div class="slides">
                 <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
+                <div class="caption">First caught fish on February 19, 2024, Rainbow Trout, San Pablo Reservoir, CA, 2.2lbs, ~13-14 inches</div>
             </div>
             <div class="slides">
                 <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+                <div class="caption">First caught fish on February 19, 2024, Rainbow Trout, San Pablo Reservoir, CA, 2.2lbs, ~13-14 inches</div>
             </div>
             <div class="slides">
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
+                <div class="caption">First Smallmouth Bass, Folsom Lake, CA, May 26, 2024</div>
             </div>
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
