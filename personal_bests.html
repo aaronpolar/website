@@ -24,6 +24,7 @@
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .header-left {
@@ -47,6 +48,7 @@
             justify-content: flex-end; /* Align buttons to the right */
             align-items: center; /* Center vertically */
             width: calc(100% / 3); /* Divide the page into thirds */
+            flex-direction: row;
         }
 
         .green-button {
@@ -167,6 +169,14 @@
         }
 
         @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-start; /* Align buttons to the left */
+            }
+            .green-button {
+                margin-left: 0;
+                margin-bottom: 10px; /* Add margin between buttons */
+            }
             .slides {
                 width: 50vw; /* Set width to 50% of the viewport width on mobile */
                 height: 50vw; /* Set a fixed height based on the width on mobile */
@@ -225,24 +235,22 @@
     </div>
 
     <script>
-        let slideIndex = 0;
-
-        function showSlides() {
-            let slides = document.getElementsByClassName("slides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "flex";  
-            setTimeout(showSlides, 15000); // Change image every 15 seconds
-        }
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
         function plusSlides(n) {
             showSlides(slideIndex += n);
         }
 
-        showSlides();
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slides");
+            if (n > slides.length) {slideIndex = 1} 
+            if (n < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"; 
+            }
+            slides[slideIndex-1].style.display = "flex"; 
+        }
     </script>
 </body>
 </html>
