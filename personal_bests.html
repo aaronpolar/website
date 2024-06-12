@@ -24,7 +24,6 @@
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
 
         .header-left {
@@ -48,7 +47,6 @@
             justify-content: flex-end; /* Align buttons to the right */
             align-items: center; /* Center vertically */
             width: calc(100% / 3); /* Divide the page into thirds */
-            flex-direction: row;
         }
 
         .green-button {
@@ -172,11 +170,12 @@
             .header-right {
                 flex-direction: column; /* Stack buttons vertically on mobile */
                 align-items: flex-start; /* Align buttons to the left */
+                padding-right: 20px; /* Add padding to the right */
             }
             .green-button {
                 margin-left: 0;
                 margin-bottom: 10px; /* Add margin between buttons */
-                width: 100%; /* Make buttons full width on mobile */
+                width: calc(100% - 20px); /* Make buttons full width minus the padding */
             }
             .slides {
                 width: 50vw; /* Set width to 50% of the viewport width on mobile */
