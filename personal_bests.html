@@ -99,12 +99,13 @@
             align-items: center; /* Center images vertically */
             margin-bottom: 20px; /* Add margin between slides and captions */
             height: 25vw; /* Set a fixed height based on the width */
+            max-height: 25vh; /* Set maximum height to prevent squishing on mobile */
             width: 100vw; /* Set width to 100% of the viewport width */
         }
 
         .slides img {
             width: 25vw; /* Set width to 25% of the viewport width */
-            height: 25vw; /* Set height to maintain aspect ratio */
+            height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
         }
 
         .caption {
@@ -172,7 +173,8 @@
             }
 
             .slides img {
-                width: 50%;
+                width: 100%; /* Set images to full width on mobile */
+                height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
             }
         }
     </style>
@@ -204,12 +206,12 @@
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
         </div>
+   
     </div>
 
     <div class="centered-content">
         <h1 class="centered-text">My Best Catch</h1>
-        <img src="docs/assets/mybestcatch.jpg" class="centered-image
-">
+        <img src="docs/assets/mybestcatch.jpg" class="centered-image">
     </div>
 </div>
 
