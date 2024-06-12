@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERSONAL BESTS - Aaron Polar</title>
+    <title>My Fishing Log</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -67,123 +67,67 @@
 
         .footer-container {
             width: 100%;
-            background-color: #333;
+            background-color: #333; /* Background color for better visibility */
             text-align: center;
-            padding: 10px 0;
+            padding: 10px 0; /* Padding for better spacing */
             color: white;
-            margin-top: auto;
         }
 
         .footer-container img {
-            width: 25px;
-            margin: 0 5px;
+            width: 25px; /* Set image width to 25px for a quarter size */
+            margin: 0 5px; /* Add space between images */
         }
 
-        .content {
-            text-align: center;
-            margin: 20px 0;
-            flex: 1; /* Allow the content to grow and push the footer down */
+        /* Personal Stats section */
+        .personal-stats {
+            background-color: white; /* Set background color to white */
+            text-transform: uppercase; /* Convert text to all caps */
+            font-family: Palatino, serif; /* Set font to Palatino */
+            padding: 20px 0; /* Add padding */
+            border-top: 1px solid #333; /* Add a border at the top */
+            text-align: center; /* Center text */
         }
 
-        .slideshow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center horizontally */
-            max-width: 100%;
-            overflow: hidden; /* Hide overflowing content */
+        .stats-container {
+            display: flex; /* Display stats horizontally */
+            justify-content: space-evenly; /* Spread stats evenly */
+            margin-top: auto; /* Push stats to the bottom */
+            width: 80%; /* Set width to 80% of the page */
+            margin: 0 auto; /* Center the containers */
         }
 
-        .slides {
-            display: none; /* Hide slides by default */
-            justify-content: center; /* Center images horizontally */
-            align-items: center; /* Center images vertically */
-            margin-bottom: 20px; /* Add margin between slides and captions */
-            width: 25vw; /* Set width to 25% of the viewport width */
-            height: 25vw; /* Set a fixed height based on the width */
+        .stat {
+            text-align: center; /* Center text */
+            margin-bottom: 10px; /* Add space between stats */
+            width: 25%; /* 25% width for each stat, will be full width on mobile */
+            margin-right: 20px; /* Add right margin to create space between stats */
+            font-family: Palatino, serif; /* Set font to Palatino */
         }
 
-        .slides img {
-            width: 100%; /* Set images to full width */
-            height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
-            object-fit: cover; /* Ensure image covers the entire container */
-        }
-
-        .caption {
-            text-align: center;
-            font-size: 18px;
-            padding: 10px 0;
-            height: 40px;
-        }
-
-        .scroll-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
-
-        .scroll-button-left {
-            left: 10%;
-        }
-
-        .scroll-button-right {
-            right: 10%;
-        }
-
-        .centered-content {
-            text-align: center;
-        }
-
-        .centered-text {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .centered-image {
-            width: 25vw; /* Set width to 25% of the viewport width */
-            height: 25vw; /* Set a fixed height based on the width */
-            object-fit: cover; /* Ensure image covers the entire container */
-        }
-
-        @media (min-width: 768px) {
-            .slides {
-                width: 25vw; /* Set width to 25% of the viewport width on desktop */
-                height: 25vw; /* Set a fixed height based on the width on desktop */
-            }
-            .centered-image {
-                width: 25vw; /* Set width to 25% of the viewport width on desktop */
-                height: 25vw; /* Set a fixed height based on the width on desktop */
-            }
+        .stat-title {
+            font-weight: bold; /* Make stat titles bold */
         }
 
         @media (max-width: 768px) {
             .header-right {
                 flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-start; /* Align buttons to the left */
-                padding-right: 20px; /* Add padding to the right */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
             }
+
             .green-button {
-                margin-left: 0;
-                margin-bottom: 10px; /* Add margin between buttons */
-                width: calc(100% - 20px); /* Make buttons full width minus the padding */
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
             }
-            .slides {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
+
+            .personal-stats {
+                flex-direction: column; /* Stack stats vertically on mobile */
             }
-            .centered-image {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
+
+            .stat {
+                width: 100%; /* Full width for each stat on mobile */
+                margin-right: 0; /* Remove right margin on mobile */
             }
         }
     </style>
@@ -201,25 +145,25 @@
         </div>
     </div>
 
-    <div class="content">
-        <div class="slideshow-container">
-            <div class="slides">
-                <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
+    <div class="personal-stats">
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-title">Fish Caught</div>
+                <div class="stat-number">6</div>
             </div>
-            <div class="slides">
-                <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+            <div class="stat">
+                <div class="stat-title">Years in Finance</div>
+                <div class="stat-number">1</div>
             </div>
-            <div class="slides">
-                <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
+            <div class="stat">
+                <div class="stat-title">Yelp Reviews Written</div>
+                <div class="stat-number">31</div>
             </div>
-            <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
-            <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
+            <div class="stat">
+                <div class="stat-title">Lines of Code Written</div>
+                <div class="stat-number">500+</div>
+            </div>
         </div>
-    </div>
-
-    <div class="centered-content">
-        <h1 class="centered-text">My Best Catch</h1>
-        <img src="docs/assets/mybestcatch.jpg" class="centered-image">
     </div>
 
     <div class="footer-container">
@@ -235,22 +179,50 @@
     </div>
 
     <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+        // Function to count up to a target number
+        function countUp(element, target, duration) {
+            let start = 0;
+            let increment = target / duration;
+            let current = start;
+            let timer = setInterval(function () {
+                current += increment;
+                element.textContent = Math.floor(current);
+                if (current >= target) {
+                    clearInterval(timer);
+                    element.textContent = target;
+                }
+            }, 10);
         }
 
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slides");
-            if (n > slides.length) {slideIndex = 1} 
-            if (n < 1) {slideIndex = slides.length}
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none"; 
-            }
-            slides[slideIndex-1].style.display = "flex"; 
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
         }
+
+        // Function to initialize counting when element is in viewport
+        function initCountUpWhenVisible(element, target, duration) {
+            let count = false;
+            window.addEventListener('scroll', function () {
+                if (!count && isElementInViewport(element)) {
+                    countUp(element, target, duration);
+                    count = true;
+                }
+            });
+        }
+
+        // Initialize counting for each stat when it becomes visible
+        let stats = document.querySelectorAll('.stat-number');
+        stats.forEach(function (stat) {
+            let target = parseInt(stat.textContent);
+            stat.textContent = '0'; // Start from 0
+            initCountUpWhenVisible(stat, target, 1000); // Count up to the target in 1 second
+        });
     </script>
 </body>
 </html>
