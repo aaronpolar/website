@@ -156,6 +156,28 @@
         <p>Hey! I'm Aaron. I am a San Francisco native, product of SFUSD public education. I graduated from the University of San Francisco with a B.S. in Economics and created this website to share my passion for fishing and finance!</p>
     </div>
 
+    <div class="personal-stats">
+        <p style="font-weight: bold; text-align: center; margin-bottom: 10px;">Personal Stats</p>
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-title">Fish Caught</div>
+                <div class="stat-number">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-title">Years in Finance</div>
+                <div class="stat-number">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-title">Yelp Reviews Written</div>
+                <div class="stat-number">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-title">Lines of Code Written</div>
+                <div class="stat-number">0</div>
+            </div>
+        </div>
+    </div>
+
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -167,5 +189,27 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        function countUp(element, target, duration) {
+            let start = 0;
+            const increment = target / duration * 15;
+            const timer = setInterval(() => {
+                start += increment;
+                element.textContent = Math.round(start);
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                }
+            }, 15);
+        }
+
+        const statsElements = document.querySelectorAll('.stat-number');
+        statsElements.forEach((element) => {
+            const target = parseInt(element.textContent);
+            element.textContent = '0';
+            countUp(element, target, 1500); // Adjust the duration as needed
+        });
+    </script>
 </body>
 </html>
