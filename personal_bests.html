@@ -98,12 +98,13 @@
             justify-content: center; /* Center images horizontally */
             align-items: center; /* Center images vertically */
             margin-bottom: 20px; /* Add margin between slides and captions */
-            height: 25vh; /* Set a fixed height for all images */
+            height: 25vw; /* Set a fixed height based on the width */
+            width: 100vw; /* Set width to 100% of the viewport width */
         }
 
         .slides img {
-            width: auto; /* Ensure images maintain aspect ratio */
-            height: 100%; /* Fill the entire height of the container */
+            width: 25vw; /* Set width to 25% of the viewport width */
+            height: 25vw; /* Set height to maintain aspect ratio */
         }
 
         .caption {
@@ -207,11 +208,12 @@
 
     <div class="centered-content">
         <h1 class="centered-text">My Best Catch</h1>
-        <img src="docs/assets/mybestcatch.jpg" class="centered-image">
+        <img src="docs/assets/mybestcatch.jpg" class="centered-image
+">
     </div>
+</div>
 
-    <div class="footer-container">
-        <div class="footer-container">
+<div class="footer-container">
     <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
         <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
     </a>
