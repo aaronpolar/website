@@ -101,36 +101,46 @@
             margin: 0 5px; /* Add space between images */
         }
 
-        /* Media query for mobile devices */
+        /* Personal Stats section */
+        .personal-stats {
+            display: flex; /* Display stats horizontally */
+            justify-content: space-evenly; /* Spread stats evenly */
+            margin-top: auto; /* Push stats to the bottom */
+            padding: 20px 0; /* Add padding */
+            border-top: 1px solid #333; /* Add a border at the top */
+        }
+
+        .personal-stats p {
+            font-size: 24px; /* Increase font size for "Personal Stats" */
+            font-weight: bold; /* Make "Personal Stats" bold */
+            text-align: center; /* Center text */
+            margin-bottom: 10px; /* Add space below "Personal Stats" */
+        }
+
+        .stats-container {
+            display: flex; /* Display stats horizontally */
+            flex-wrap: wrap; /* Allow stats to wrap to next line on smaller screens */
+            justify-content: space-around; /* Spread stats evenly */
+            width: 100%; /* Full width */
+        }
+
+        .stat {
+            text-align: center; /* Center text */
+            margin-bottom: 10px; /* Add space between stats */
+            width: 25%; /* 25% width for each stat, will be full width on mobile */
+        }
+
+        .stat-title {
+            font-weight: bold; /* Make stat titles bold */
+        }
+
         @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
+            .personal-stats {
+                flex-direction: column; /* Stack stats vertically on mobile */
             }
 
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
-
-            .header-text {
-                display: block; /* Display text on mobile */
-                margin: 20px 20px; /* Add margin around text on mobile */
-                align-items: center; /* Center text vertically on mobile */
-                padding: 0; /* Remove padding on mobile */
-            }
-
-            .header-text p {
-                font-size: 20px; /* Decre
-            font-size: 20px; /* Decrease font size for mobile */
-                text-align: center; /* Center text horizontally on mobile */
+            .stat {
+                width: 100%; /* Full width for each stat on mobile */
             }
         }
     </style>
@@ -157,7 +167,7 @@
     </div>
 
     <div class="personal-stats">
-        <p style="font-weight: bold; text-align: center; margin-bottom: 10px;">Personal Stats</p>
+        <p>Personal Stats</p>
         <div class="stats-container">
             <div class="stat">
                 <div class="stat-title">Fish Caught</div>
@@ -173,7 +183,7 @@
             </div>
             <div class="stat">
                 <div class="stat-title">Lines of Code Written</div>
-                <div class="stat-number">500</div>
+                <div class="stat-number">500+</div>
             </div>
         </div>
     </div>
@@ -189,27 +199,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-        function countUp(element, target, duration) {
-            let start = 0;
-            const increment = target / duration * 15;
-            const timer = setInterval(() => {
-                start += increment;
-                element.textContent = Math.round(start);
-                if (start >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                }
-            }, 15);
-        }
-
-        const statsElements = document.querySelectorAll('.stat-number');
-        statsElements.forEach((element) => {
-            const target = parseInt(element.textContent);
-            element.textContent = '0';
-            countUp(element, target, 1500); // Adjust the duration as needed
-        });
-    </script>
 </body>
 </html>
