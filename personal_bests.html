@@ -83,14 +83,13 @@
             text-align: center;
             margin: 20px 0;
             flex: 1; /* Allow the content to grow and push the footer down */
-            position: relative; /* Relative positioning for slideshow buttons */
+            position: relative;
         }
 
         .slideshow-container {
             position: relative;
             max-width: 100%;
             margin: auto;
-            display: inline-block;
         }
 
         .slides {
@@ -120,9 +119,9 @@
             cursor: pointer;
             position: absolute;
             top: 50%;
+            transform: translateY(-50%);
             width: auto;
             padding: 16px;
-            margin-top: -22px;
             color: black;
             font-weight: bold;
             font-size: 20px;
@@ -131,14 +130,16 @@
             user-select: none;
         }
 
-        .next {
-            right: 0;
+        .prev {
+            left: 55%;
+            transform: translate(-55%, -50%);
             border-radius: 3px 0 0 3px;
         }
 
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+        .next {
+            right: 55%;
+            transform: translate(55%, -50%);
+            border-radius: 0 3px 3px 0;
         }
 
         @media (max-width: 768px) {
@@ -192,11 +193,11 @@
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
                 <div class="caption">First Smallmouth Bass, Folsom Lake, CA, May 26, 2024</div>
             </div>
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
         </div>
         <div class="best-catch">My Best Catch</div>
-        <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch" style="width: 25%; margin: 20px 0;">
+        <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch">
     </div>
 
     <div class="footer-container">
@@ -212,7 +213,8 @@
     </div>
 
     <script>
-        let slideIndex = 0;
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
         function plusSlides(n) {
             showSlides(slideIndex += n);
@@ -220,21 +222,13 @@
 
         function showSlides(n) {
             let slides = document.getElementsByClassName("slides");
-            if (n >= slides.length) {
-                slideIndex = 0;
-            }
-            if (n < 0) {
-                slideIndex = slides.length - 1;
-            }
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";  
             }
-            slides[slideIndex].style.display = "block";  
-            slideIndex++;
-            setTimeout(showSlides, 15000); // Change image every 15 seconds
+            slides[slideIndex-1].style.display = "block";  
         }
-
-        showSlides();
     </script>
 </body>
 </html>
