@@ -113,16 +113,17 @@
             margin: 10px 0;
         }
 
-        .prev, .next {
+        .prev,
+        .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
             width: auto;
             padding: 16px;
             margin-top: -22px;
-            color: lightgrey;
+            color: black;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
             transition: 0.6s ease;
             border-radius: 0 3px 3px 0;
             user-select: none;
@@ -133,23 +134,9 @@
             border-radius: 3px 0 0 3px;
         }
 
-        .prev:hover, .next:hover {
+        .prev:hover,
+        .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-        }
-
-        .fade {
-            animation-name: fade;
-            animation-duration: 15s; /* Image transition time */
-        }
-
-        @keyframes fade {
-            from {
-                opacity: 0.4;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         @media (max-width: 768px) {
@@ -191,22 +178,21 @@
 
     <div class="content">
         <div class="slideshow-container">
-            <div class="slides fade">
+            <div class="slides">
                 <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
                 <div class="caption">First caught fish on February 19, 2024, Rainbow Trout, San Pablo Reservoir, CA, 2.2lbs, ~13-14 inches</div>
             </div>
-            <div class="slides fade">
+            <div class="slides">
                 <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
                 <div class="caption">First caught fish on February 19, 2024, Rainbow Trout, San Pablo Reservoir, CA, 2.2lbs, ~13-14 inches</div>
             </div>
-            <div class="slides fade">
+            <div class="slides">
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
                 <div class="caption">First Smallmouth Bass, Folsom Lake, CA, May 26, 2024</div>
             </div>
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-       
         <div class="best-catch">My Best Catch</div>
         <img src="docs/assets/mybestcatch.jpg" alt="My Best Catch" style="width: 25%; margin: 20px 0;">
     </div>
