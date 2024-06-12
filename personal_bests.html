@@ -99,11 +99,12 @@
             align-items: center; /* Center images vertically */
             transition: transform 0.5s ease; /* Smooth slide transition */
             margin-bottom: 20px; /* Add margin between slides and captions */
+            height: 300px; /* Set a fixed height for all images */
         }
 
         .slides img {
-            width: 25%; /* Set image width to 25% of container */
-            margin: 20px 0; /* Add margin around images */
+            width: auto; /* Ensure images maintain aspect ratio */
+            height: 100%; /* Fill the entire height of the container */
         }
 
         .caption {
@@ -135,13 +136,6 @@
 
         .scroll-button-right {
             right: 10%;
-        }
-
-        .centered-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
         }
 
         @media (max-width: 768px) {
@@ -199,7 +193,7 @@
 
     <div class="centered-content">
         <h1 style="font-size: 32px; font-weight: bold;">My Best Catch</h1>
-        <img src="docs/assets/mybestcatch.jpg" style="width: 25%; margin: 10px 0;">
+        <img src="mybestcatch.jpg" style="width: 25%; margin: 10px 0;">
     </div>
 
     <div class="footer-container">
