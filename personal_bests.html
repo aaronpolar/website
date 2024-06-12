@@ -100,11 +100,11 @@
             margin-bottom: 20px; /* Add margin between slides and captions */
             height: 25vw; /* Set a fixed height based on the width */
             max-height: 25vh; /* Set maximum height to prevent squishing on mobile */
-            width: 100vw; /* Set width to 100% of the viewport width */
+            width: 25vw; /* Set width to 25% of the viewport width */
         }
 
         .slides img {
-            width: 25vw; /* Set width to 25% of the viewport width */
+            width: 100%; /* Set images to full width */
             height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
         }
 
@@ -172,8 +172,14 @@
                 margin-right: auto; /* Ensure text and buttons are aligned to the right */
             }
 
+            .slides {
+                height: 25vw; /* Set a fixed height based on the width */
+                max-height: 25vh; /* Set maximum height to prevent squishing on mobile */
+                width: 25vw; /* Set width to 25% of the viewport width */
+            }
+
             .slides img {
-                width: 100%; /* Set images to full width on mobile */
+                width: 100%; /* Set images to full width */
                 height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
             }
         }
@@ -206,7 +212,6 @@
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
         </div>
-   
     </div>
 
     <div class="centered-content">
