@@ -48,7 +48,7 @@
             justify-content: flex-end; /* Align buttons to the right */
             align-items: center; /* Center vertically */
             width: calc(100% / 3); /* Divide the page into thirds */
-            flex-direction: row;
+            flex-direction: column; /* Stack buttons vertically on mobile */
         }
 
         .green-button {
@@ -61,8 +61,8 @@
             text-transform: uppercase;
             font-weight: bold;
             cursor: pointer;
-            margin-left: 10px;
-            font-size: 16px;
+            margin-bottom: 10px; /* Add margin between buttons */
+            width: 100%; /* Make buttons full width on mobile */
             text-align: center; /* Center text in buttons */
             text-decoration: none; /* Remove underline */
         }
@@ -100,13 +100,13 @@
             justify-content: center; /* Center images horizontally */
             align-items: center; /* Center images vertically */
             margin-bottom: 20px; /* Add margin between slides and captions */
-            width: 25vw; /* Set width to 25% of the viewport width */
-            height: 25vw; /* Set a fixed height based on the width */
+            width: 50vw; /* Set width to 50% of the viewport width on mobile */
+            height: 50vw; /* Set a fixed height based on the width on mobile */
         }
 
         .slides img {
             width: 100%; /* Set images to full width */
-            height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
+            height: 100%; /* Set images to full height */
             object-fit: cover; /* Ensure image covers the entire container */
         }
 
@@ -169,31 +169,9 @@
         }
 
         @media (max-width: 768px) {
-            .personal-stats {
-                flex-direction: column; /* Stack stats vertically on mobile */
-            }
-
-            .stat {
-                width: 100%; /* Full width for each stat on mobile */
-                margin-right: 0; /* Remove right margin on mobile */
-            }
-
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right */
-            }
-
-            .green-button {
-                margin-left: 0; /* Remove left margin on mobile */
-                margin-bottom: 10px; /* Add margin between buttons */
-                width: 100%; /* Make buttons full width on mobile */
-            }
-
-            /* Additional styles for slideshow images on mobile */
-            .slides img {
+            .slides {
                 width: 50vw; /* Set width to 50% of the viewport width on mobile */
                 height: 50vw; /* Set a fixed height based on the width on mobile */
-                object-fit: cover; /* Ensure image covers the entire container */
             }
         }
     </style>
@@ -223,13 +201,13 @@
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
             </div>
             <div class="slides">
-                <img src="docs/assets/threerainbowtrout.jpg" alt="Three Rainbow Trout">
-            </div>
-            <div class="slides">
                 <img src="docs/assets/jakebass.jpg" alt="Jake Bass">
             </div>
             <div class="slides">
                 <img src="docs/assets/basspillow.jpg" alt="Bass Pillow">
+            </div>
+            <div class="slides">
+                <img src="docs/assets/threerainbowtrout.jpg" alt="Three Rainbow Trout">
             </div>
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
@@ -265,6 +243,7 @@
             let slides = document.getElementsByClassName("slides");
             if (n > slides.length) {slideIndex = 1} 
             if (n < 1) {slideIndex = slides.length}
+           
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none"; 
             }
