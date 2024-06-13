@@ -81,64 +81,46 @@
         }
 
         .header-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            margin-bottom: 20px;
+            position: relative;
+            height: 100vh; /* Set image height to full viewport height */
+            overflow: hidden; /* Hide overflow to prevent scrolling */
         }
 
         .header-image img {
-            width: 50%;
-            aspect-ratio: 1 / 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire container */
         }
 
         .header-image-text {
-            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
             font-weight: bold;
-        }
-
-        @media (min-width: 769px) {
-            .header-image {
-                flex-direction: row;
-                text-align: left;
-            }
-
-            .header-image img {
-                width: 33.33%;
-            }
-
-            .header-image-text {
-                margin-left: 20px;
-                text-align: left;
-            }
-        }
-
-        .footer-container {
-            width: 100%;
-            background-color: #333; /* Background color for better visibility */
-            text-align: center;
-            padding: 10px 0; /* Padding for better spacing */
             color: white;
-            margin-top: auto; /* Push footer to the bottom */
-        }
-
-        .footer-container img {
-            width: 25px; /* Set image width to 25px for a quarter size */
-            margin: 0 5px; /* Add space between images */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
 
         .personal-stats {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
             display: flex;
             justify-content: space-around;
-            align-items: center;
-            width: 80%;
-            margin: 0 auto 20px;
-            background-color: #FAF9F6;
             font-family: Gill Sans, sans-serif;
             text-transform: uppercase;
             font-weight: bold;
+            box-sizing: border-box; /* Include padding in width */
         }
 
         .personal-stat {
@@ -146,38 +128,6 @@
             flex-direction: column;
             align-items: center;
             font-family: Palatino, serif;
-        }
-
-        @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
-            }
-
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
-
-            .header-image img {
-                width: 25%;
-            }
-
-            .header-image-text {
-                margin-top: 10px;
-                text-align: center;
-            }
-
-            .personal-stats {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
@@ -193,6 +143,7 @@
             <a href="finance.html" class="green-button">Finance</a>
         </div>
     </div>
+
     <div class="header-image">
         <img src="docs/assets/sanpabloreservoir.jpg" alt="San Pablo Reservoir">
         <div class="header-image-text">Hello, I'm Aaron</div>
