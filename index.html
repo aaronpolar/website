@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - Aaron Polar</title>
+    <title>ABOUT ME - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -67,8 +67,7 @@
 
         /* Style for the text */
         .header-text {
-            margin: 20px 0; /* Add margin at the top and bottom */
-            margin-left: calc(100% / 3); /* Space between text and buttons */
+            margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
             flex: 1; /* Take up remaining space */
             display: flex;
             flex-direction: column; /* Stack text vertically */
@@ -84,8 +83,7 @@
 
         /* Style for the image */
         .header-image img {
-            width: 150px; /* Set image width */
-            margin-bottom: 20px; /* Add space below image */
+            display: none; /* Hide the image */
         }
 
         .footer-container {
@@ -94,6 +92,7 @@
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
             color: white;
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         .footer-container img {
@@ -101,44 +100,45 @@
             margin: 0 5px; /* Add space between images */
         }
 
-        /* Personal Stats section */
-        .personal-stats {
-            background-color: white; /* Set background color to white */
-            text-transform: uppercase; /* Convert text to all caps */
-            font-family: Palatino, serif; /* Set font to Palatino */
-            padding: 20px 0; /* Add padding */
-            border-top: 1px solid #333; /* Add a border at the top */
-            text-align: center; /* Center text */
+        .fixed-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
         }
 
-        .stats-container {
-            display: flex; /* Display stats horizontally */
-            justify-content: space-evenly; /* Spread stats evenly */
-            margin-top: auto; /* Push stats to the bottom */
-            width: 80%; /* Set width to 80% of the page */
-            margin: 0 auto; /* Center the containers */
-        }
-
-        .stat {
-            text-align: center; /* Center text */
-            margin-bottom: 10px; /* Add space between stats */
-            width: 25%; /* 25% width for each stat, will be full width on mobile */
-            margin-right: 20px; /* Add right margin to create space between stats */
-            font-family: Palatino, serif; /* Set font to Palatino */
-        }
-
-        .stat-title {
-            font-weight: bold; /* Make stat titles bold */
+        .fixed-buttons a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #D3D3D3; /* Lighter grey color */
+            border: none; /* Remove button border */
+            margin: 0 5px; /* Add margin around buttons */
         }
 
         @media (max-width: 768px) {
-            .personal-stats {
-                flex-direction: column; /* Stack stats vertically on mobile */
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
             }
 
-            .stat {
-                width: 100%; /* Full width for each stat on mobile */
-                margin-right: 0; /* Remove right margin on mobile */
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .fixed-buttons {
+                margin-top: 10px; /* Add margin at the top on mobile */
             }
         }
     </style>
