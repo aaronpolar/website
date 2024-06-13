@@ -23,7 +23,7 @@
             align-items: center;
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0px;
+            margin-bottom: 20px;
         }
 
         .header-left {
@@ -129,9 +129,8 @@
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
             color: white;
-            position: fixed; /* Position the footer at the bottom */
-            bottom: 0; /* Stick the footer to the bottom */
-            margin-top: 0; /* Remove margin above the footer */
+            position: relative; /* Keep footer in the normal flow */
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         .footer-container img {
@@ -140,13 +139,14 @@
         }
 
         @media (max-width: 768px) {
-            .personal-stats {
-                flex-direction: column; /* Stack stats vertically on mobile */
-                align-items: center; /* Center stats horizontally */
+            .header-right {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
-            .personal-stat {
-                margin-bottom: 10px; /* Add margin between stats */
+            .green-button {
+                margin: 10px 0; /* Add margin between buttons */
             }
         }
     </style>
