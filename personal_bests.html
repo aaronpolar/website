@@ -100,13 +100,13 @@
             justify-content: center; /* Center images horizontally */
             align-items: center; /* Center images vertically */
             margin-bottom: 20px; /* Add margin between slides and captions */
-            width: 25vw; /* Set width to 25% of the viewport width */
-            height: 25vw; /* Set a fixed height based on the width */
+            width: 50vw; /* Set width to 50% of the viewport width */
+            height: 50vw; /* Set a fixed height based on the width */
         }
 
         .slides img {
             width: 100%; /* Set images to full width */
-            height: auto; /* Allow height to adjust based on width while maintaining aspect ratio */
+            height: 100%; /* Set images to full height */
             object-fit: cover; /* Ensure image covers the entire container */
         }
 
@@ -159,8 +159,8 @@
 
         @media (min-width: 768px) {
             .slides {
-                width: 25vw; /* Set width to 25% of the viewport width on desktop */
-                height: 25vw; /* Set a fixed height based on the width on desktop */
+                width: 50vw; /* Set width to 50% of the viewport width on desktop */
+                height: 50vw; /* Set a fixed height based on the width on desktop */
             }
             .centered-image {
                 width: 25vw; /* Set width to 25% of the viewport width on desktop */
@@ -188,11 +188,6 @@
                 margin-bottom: 10px; /* Add margin between buttons */
                 width: 100%; /* Make buttons full width on mobile */
             }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
         }
     </style>
 </head>
@@ -219,6 +214,15 @@
             </div>
             <div class="slides">
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
+            </div>
+            <div class="slides">
+                <img src="docs/assets/jakebass.jpg" alt="Jake Bass">
+            </div>
+            <div class="slides">
+                <img src="docs/assets/basspillow.jpg" alt="Bass Pillow">
+            </div>
+            <div class="slides">
+                <img src="docs/assets/threerainbowtrout.jpg" alt="Three Rainbow Trout">
             </div>
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
