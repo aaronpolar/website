@@ -23,7 +23,7 @@
             align-items: center;
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
 
         .header-left {
@@ -118,6 +118,11 @@
             font-family: Palatino, serif;
         }
 
+        .personal-stat > div {
+            margin-top: 10px; /* Add margin between stats */
+            text-align: center; /* Center text */
+        }
+
         .footer-container {
             width: 100%;
             background-color: #333; /* Background color for better visibility */
@@ -134,15 +139,14 @@
             margin: 0 5px; /* Add space between images */
         }
 
-        /* Media query for mobile view */
         @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically */
-                align-items: center; /* Center buttons horizontally */
+            .personal-stats {
+                flex-direction: column; /* Stack stats vertically on mobile */
+                align-items: center; /* Center stats horizontally */
             }
 
-            .green-button {
-                margin: 5px 0; /* Add margin between buttons */
+            .personal-stat {
+                margin-bottom: 10px; /* Add margin between stats */
             }
         }
     </style>
@@ -162,6 +166,7 @@
     <div class="header-image">
         <img src="docs/assets/sanpabloreservoir.jpg" alt="San Pablo Reservoir">
     </div>
+
     <div class="personal-stats">
         <div class="personal-stat">
             <div id="fish-caught">6</div>
@@ -191,6 +196,7 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
     <script>
         // Function to animate the counting up effect
         function animateValue(id, start, end, duration) {
