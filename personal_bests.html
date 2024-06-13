@@ -169,26 +169,24 @@
         }
 
         @media (max-width: 768px) {
+            .personal-stats {
+                flex-direction: column; /* Stack stats vertically on mobile */
+            }
+
+            .stat {
+                width: 100%; /* Full width for each stat on mobile */
+                margin-right: 0; /* Remove right margin on mobile */
+            }
+
             .header-right {
                 flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-start; /* Align buttons to the left */
+                align-items: flex-end; /* Align buttons to the right */
             }
+
             .green-button {
-                margin-left: 0;
+                margin-left: 0; /* Remove left margin on mobile */
                 margin-bottom: 10px; /* Add margin between buttons */
                 width: 100%; /* Make buttons full width on mobile */
-            }
-            .slides {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
-            }
-            .centered-image {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
-            }
-            body {
-                padding-left: 10px; /* Add left padding to body */
-                padding-right: 10px; /* Add right padding to body */
             }
         }
     </style>
