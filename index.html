@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT ME - Aaron Polar</title>
+    <title>Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -65,7 +65,6 @@
             text-decoration: none; /* Remove underline */
         }
 
-        /* Style for the text */
         .header-text {
             margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
             flex: 1; /* Take up remaining space */
@@ -81,9 +80,39 @@
             text-align: center; /* Center text */
         }
 
-        /* Style for the image */
+        .header-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .header-image img {
-            display: none; /* Hide the image */
+            width: 50%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .header-image-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        @media (min-width: 769px) {
+            .header-image {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .header-image img {
+                width: 33.33%;
+            }
+
+            .header-image-text {
+                margin-left: 20px;
+                text-align: left;
+            }
         }
 
         .footer-container {
@@ -119,6 +148,25 @@
             margin: 0 5px; /* Add margin around buttons */
         }
 
+        .personal-stats {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto 20px;
+            background-color: white;
+            font-family: Gill Sans, sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .personal-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Palatino, serif;
+        }
+
         @media (max-width: 768px) {
             .header-right {
                 flex-direction: column; /* Stack buttons vertically on mobile */
@@ -140,10 +188,28 @@
             .fixed-buttons {
                 margin-top: 10px; /* Add margin at the top on mobile */
             }
+
+            .header-image img {
+                width: 25%;
+            }
+
+            .header-image-text {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .personal-stats {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="header-image">
+        <img src="docs/assets/IMG_3471.jpg" alt="Aaron's Image">
+        <div class="header-image-text">Hello, I'm Aaron</div>
+    </div>
+
     <div class="header">
         <div class="header-left">
             <a href="index.html">AARON</a>
@@ -156,32 +222,34 @@
         </div>
     </div>
 
-    <div class="header-image">
-        <img src="docs/assets/IMG_3471.JPG" alt="Image" />
-    </div>
-
     <div class="header-text">
-        <p>Hey! I'm Aaron. I am a San Francisco native, product of SFUSD public education. I graduated from the University of San Francisco with a B.S. in Economics and created this website to share my passion for fishing and finance!</p>
+        <p>Hey! I'm Aaron, a Client Service Associate with a passion for helping others. In my current role, I get to interact with clients every day, addressing their inquiries and ensuring their needs are met. I love the challenge of finding solutions and providing top-notch service to make their experience better.</p>
+
+        <p>Looking ahead, my sights are set on becoming a financial analyst. I'm excited about the analytical aspects of finance and the opportunity to delve deep into financial data to provide insights that help clients make informed decisions. It's a path that aligns perfectly with my love for helping others and my passion for economic empowerment, as I'll still be guiding people toward their financial goals.</p>
+
+        <p>In my free time, I love exploring new restaurants and sharing my experiences on my Yelp page. Whether it's a hidden gem or a local favorite, I enjoy trying different cuisines and writing reviews to help others discover great dining spots. You can check out my Yelp page below.</p>
+
+        <p>I'm also passionate about fishing and spend as much time as I can out on the water. It's a relaxing way to unwind and connect with nature. If you're interested, you can see some of my fishing adventures on my website's fishing log.</p>
+
+        <p>I created this website as a personal project on March 12, 2024, to share my love for fishing and finance!</p>
     </div>
 
     <div class="personal-stats">
-        <div class="stats-container">
-            <div class="stat">
-                <div class="stat-title">Fish Caught</div>
-                <div class="stat-number">6</div>
-            </div>
-            <div class="stat">
-                <div class="stat-title">Years in Finance</div>
-                <div class="stat-number">1</div>
-            </div>
-            <div class="stat">
-                <div class="stat-title">Yelp Reviews Written</div>
-                <div class="stat-number">31</div>
-            </div>
-            <div class="stat">
-                <div class="stat-title">Lines of Code Written</div>
-                <div class="stat-number">500+</div>
-            </div>
+        <div class="personal-stat">
+            <div id="fish-caught">6</div>
+            <div>Fish Caught</div>
+        </div>
+        <div class="personal-stat">
+            <div id="years-in-finance">1</div>
+            <div>Years in Finance</div>
+        </div>
+        <div class="personal-stat">
+            <div id="yelp-reviews">31</div>
+            <div>Yelp Reviews Written</div>
+        </div>
+        <div class="personal-stat">
+            <div id="lines-of-code">1000</div>
+            <div>Lines of Code Written</div>
         </div>
     </div>
 
@@ -198,49 +266,47 @@
     </div>
 
     <script>
-        // Function to count up to a target number
-        function countUp(element, target, duration) {
-            let start = 0;
-            let increment = target / duration;
-            let current = start;
-            let timer = setInterval(function () {
-                current += increment;
-                element.textContent = Math.floor(current);
-                if (current >= target) {
+        // Function to animate the counting up effect
+        function animateValue(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            let range = end - start;
+            let minTimer = 50;
+            let stepTime = Math.abs(Math.floor(duration / range));
+
+            stepTime = Math.max(stepTime, minTimer);
+
+            let startTime = new Date().getTime();
+            let endTime = startTime + duration;
+            let timer;
+
+            function run() {
+                let now = new Date().getTime();
+                let remaining = Math.max((endTime - now) / duration, 0);
+                let value = Math.round(end - (remaining * range));
+                obj.innerHTML = value;
+                if (value === end) {
                     clearInterval(timer);
-                    element.textContent = target;
                 }
-            }, 10);
+            }
+
+            timer = setInterval(run, stepTime);
+            run();
         }
 
-        // Function to check if an element is in the viewport
-        function isElementInViewport(el) {
-            var rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
+        window.addEventListener('load', function() {
+            animateValue("fish-caught", 0, 6, 2000);
+            animateValue("years-in-finance", 0, 1, 2000);
+            animateValue("yelp-reviews", 0, 31, 2000);
+            animateValue("lines-of-code", 0, 1000, 2000);
+        });
 
-        // Function to initialize counting when element is in viewport
-        function initCountUpWhenVisible(element, target, duration) {
-            let count = false;
-            window.addEventListener('scroll', function () {
-                if (!count && isElementInViewport(element)) {
-                    countUp(element, target, duration);
-                    count = true;
-                }
-            });
-        }
-
-        // Initialize counting for each stat when it becomes visible
-        let stats = document.querySelectorAll('.stat-number');
-        stats.forEach(function (stat) {
-            let target = parseInt(stat.textContent);
-            stat.textContent = '0'; // Start from 0
-            initCountUpWhenVisible(stat, target, 1000); // Count up to the target in 1 second
+        window.addEventListener('scroll', function() {
+            if (document.querySelector('.personal-stats').getBoundingClientRect().top < window.innerHeight) {
+                animateValue("fish-caught", 0, 6, 2000);
+                animateValue("years-in-finance", 0, 1, 2000);
+                animateValue("yelp-reviews", 0, 31, 2000);
+                animateValue("lines-of-code", 0, 1000, 2000);
+            }
         });
     </script>
 </body>
