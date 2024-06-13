@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERSONAL BESTS - Aaron Polar</title>
+    <title>ABOUT ME - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -24,7 +24,6 @@
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
 
         .header-left {
@@ -48,7 +47,6 @@
             justify-content: flex-end; /* Align buttons to the right */
             align-items: center; /* Center vertically */
             width: calc(100% / 3); /* Divide the page into thirds */
-            flex-direction: column; /* Stack buttons vertically on mobile */
         }
 
         .green-button {
@@ -61,117 +59,86 @@
             text-transform: uppercase;
             font-weight: bold;
             cursor: pointer;
-            margin-bottom: 10px; /* Add margin between buttons */
-            width: 100%; /* Make buttons full width on mobile */
+            margin-left: 10px;
+            font-size: 16px;
             text-align: center; /* Center text in buttons */
             text-decoration: none; /* Remove underline */
         }
 
+        /* Style for the text */
+        .header-text {
+            margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            align-items: center; /* Align text to the center */
+            padding: 0 40px; /* Add padding to the sides */
+        }
+
+        .header-text p {
+            margin: 20px 0; /* Add margin around paragraphs */
+            font-size: 24px;
+            text-align: center; /* Center text */
+        }
+
+        /* Style for the image */
+        .header-image img {
+            display: none; /* Hide the image */
+        }
+
         .footer-container {
             width: 100%;
-            background-color: #333;
+            background-color: #333; /* Background color for better visibility */
             text-align: center;
-            padding: 10px 0;
+            padding: 10px 0; /* Padding for better spacing */
             color: white;
-            margin-top: auto;
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         .footer-container img {
-            width: 25px;
-            margin: 0 5px;
+            width: 25px; /* Set image width to 25px for a quarter size */
+            margin: 0 5px; /* Add space between images */
         }
 
-        .content {
-            text-align: center;
-            margin: 20px 0;
-            flex: 1; /* Allow the content to grow and push the footer down */
-        }
-
-        .slideshow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center horizontally */
-            max-width: 100%;
-            overflow: hidden; /* Hide overflowing content */
-        }
-
-        .slides {
-            display: none; /* Hide slides by default */
-            justify-content: center; /* Center images horizontally */
-            align-items: center; /* Center images vertically */
-            margin-bottom: 20px; /* Add margin between slides and captions */
-            width: 50vw; /* Set width to 50% of the viewport width on mobile */
-            height: 50vw; /* Set a fixed height based on the width on mobile */
-        }
-
-        .slides img {
-            width: 100%; /* Set images to full width */
-            height: 100%; /* Set images to full height */
-            object-fit: cover; /* Ensure image covers the entire container */
-        }
-
-        .caption {
-            text-align: center;
-            font-size: 18px;
-            padding: 10px 0;
-            height: 40px;
-        }
-
-        .scroll-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
+        .fixed-buttons {
             display: flex;
             justify-content: center;
-            align-items: center;
-            font-size: 24px;
+            margin: 20px 0;
         }
 
-        .scroll-button-left {
-            left: 10%;
-        }
-
-        .scroll-button-right {
-            right: 10%;
-        }
-
-        .centered-content {
-            text-align: center;
-        }
-
-        .centered-text {
-            font-size: 32px;
+        .fixed-buttons a {
+            text-decoration: none;
+            color: black;
             font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .centered-image {
-            width: 25vw; /* Set width to 25% of the viewport width */
-            height: 25vw; /* Set a fixed height based on the width */
-            object-fit: cover; /* Ensure image covers the entire container */
-        }
-
-        @media (min-width: 768px) {
-            .slides {
-                width: 25vw; /* Set width to 25% of the viewport width on desktop */
-                height: 25vw; /* Set a fixed height based on the width on desktop */
-            }
-            .centered-image {
-                width: 25vw; /* Set width to 25% of the viewport width on desktop */
-                height: 25vw; /* Set a fixed height based on the width on desktop */
-            }
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #D3D3D3; /* Lighter grey color */
+            border: none; /* Remove button border */
+            margin: 0 5px; /* Add margin around buttons */
         }
 
         @media (max-width: 768px) {
-            .slides {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
+
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .fixed-buttons {
+                margin-top: 10px; /* Add margin at the top on mobile */
             }
         }
     </style>
