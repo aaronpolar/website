@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT ME - Aaron Polar</title>
+    <title>PERSONAL BESTS - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -81,11 +81,6 @@
             text-align: center; /* Center text */
         }
 
-        /* Style for the image */
-        .header-image img {
-            display: none; /* Hide the image */
-        }
-
         .footer-container {
             width: 100%;
             background-color: #333; /* Background color for better visibility */
@@ -119,6 +114,76 @@
             margin: 0 5px; /* Add margin around buttons */
         }
 
+        .slideshow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            max-width: 100%;
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        .slides {
+            display: none; /* Hide slides by default */
+            justify-content: center; /* Center images horizontally */
+            align-items: center; /* Center images vertically */
+            width: 25vw; /* Set width to 25% of the viewport width on desktop */
+            height: 25vw; /* Set a fixed height based on the width on desktop */
+            margin-bottom: 20px; /* Add margin between slides and captions */
+        }
+
+        .slides img {
+            width: 100%; /* Set images to full width */
+            height: 100%; /* Ensure height is 100% to maintain 1:1 aspect ratio */
+            object-fit: cover; /* Ensure image covers the entire container */
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 0;
+            height: 40px;
+        }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .scroll-button-left {
+            left: 10%;
+        }
+
+        .scroll-button-right {
+            right: 10%;
+        }
+
+        .centered-content {
+            text-align: center;
+        }
+
+        .centered-text {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .centered-image {
+            width: 25vw; /* Set width to 25% of the viewport width on desktop */
+            height: 25vw; /* Set a fixed height based on the width on desktop */
+            object-fit: cover; /* Ensure image covers the entire container */
+        }
+
         @media (max-width: 768px) {
             .header-right {
                 flex-direction: column; /* Stack buttons vertically on mobile */
@@ -139,6 +204,16 @@
 
             .fixed-buttons {
                 margin-top: 10px; /* Add margin at the top on mobile */
+            }
+
+            .slides {
+                width: 50vw; /* Set width to 50% of the viewport width on mobile */
+                height: 50vw; /* Set a fixed height based on the width on mobile */
+            }
+
+            .centered-image {
+                width: 50vw; /* Set width to 50% of the viewport width on mobile */
+                height: 50vw; /* Set a fixed height based on the width on mobile */
             }
         }
     </style>
