@@ -185,18 +185,15 @@
 
             .green-button {
                 margin-left: 0; /* Remove left margin on mobile */
-                margin-bottom: 5px; /* Add margin between buttons on mobile */
+                margin-bottom: 10px; /* Add margin between buttons */
                 width: 100%; /* Make buttons full width on mobile */
             }
 
-            .slides img,
-            .centered-image {
+            /* Additional styles for slideshow images on mobile */
+            .slides img {
                 width: 50vw; /* Set width to 50% of the viewport width on mobile */
                 height: 50vw; /* Set a fixed height based on the width on mobile */
-            }
-
-            .header-right {
-                margin-top: 5px; /* Add margin between buttons and text on mobile */
+                object-fit: cover; /* Ensure image covers the entire container */
             }
         }
     </style>
@@ -226,13 +223,13 @@
                 <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
             </div>
             <div class="slides">
+                <img src="docs/assets/threerainbowtrout.jpg" alt="Three Rainbow Trout">
+            </div>
+            <div class="slides">
                 <img src="docs/assets/jakebass.jpg" alt="Jake Bass">
             </div>
             <div class="slides">
                 <img src="docs/assets/basspillow.jpg" alt="Bass Pillow">
-            </div>
-            <div class="slides">
-                <img src="docs/assets/threerainbowtrout.jpg" alt="Three Rainbow Trout">
             </div>
             <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
             <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
