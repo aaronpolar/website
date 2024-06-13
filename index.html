@@ -65,6 +65,7 @@
             text-decoration: none; /* Remove underline */
         }
 
+        /* Style for the text */
         .header-text {
             margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
             flex: 1; /* Take up remaining space */
@@ -80,57 +81,65 @@
             text-align: center; /* Center text */
         }
 
-        .header-image {
-            position: relative;
-            height: 100vh; /* Set image height to full viewport height */
-            overflow: hidden; /* Hide overflow to prevent scrolling */
-        }
-
+        /* Style for the image */
         .header-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the entire container */
+            display: none; /* Hide the image */
         }
 
-        .personal-stats {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            font-family: Gill Sans, sans-serif;
-            text-transform: uppercase;
-            font-weight: bold;
-            box-sizing: border-box; /* Include padding in width */
-        }
-
-        .personal-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: Palatino, serif;
-        }
-                .footer-container {
+        .footer-container {
             width: 100%;
             background-color: #333; /* Background color for better visibility */
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
             color: white;
-            position: fixed; /* Position the footer at the bottom */
-            bottom: 0; /* Stick the footer to the bottom */
-            margin-top: 0; /* Remove margin above the footer */
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         .footer-container img {
             width: 25px; /* Set image width to 25px for a quarter size */
             margin: 0 5px; /* Add space between images */
+        }
+
+        .fixed-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .fixed-buttons a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #D3D3D3; /* Lighter grey color */
+            border: none; /* Remove button border */
+            margin: 0 5px; /* Add margin around buttons */
+        }
+
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
+
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .fixed-buttons {
+                margin-top: 10px; /* Add margin at the top on mobile */
+            }
         }
     </style>
 </head>
