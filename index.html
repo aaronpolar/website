@@ -158,6 +158,7 @@
             font-family: Gill Sans, sans-serif;
             text-transform: uppercase;
             font-weight: bold;
+            text-align: center;
         }
 
         .personal-stat {
@@ -201,12 +202,55 @@
             .personal-stats {
                 flex-direction: column;
             }
+
+            .green-button {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .footer-container img {
+                width: 25px;
+            }
+
+            .fixed-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fixed-buttons a {
+                margin-bottom: 5px;
+            }
         }
+
+        .personal-stats-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .personal-stats-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .slideshow {
+            width: 25%;
+            aspect-ratio: 1 / 1;
+        }
+
+        @media (max-width: 768px) {
+            .slideshow {
+                width: 50%;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="header-image">
-        <img src="docs/assets/IMG_3471.jpg" alt="Aaron's Image">
+        <img src="docs/assets/IMG_3471.JPG" alt="Aaron's Image">
         <div class="header-image-text">Hello, I'm Aaron</div>
     </div>
 
@@ -234,80 +278,34 @@
         <p>I created this website as a personal project on March 12, 2024, to share my love for fishing and finance!</p>
     </div>
 
-    <div class="personal-stats">
-        <div class="personal-stat">
-            <div id="fish-caught">6</div>
-            <div>Fish Caught</div>
+    <div class="personal-stats-container">
+        <div class="personal-stats-title">Personal Stats</div>
+        <div class="personal-stats">
+            <div class="personal-stat">
+                <div>100+</div>
+                <div>Yelp Reviews</div>
+            </div>
+            <div class="personal-stat">
+                <div>50+</div>
+                <div>Fishing Trips</div>
+            </div>
+            <div class="personal-stat">
+                <div>30+</div>
+                <div>Financial Analyses</div>
+            </div>
         </div>
-        <div class="personal-stat">
-            <div id="years-in-finance">1</div>
-            <div>Years in Finance</div>
-        </div>
-        <div class="personal-stat">
-            <div id="yelp-reviews">31</div>
-            <div>Yelp Reviews Written</div>
-        </div>
-        <div class="personal-stat">
-            <div id="lines-of-code">1000</div>
-            <div>Lines of Code Written</div>
-        </div>
+    </div>
+
+    <div class="fixed-buttons">
+        <a href="fishing-log.html" class="green-button">Fishing Equipment</a>
+        <a href="new-catch.html" class="green-button">Log a New Catch</a>
     </div>
 
     <div class="footer-container">
-        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
-            <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
-        </a>
-        <a href="mailto:aaronmpolar@gmail.com">
-            <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
-        </a>
-        <a href="https://www.github.com/aaronpolar" target="_blank">
-            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
-        </a>
+        <img src="docs/assets/twitter.png" alt="Twitter">
+        <img src="docs/assets/facebook.png" alt="Facebook">
+        <img src="docs/assets/instagram.png" alt="Instagram">
+        <img src="docs/assets/yelp.png" alt="Yelp">
     </div>
-
-    <script>
-        // Function to animate the counting up effect
-        function animateValue(id, start, end, duration) {
-            let obj = document.getElementById(id);
-            let range = end - start;
-            let minTimer = 50;
-            let stepTime = Math.abs(Math.floor(duration / range));
-
-            stepTime = Math.max(stepTime, minTimer);
-
-            let startTime = new Date().getTime();
-            let endTime = startTime + duration;
-            let timer;
-
-            function run() {
-                let now = new Date().getTime();
-                let remaining = Math.max((endTime - now) / duration, 0);
-                let value = Math.round(end - (remaining * range));
-                obj.innerHTML = value;
-                if (value === end) {
-                    clearInterval(timer);
-                }
-            }
-
-            timer = setInterval(run, stepTime);
-            run();
-        }
-
-        window.addEventListener('load', function() {
-            animateValue("fish-caught", 0, 6, 2000);
-            animateValue("years-in-finance", 0, 1, 2000);
-            animateValue("yelp-reviews", 0, 31, 2000);
-            animateValue("lines-of-code", 0, 1000, 2000);
-        });
-
-        window.addEventListener('scroll', function() {
-            if (document.querySelector('.personal-stats').getBoundingClientRect().top < window.innerHeight) {
-                animateValue("fish-caught", 0, 6, 2000);
-                animateValue("years-in-finance", 0, 1, 2000);
-                animateValue("yelp-reviews", 0, 31, 2000);
-                animateValue("lines-of-code", 0, 1000, 2000);
-            }
-        });
-    </script>
 </body>
 </html>
