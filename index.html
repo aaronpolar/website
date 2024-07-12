@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaron Polar</title>
+    <title>HOME - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -23,7 +23,6 @@
             align-items: center;
             padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0px;
         }
 
         .header-left {
@@ -49,25 +48,24 @@
             width: calc(100% / 3); /* Divide the page into thirds */
         }
 
-.green-button {
-    background-color: #05472A; /* Updated color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-family: baskerville, serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 16px;
-    text-align: center; /* Center text in buttons */
-    text-decoration: none; /* Remove underline */
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
-}
+        .green-button {
+            background-color: #05472A; /* Updated color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+            text-align: center; /* Center text in buttons */
+            text-decoration: none; /* Remove underline */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
+        }
 
-
-
+        /* Style for the text */
         .header-text {
             margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
             flex: 1; /* Take up remaining space */
@@ -83,56 +81,12 @@
             text-align: center; /* Center text */
         }
 
-        .header-image {
-            position: relative;
-            height: 100vh; /* Set image height to full viewport height */
-            overflow: hidden; /* Hide overflow to prevent scrolling */
-        }
-
-        .header-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the entire container */
-        }
-
-        .personal-stats {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            font-family: Gill Sans, sans-serif;
-            text-transform: uppercase;
-            font-weight: bold;
-            box-sizing: border-box; /* Include padding in width */
-        }
-
-        .personal-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: Palatino, serif;
-        }
-
-        .personal-stat > div {
-            margin-top: 10px; /* Add margin between stats */
-            text-align: center; /* Center text */
-        }
-
         .footer-container {
             width: 100%;
             background-color: #333; /* Background color for better visibility */
             text-align: center;
             padding: 10px 0; /* Padding for better spacing */
             color: white;
-            position: relative; /* Keep footer in the normal flow */
             margin-top: auto; /* Push footer to the bottom */
         }
 
@@ -141,15 +95,101 @@
             margin: 0 5px; /* Add space between images */
         }
 
+        .fixed-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .fixed-buttons a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #D3D3D3; /* Lighter grey color */
+            border: none; /* Remove button border */
+            margin: 0 5px; /* Add margin around buttons */
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 0;
+            height: 40px;
+        }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .scroll-button-left {
+            left: 10%;
+        }
+
+        .scroll-button-right {
+            right: 10%;
+        }
+
+        .centered-content {
+            text-align: center;
+        }
+
+        .centered-text {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .header-image img {
+            width: 100%; /* Make image fit the width of the screen */
+            height: auto; /* Maintain aspect ratio */
+        }
+
         @media (max-width: 768px) {
             .header-right {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
             }
 
             .green-button {
-                margin: 10px 0; /* Add margin between buttons */
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .fixed-buttons {
+                margin-top: 10px; /* Add margin at the top on mobile */
+            }
+
+            .slides {
+                width: 50vw; /* Set width to 50% of the viewport width on mobile */
+                height: 50vw; /* Set a fixed height based on the width on mobile */
+            }
+
+            .centered-image {
+                width: 50vw; /* Set width to 50% of the viewport width on mobile */
+                height: 50vw; /* Set a fixed height based on the width on mobile */
             }
         }
     </style>
@@ -167,26 +207,7 @@
         </div>
     </div>
     <div class="header-image">
-        <img src="docs/assets/sanpabloreservoir.jpg" alt="San Pablo Reservoir">
-    </div>
-
-    <div class="personal-stats">
-        <div class="personal-stat">
-            <div id="fish-caught">6</div>
-            <div>Fish Caught</div>
-        </div>
-        <div class="personal-stat">
-            <div id="years-in-finance">1</div>
-            <div>Years in Finance</div>
-        </div>
-        <div class="personal-stat">
-            <div id="yelp-reviews">31</div>
-            <div>Yelp Reviews Written</div>
-        </div>
-        <div class="personal-stat">
-            <div id="lines-of-code">1000</div>
-            <div>Lines of Code Written</div>
-        </div>
+        <img src="IMG_6291.JPG" alt="Folsom Lake">
     </div>
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
@@ -199,62 +220,5 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-        // Function to animate the counting up effect
-        function animateValue(id, start, end, duration) {
-            let obj = document.getElementById(id);
-            let range = end - start;
-            let minTimer = 50;
-            let
-            stepTime = Math.abs(Math.floor(duration / range));
-            stepTime = Math.max(stepTime, minTimer);
-
-            let startTime = new Date().getTime();
-            let endTime = startTime + duration;
-            let timer;
-
-            function run() {
-                let now = new Date().getTime();
-                let remaining = Math.max((endTime - now) / duration, 0);
-                let value = Math.round(end - (remaining * range));
-                obj.innerHTML = value;
-                if (value === end) {
-                    clearInterval(timer);
-                }
-            }
-
-            timer = setInterval(run, stepTime);
-            run();
-        }
-
-        // Check if the element is in view
-        function isElementInView(element) {
-            const rect = element.getBoundingClientRect();
-            return rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
-        }
-
-        // Animate personal stats when they are in view
-        document.addEventListener('DOMContentLoaded', function () {
-            const personalStats = document.querySelectorAll('.personal-stat div:first-child');
-            personalStats.forEach(stat => {
-                if (isElementInView(stat)) {
-                    const value = parseInt(stat.textContent, 10);
-                    animateValue(stat.id, 0, value, 2000);
-                }
-            });
-
-            // Animate personal stats when they come into view on scroll
-            window.addEventListener('scroll', function () {
-                personalStats.forEach(stat => {
-                    if (isElementInView(stat) && !stat.classList.contains('animated')) {
-                        const value = parseInt(stat.textContent, 10);
-                        animateValue(stat.id, 0, value, 2000);
-                        stat.classList.add('animated');
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
