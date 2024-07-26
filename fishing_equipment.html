@@ -63,34 +63,29 @@
             font-size: 16px;
             text-align: center; /* Center text in buttons */
             text-decoration: none; /* Remove underline */
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
-        }
-
-        /* Style for the content container */
-        .content-container {
-            display: flex;
-            align-items: flex-start; /* Align items to the top */
-            padding: 20px; /* Padding around the container */
-        }
-
-        /* Style for the image */
-        .content-container img {
-            width: 40%; /* Set image width to 40% of the container */
-            margin-right: 20px; /* Add space to the right of the image */
-            margin-top: 20px; /* Add space to the top of the image */
         }
 
         /* Style for the text */
-        .text-container {
+        .header-text {
+            margin: 20px 0; /* Add margin at the top and bottom */
+            margin-left: calc(100% / 3); /* Space between text and buttons */
             flex: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            align-items: center; /* Align text to the center */
+            padding: 0 40px; /* Add padding to the sides */
         }
 
-        .text-container h2 {
-            margin-top: 0; /* Remove top margin for h2 */
+        .header-text p {
+            margin: 20px 0; /* Add margin around paragraphs */
+            font-size: 24px;
+            text-align: center; /* Center text */
         }
 
-        .text-container ul {
-            padding-left: 20px; /* Indent list items */
+        /* Style for the image */
+        .header-image img {
+            width: 150px; /* Set image width */
+            margin-bottom: 20px; /* Add space below image */
         }
 
         .footer-container {
@@ -133,22 +128,9 @@
             }
 
             .header-text p {
-                font-size: 20px; /* Decrease font size for mobile */
+                font-size: 20px; /* Decre
+            font-size: 20px; /* Decrease font size for mobile */
                 text-align: center; /* Center text horizontally on mobile */
-            }
-
-            .content-container {
-                flex-direction: column; /* Stack content vertically on mobile */
-                align-items: center; /* Center align items on mobile */
-            }
-
-            .content-container img {
-                width: 80%; /* Increase image width on mobile */
-                margin-right: 0; /* Remove right margin on mobile */
-            }
-
-            .text-container {
-                margin-top: 20px; /* Add space above text on mobile */
             }
         }
     </style>
@@ -166,21 +148,24 @@
         </div>
     </div>
 
+
     <!-- Fishing content -->
     <div class="content-container">
-        <img src="docs/assets/bankfishingsetup.jpg" alt="Bank Fishing Setup">
+        <img src="docs/assets/bankfishingsetup.jpg" alt="Bank Fishing Setup" style="width: 50px; height: 50px;">
         <div class="text-container">
             <h2>Fishing Equipment</h2>
-            <h3>Bank Fishing Setup</h3>
-            <ul>
-                <li>UglyStik GX2 6.6' Medium and Pfleuger President 3000</li>
+            <h3>Fishing Setups</h3>
+
+                <li>UglyStik GX2 6.5' Medium and Pfleuger President 3000</li>
+		<li>Shakespear Micro Series 5' Ultralight and Quantum XR20</li>
+		<li>Berkley Lightning Rod 6.5' Medium Light and Pfleuger President 2000</li>
+
+	    <h3>Gear</h3>
                 <li>Bass Pro Shop Tripod Stool</li>
                 <li>KastKing Karryall Tackle Backpack</li>
-            </ul>
-            <h3>Ultralight Fishing Setup</h3>
-            <ul>
-                <li>Shakespeare Micro Series 5' Ultralight and Pfleuger President 1000, 4lb Mono</li>
-            </ul>
+
+            <h3>Software</h3>
+		<li>Fishing Times App</li>
         </div>
     </div>
 
