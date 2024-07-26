@@ -83,13 +83,31 @@ body {
     text-align: center; /* Center text */
 }
 
+.header-image {
+    width: 100%;
+    height: calc(100vh - 120px); /* Adjust height for header and footer */
+    display: flex; /* Center the image */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    overflow: hidden; /* Hide overflow to ensure no scrolling */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.header-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
 .footer-container {
     width: 100%;
     background-color: #333; /* Background color for better visibility */
     text-align: center;
     padding: 10px 0; /* Padding for better spacing */
     color: white;
-    margin-top: auto; /* Push footer to the bottom */
+    position: fixed; /* Fix footer at the bottom */
+    bottom: 0; /* Align to the bottom */
     box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
@@ -156,23 +174,6 @@ body {
     font-size: 32px;
     font-weight: bold;
     margin: 10px 0;
-}
-
-.header-image {
-    width: 100%;
-    height: calc(100vh - 120px); /* Adjust height for header and footer */
-    display: flex; /* Center the image */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    overflow: hidden; /* Hide overflow to ensure no scrolling */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-.header-image img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
 }
 
 @media (max-width: 768px) {
