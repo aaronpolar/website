@@ -66,7 +66,6 @@
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
         }
 
-        /* Style for the text */
         .content-container {
             display: flex;
             justify-content: center; /* Center horizontally */
@@ -118,105 +117,73 @@
         }
 
         .slideshow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center horizontally */
-            max-width: 100%;
-            overflow: hidden; /* Hide overflowing content */
+        position: relative;
+        width: 25vw; /* Match the width to the size of mybestcatch.jpg */
+        height: 25vw; /* Match the height to maintain a 1:1 aspect ratio */
+        max-width: 500px; /* Optional: Set a maximum width to ensure it doesn't get too large */
+        max-height: 500px; /* Optional: Set a maximum height */
+        margin: auto;
+        overflow: hidden;
+        margin-bottom: 20px; /* Add margin below the slideshow */
         }
 
         .slides {
-            display: none; /* Hide slides by default */
-            justify-content: center; /* Center images horizontally */
-            align-items: center; /* Center images vertically */
-            width: 25vw; /* Set width to 25% of the viewport width on desktop */
-            height: 25vw; /* Set a fixed height based on the width on desktop */
-            margin-bottom: 20px; /* Add margin between slides and captions */
+        display: none; /* Hide slides by default */
+        width: 100%; /* Full width of the slideshow container */
+        height: 100%; /* Full height of the slideshow container */
         }
 
         .slides img {
-            width: 100%; /* Set images to full width */
-            height: 100%; /* Ensure height is 100% to maintain 1:1 aspect ratio */
-            object-fit: cover; /* Ensure image covers the entire container */
-        }
+        width: 100%; /* Ensure images fill the width of the container */
+        height: 100%; /* Ensure images fill the height of the container */
+        object-fit: cover; /* Maintain aspect ratio while covering the container */
+        display: block;
+    }
 
-        .caption {
-            text-align: center;
-            font-size: 18px;
-            padding: 10px 0;
-            height: 40px;
-        }
-
-        .scroll-button {
+        .prev, .next {
+            cursor: pointer;
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.5);
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
             color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
-
-        .scroll-button-left {
-            left: 10%;
-        }
-
-        .scroll-button-right {
-            right: 10%;
-        }
-
-        .centered-content {
-            text-align: center;
-        }
-
-        .centered-text {
-            font-size: 32px;
             font-weight: bold;
-            margin: 10px 0;
+            font-size: 18px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.8);
         }
 
-        .centered-image {
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,1);
+        }
+
+        .my-best-catch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .my-best-catch img {
             width: 25vw; /* Set width to 25% of the viewport width on desktop */
-            height: 25vw; /* Set a fixed height based on the width on desktop */
-            object-fit: cover; /* Ensure image covers the entire container */
+            height: auto; /* Adjust height automatically */
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
-            }
+            .slideshow-container {
+            width: 50vw; /* Adjust width for mobile */
+            height: 50vw; /* Adjust height to match width for 1:1 aspect ratio */
+        }
 
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
-
-            .fixed-buttons {
-                margin-top: 10px; /* Add margin at the top on mobile */
-            }
-
-            .slides {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
-            }
-
-            .centered-image {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
+            .my-best-catch img {
+                width: 50vw; /* Adjust width for mobile */
+                height: auto; /* Adjust height automatically */
             }
         }
     </style>
@@ -237,41 +204,63 @@
     <div class="content">
         <div class="slideshow-container">
             <div class="slides">
-                <img src="docs/assets/fishingintherain.jpg" alt="Fishing in the Rain">
+                <img src="fishingintherain.jpg" alt="Fishing in the Rain">
             </div>
             <div class="slides">
-                <img src="docs/assets/pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
+                <img src="pbrainbowtrout02192024.jpg" alt="Rainbow Trout">
             </div>
             <div class="slides">
-                <img src="docs/assets/pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
+                <img src="pbsmallmouthbass05262024.jpg" alt="Smallmouth Bass">
             </div>
             <div class="slides">
-                <img src="docs/assets/jakebass.jpg" alt="Jake Bass">
+                <img src="jakebass.jpg" alt="Jake Bass">
             </div>
             <div class="slides">
-                <img src="docs/assets/basspillow.jpg" alt="Bass Pillow">
+                <img src="basspillow.jpg" alt="Bass Pillow">
             </div>
             <div class="slides">
-                <img src="docs/assets/threerainbowtrout.jpg" alt="Three Rainbow Trout">
+                <img src="threerainbowtrout.jpg" alt="Three Rainbow Trout">
             </div>
-            <button class="scroll-button scroll-button-left" onclick="plusSlides(-1)">❮</button>
-            <button class="scroll-button scroll-button-right" onclick="plusSlides(1)">❯</button>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
         </div>
     </div>
-
     <div class="content-container">
         <div class="text-container">
-            <h2>Personal Bests</h2>
+            <h1>Personal Bests</h1>
             <h3>Freshwater Fish</h3>
-            <h4>Rainbow Trout (stocked): 2.2lbs, ~12 inches</h4>
+            <h4>Rainbow Trout (stocked): 2.2 lbs, 12 inches</h4>
+            <h4>Smallmouth Bass: 5 lbs, 10 inches</h4>
+        </div>
+
+        
+        <div class="my-best-catch">
+            <h1>My Best Catch</h1>
+            <img src="mybestcatch.jpg" alt="My Best Catch">
         </div>
     </div>
 
-    <div class="centered-content">
-        <h1 class="centered-text">My Best Catch</h1>
-        <img src="docs/assets/mybestcatch.jpg" class="centered-image">
-    </div>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+
+    <!-- Footer -->
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
