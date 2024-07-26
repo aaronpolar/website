@@ -63,23 +63,25 @@
             font-size: 16px;
             text-align: center; /* Center text in buttons */
             text-decoration: none; /* Remove underline */
-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
         }
 
         /* Style for the text */
-        .header-text {
-            margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
-            flex: 1; /* Take up remaining space */
+        .content-container {
             display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
             flex-direction: column; /* Stack text vertically */
-            align-items: center; /* Align text to the center */
-            padding: 0 40px; /* Add padding to the sides */
+            margin: 20px 0; /* Add margin to the top and bottom */
         }
 
-        .header-text p {
-            margin: 20px 0; /* Add margin around paragraphs */
-            font-size: 24px;
-            text-align: center; /* Center text */
+        .text-container {
+            text-align: center;
+        }
+
+        .text-container h2, .text-container h3, .text-container h4 {
+            margin: 10px 0; /* Add margin around headings */
+            font-weight: normal; /* Adjust as necessary */
         }
 
         .footer-container {
@@ -257,6 +259,14 @@ box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
         </div>
     </div>
 
+    <div class="content-container">
+        <div class="text-container">
+            <h2>Personal Bests</h2>
+            <h3>Freshwater Fish</h3>
+            <h4>Rainbow Trout (stocked): 2.2lbs, ~12 inches</h4>
+        </div>
+    </div>
+
     <div class="centered-content">
         <h1 class="centered-text">My Best Catch</h1>
         <img src="docs/assets/mybestcatch.jpg" class="centered-image">
@@ -273,25 +283,5 @@ box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slides");
-            if (n > slides.length) {slideIndex = 1} 
-            if (n < 1) {slideIndex = slides.length}
-           
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none"; 
-            }
-            slides[slideIndex-1].style.display = "flex"; 
-        }
-    </script>
 </body>
 </html>
