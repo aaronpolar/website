@@ -5,193 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME - Aaron Polar</title>
     <style>
-        body {
-            font-family: baskerville, serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FAF9F6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+body {
+    font-family: baskerville, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FAF9F6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+}
 
-        .header {
-            background-color: white;
-            color: black;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.header {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
 
-        .header-left {
-            margin-right: auto;
-            width: calc(100% / 3); /* Divide the page into thirds */
-        }
+.header-left {
+    margin-right: auto;
+    width: calc(100% / 3); /* Divide the page into thirds */
+}
 
-        .header-left a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            font-size: 24px;
-            display: block; /* Display as block to stack text */
-            text-transform: uppercase; /* Convert text to all caps */
-            text-align: center; /* Align text to the center */
-        }
+.header-left a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    display: block; /* Display as block to stack text */
+    text-transform: uppercase; /* Convert text to all caps */
+    text-align: center; /* Align text to the center */
+}
 
-        .header-right {
-            margin-left: auto;
-            display: flex; /* Ensure buttons are in a row */
-            justify-content: flex-end; /* Align buttons to the right */
-            align-items: center; /* Center vertically */
-            width: calc(100% / 3); /* Divide the page into thirds */
-        }
+.header-right {
+    margin-left: auto;
+    display: flex; /* Ensure buttons are in a row */
+    justify-content: flex-end; /* Align buttons to the right */
+    align-items: center; /* Center vertically */
+    width: calc(100% / 3); /* Divide the page into thirds */
+}
 
-        .green-button {
-            background-color: #05472A; /* Updated color */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-family: baskerville, serif;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 10px;
-            font-size: 16px;
-            text-align: center; /* Center text in buttons */
-            text-decoration: none; /* Remove underline */
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
-        }
+.green-button {
+    background-color: #05472A; /* Updated color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: baskerville, serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    text-align: center; /* Center text in buttons */
+    text-decoration: none; /* Remove underline */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
+}
 
-        /* Style for the text */
-        .header-text {
-            margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
-            flex: 1; /* Take up remaining space */
-            display: flex;
-            flex-direction: column; /* Stack text vertically */
-            align-items: center; /* Align text to the center */
-            padding: 0 40px; /* Add padding to the sides */
-        }
+.header-text {
+    margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    align-items: center; /* Align text to the center */
+    padding: 0 40px; /* Add padding to the sides */
+}
 
-        .header-text p {
-            margin: 20px 0; /* Add margin around paragraphs */
-            font-size: 24px;
-            text-align: center; /* Center text */
-        }
+.header-text p {
+    margin: 20px 0; /* Add margin around paragraphs */
+    font-size: 24px;
+    text-align: center; /* Center text */
+}
 
-        .footer-container {
-            width: 100%;
-            background-color: #333; /* Background color for better visibility */
-            text-align: center;
-            padding: 10px 0; /* Padding for better spacing */
-            color: white;
-            margin-top: auto; /* Push footer to the bottom */
-        }
+.footer-container {
+    width: 100%;
+    background-color: #333; /* Background color for better visibility */
+    text-align: center;
+    padding: 10px 0; /* Padding for better spacing */
+    color: white;
+    margin-top: auto; /* Push footer to the bottom */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
 
-        .footer-container img {
-            width: 25px; /* Set image width to 25px for a quarter size */
-            margin: 0 5px; /* Add space between images */
-        }
+.footer-container img {
+    width: 25px; /* Set image width to 25px for a quarter size */
+    margin: 0 5px; /* Add space between images */
+}
 
-        .fixed-buttons {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
+.fixed-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
 
-        .fixed-buttons a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #D3D3D3; /* Lighter grey color */
-            border: none; /* Remove button border */
-            margin: 0 5px; /* Add margin around buttons */
-        }
+.fixed-buttons a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #D3D3D3; /* Lighter grey color */
+    border: none; /* Remove button border */
+    margin: 0 5px; /* Add margin around buttons */
+}
 
-        .caption {
-            text-align: center;
-            font-size: 18px;
-            padding: 10px 0;
-            height: 40px;
-        }
+.caption {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 0;
+    height: 40px;
+}
 
-        .scroll-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
 
-        .scroll-button-left {
-            left: 10%;
-        }
+.scroll-button-left {
+    left: 10%;
+}
 
-        .scroll-button-right {
-            right: 10%;
-        }
+.scroll-button-right {
+    right: 10%;
+}
 
-        .centered-content {
-            text-align: center;
-        }
+.centered-content {
+    text-align: center;
+}
 
-        .centered-text {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
+.centered-text {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 0;
+}
 
-        .header-image img {
-            width: 100%; /* Make image fit the width of the screen */
-            height: auto; /* Maintain aspect ratio */
-        }
+.header-image {
+    width: 100%;
+    height: calc(100vh - 120px); /* Adjust height for header and footer */
+    display: flex; /* Center the image */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    overflow: hidden; /* Hide overflow to ensure no scrolling */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
 
-        @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
-            }
+.header-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
 
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
+@media (max-width: 768px) {
+    .header-right {
+        flex-direction: column; /* Stack buttons vertically on mobile */
+        align-items: flex-end; /* Align buttons to the right on mobile */
+        margin-top: 10px; /* Add margin between buttons and text */
+    }
 
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
+    .green-button {
+        margin-bottom: 5px; /* Add space between buttons on mobile */
+        width: 100%; /* Make buttons full width on mobile */
+        margin-left: 0; /* Reset left margin for buttons */
+    }
 
-            .fixed-buttons {
-                margin-top: 10px; /* Add margin at the top on mobile */
-            }
+    .header-left {
+        margin-left: 10px; /* Add gap between left edge and text */
+        margin-right: auto; /* Ensure text and buttons are aligned to the right */
+    }
 
-            .slides {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
-            }
+    .fixed-buttons {
+        margin-top: 10px; /* Add margin at the top on mobile */
+    }
 
-            .centered-image {
-                width: 50vw; /* Set width to 50% of the viewport width on mobile */
-                height: 50vw; /* Set a fixed height based on the width on mobile */
-            }
-        }
+    .slides {
+        width: 50vw; /* Set width to 50% of the viewport width on mobile */
+        height: 50vw; /* Set a fixed height based on the width on mobile */
+    }
+
+    .centered-image {
+        width: 50vw; /* Set width to 50% of the viewport width on mobile */
+        height: 50vw; /* Set a fixed height based on the width on mobile */
+    }
+}
+
     </style>
 </head>
 <body>
