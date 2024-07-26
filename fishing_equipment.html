@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - Aaron Polar</title>
+    <title>FISHING EQUIPMENT - Aaron Polar</title>
     <style>
         body {
             font-family: baskerville, serif;
@@ -84,8 +84,43 @@
 
         /* Style for the image */
         .header-image img {
-            width: 150px; /* Set image width */
+            width: 50vw; /* Set image width */
             margin-bottom: 20px; /* Add space below image */
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .container-image {
+            width: 50%; /* Set container width to 50% */
+            display: flex;
+            justify-content: center; /* Center the image horizontally */
+        }
+
+        .container-image img {
+            width: 75%; /* Set image width to 75% of the container */
+            height: auto;
+        }
+
+        .container-text {
+            width: 50%; /* Set container width to 50% */
+            padding-left: 20px;
+        }
+
+        .container-text h2, .container-text h3 {
+            margin: 0 0 10px;
+        }
+
+        .container-text ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .container-text li {
+            margin-bottom: 5px;
         }
 
         .footer-container {
@@ -128,9 +163,23 @@
             }
 
             .header-text p {
-                font-size: 20px; /* Decre
-            font-size: 20px; /* Decrease font size for mobile */
+                font-size: 20px; /* Decrease font size for mobile */
                 text-align: center; /* Center text horizontally on mobile */
+            }
+
+            .container {
+                flex-direction: column; /* Stack image and text vertically on mobile */
+                align-items: center; /* Center items horizontally */
+            }
+
+            .container-image, .container-text {
+                width: 100%; /* Set containers to full width on mobile */
+                padding: 0; /* Remove padding */
+            }
+
+            .container-image img {
+                width: 75%; /* Keep image at 75% of its container */
+                height: auto;
             }
         }
     </style>
@@ -148,27 +197,32 @@
         </div>
     </div>
 
-
     <!-- Fishing content -->
-    <div class="content-container">
-        <img src="docs/assets/bankfishingsetup.jpg" alt="Bank Fishing Setup" style="width: 50px; height: 50px;">
-        <div class="text-container">
+    <div class="container">
+        <div class="container-image">
+            <img src="docs/assets/bankfishingsetup.jpg" alt="Bank Fishing Setup">
+        </div>
+        <div class="container-text">
             <h2>Fishing Equipment</h2>
             <h3>Fishing Setups</h3>
-
+            <ul>
                 <li>UglyStik GX2 6.5' Medium and Pfleuger President 3000</li>
-		<li>Shakespear Micro Series 5' Ultralight and Quantum XR20</li>
-		<li>Berkley Lightning Rod 6.5' Medium Light and Pfleuger President 2000</li>
-
-	    <h3>Gear</h3>
+                <li>Shakespear Micro Series 5' Ultralight and Quantum XR20</li>
+                <li>Berkley Lightning Rod 6.5' Medium Light and Pfleuger President 2000</li>
+            </ul>
+            <h3>Gear</h3>
+            <ul>
                 <li>Bass Pro Shop Tripod Stool</li>
                 <li>KastKing Karryall Tackle Backpack</li>
-
+            </ul>
             <h3>Software</h3>
-		<li>Fishing Times App</li>
+            <ul>
+                <li>Fishing Times App</li>
+            </ul>
         </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
