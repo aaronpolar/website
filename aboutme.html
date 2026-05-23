@@ -115,9 +115,30 @@
             font-size: 16px;
             padding: 10px 20px;
             border-radius: 5px;
-            background-color: #D3D3D3; /* Lighter grey color */
-            border: none; /* Remove button border */
-            margin: 0 5px; /* Add margin around buttons */
+            background-color: #D3D3D3;
+            border: none;
+            margin: 0 5px;
+        }
+
+        .back-button-bar {
+            padding: 12px 40px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #05472A;
+            font-family: baskerville, serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -155,6 +176,10 @@
             <a href="fishing.html" class="green-button">Fishing</a>
             <a href="finance.html" class="green-button">Finance</a>
         </div>
+    </div>
+
+    <div class="back-button-bar">
+        <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
     </div>
 
 <div class="header-text">
