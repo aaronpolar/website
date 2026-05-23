@@ -61,8 +61,30 @@
             cursor: pointer;
             margin-left: 10px;
             font-size: 16px;
-            text-align: center; /* Center text in buttons */
-            text-decoration: none; /* Remove underline */
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-button-bar {
+            padding: 12px 40px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #05472A;
+            font-family: baskerville, serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
         }
 
         /* Style for the text */
@@ -125,10 +147,11 @@
 
         .footer-container {
             width: 100%;
-            background-color: #333; /* Background color for better visibility */
+            background-color: #333;
             text-align: center;
-            padding: 10px 0; /* Padding for better spacing */
+            padding: 10px 0;
             color: white;
+            margin-top: auto;
         }
 
         .footer-container img {
@@ -195,6 +218,10 @@
             <a href="fishing.html" class="green-button">Fishing</a>
             <a href="finance.html" class="green-button">Finance</a>
         </div>
+    </div>
+
+    <div class="back-button-bar">
+        <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
     </div>
 
     <!-- Fishing content -->
