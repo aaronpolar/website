@@ -197,14 +197,33 @@
         }
 
         @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column;
+                align-items: flex-end;
+                margin-top: 10px;
+            }
+
+            .green-button {
+                margin-bottom: 5px;
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .header-left {
+                margin-left: 10px;
+                margin-right: auto;
+            }
+
             .slideshow-container {
-            width: 50vw; /* Adjust width for mobile */
-            height: 50vw; /* Adjust height to match width for 1:1 aspect ratio */
-        }
+                width: 90vw;
+                height: 90vw;
+                max-width: 90vw;
+                max-height: 90vw;
+            }
 
             .my-best-catch img {
-                width: 50vw; /* Adjust width for mobile */
-                height: auto; /* Adjust height automatically */
+                width: 90vw;
+                height: auto;
             }
         }
     </style>
