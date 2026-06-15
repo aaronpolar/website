@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTS - Aaron Polar</title>
+    <style>
+        body {
+            font-family: baskerville, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAF9F6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: white;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0px;
+        }
+
+        .header-left {
+            margin-right: auto;
+            width: calc(100% / 3); /* Divide the page into thirds */
+        }
+
+        .header-left a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 24px;
+            display: block; /* Display as block to stack text */
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Align text to the center */
+        }
+
+        .header-right {
+            margin-left: auto;
+            display: flex; /* Ensure buttons are in a row */
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center; /* Center vertically */
+            width: calc(100% / 3); /* Divide the page into thirds */
+        }
+
+        .green-button {
+            background-color: #05472A; /* Updated color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+            text-align: center; /* Center text in buttons */
+            text-decoration: none; /* Remove underline */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
+        }
+
+        .back-button-bar {
+            padding: 12px 40px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #05472A;
+            font-family: baskerville, serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- Apple-style projects layout ---- */
+        .projects-hero {
+            text-align: center;
+            padding: 70px 24px 30px;
+        }
+
+        .projects-hero h1 {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 0 0 16px;
+            letter-spacing: -1px;
+        }
+
+        .projects-hero p {
+            font-size: 24px;
+            line-height: 1.5;
+            color: #444;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .projects-hero .eyebrow {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #05472A;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .project {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .project:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .project-media {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 22px;
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .project-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            color: #05472A;
+            background-color: #e6efe9;
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 18px;
+        }
+
+        .project-body h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            margin: 0 0 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .project-body .tagline {
+            font-size: 22px;
+            color: #05472A;
+            font-style: italic;
+            margin: 0 0 18px;
+        }
+
+        .project-body p {
+            font-size: 19px;
+            line-height: 1.6;
+            color: #333;
+            margin: 0 0 18px;
+        }
+
+        .project-stack {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-stack li {
+            font-size: 14px;
+            color: #444;
+            background-color: #ffffff;
+            border: 1px solid #dcdcd5;
+            border-radius: 8px;
+            padding: 6px 12px;
+        }
+
+        .projects-outro {
+            text-align: center;
+            padding: 30px 24px 80px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        .footer-container {
+            width: 100%;
+            background-color: #333; /* Background color for better visibility */
+            text-align: center;
+            padding: 10px 0; /* Padding for better spacing */
+            color: white;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer-container img {
+            width: 25px; /* Set image width to 25px for a quarter size */
+            margin: 0 5px; /* Add space between images */
+        }
+
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column; /* Stack buttons vertically on mobile */
+                align-items: flex-end; /* Align buttons to the right on mobile */
+                margin-top: 10px; /* Add margin between buttons and text */
+            }
+
+            .green-button {
+                margin-bottom: 5px; /* Add space between buttons on mobile */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-left: 0; /* Reset left margin for buttons */
+            }
+
+            .header-left {
+                margin-left: 10px; /* Add gap between left edge and text */
+                margin-right: auto; /* Ensure text and buttons are aligned to the right */
+            }
+
+            .projects-hero h1 {
+                font-size: 44px;
+            }
+
+            .projects-hero p {
+                font-size: 20px;
+            }
+
+            .project,
+            .project:nth-child(even) {
+                flex-direction: column;
+                gap: 28px;
+                padding: 40px 24px;
+            }
+
+            .project-body h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html">AARON</a>
+            <a href="index.html">POLAR</a>
+        </div>
+        <div class="header-right">
+            <a href="aboutme.html" class="green-button">About Me</a>
+            <a href="fishing.html" class="green-button">Fishing</a>
+            <a href="projects.html" class="green-button">Projects</a>
+        </div>
+    </div>
+
+    <div class="back-button-bar">
+        <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
+    </div>
+
+    <section class="projects-hero">
+        <div class="eyebrow">Cybersecurity</div>
+        <h1>Projects</h1>
+        <p>Three security projects I'm building at the intersection of my work &mdash; IT consulting, helping everyday people use technology with confidence, and a background in economics and finance.</p>
+    </section>
+
+    <!-- Project 1 -->
+    <section class="project">
+        <div class="project-media">
+            <img src="docs/assets/project_seniorshield.svg" alt="SeniorShield phishing awareness toolkit">
+        </div>
+        <div class="project-body">
+            <span class="project-tag">Security Awareness</span>
+            <h2>SeniorShield</h2>
+            <p class="tagline">A phishing &amp; scam defense kit for the people I already help.</p>
+            <p>Most of my consulting clients are retirees learning to navigate technology &mdash; and they're the exact group scammers target most. SeniorShield turns the lessons I teach one-on-one into a repeatable toolkit: a curated library of real phishing examples, a simple "is this a scam?" decision checklist, and a safe practice inbox where clients can spot red flags without any risk.</p>
+            <p>It's achievable because it builds on conversations I'm already having, and it's uniquely mine because few security projects are designed around digital confidence for older adults.</p>
+            <ul class="project-stack">
+                <li>Phishing analysis</li>
+                <li>Static site</li>
+                <li>Plain-language UX</li>
+                <li>Social engineering</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Project 2 -->
+    <section class="project">
+        <div class="project-media">
+            <img src="docs/assets/project_ledgerlock.svg" alt="LedgerLock personal finance security auditor">
+        </div>
+        <div class="project-body">
+            <span class="project-tag">Data &amp; Finance Security</span>
+            <h2>LedgerLock</h2>
+            <p class="tagline">Where my economics background meets data protection.</p>
+            <p>I'm drawn to the intersection of technology, data, and finance, and LedgerLock lives right there. It's a personal-finance security auditor that reviews how sensitive financial data is stored and shared &mdash; flagging unencrypted exports, risky account linking, weak password reuse across banking logins, and spreadsheets full of account numbers sitting in plain text.</p>
+            <p>Think of it as a security checkup for your money trail. It plays to my analytical, finance-minded strengths while keeping the build scoped to a practical, single-user audit tool.</p>
+            <ul class="project-stack">
+                <li>Data classification</li>
+                <li>Encryption review</li>
+                <li>Python</li>
+                <li>Risk scoring</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Project 3 -->
+    <section class="project">
+        <div class="project-media">
+            <img src="docs/assets/project_homeguard.svg" alt="HomeBase Guard network hardening assessment">
+        </div>
+        <div class="project-body">
+            <span class="project-tag">Network Hardening</span>
+            <h2>HomeBase Guard</h2>
+            <p class="tagline">A repeatable security checkup for the homes and small offices I service.</p>
+            <p>My consulting work already takes me into clients' homes and small businesses, so HomeBase Guard formalizes a security walkthrough I can run on every visit: auditing router defaults and firmware, segmenting smart-home devices onto a guest network, enabling automatic updates, and leaving behind a one-page, jargon-free hardening report the client can actually understand.</p>
+            <p>It's an easy win to target because the access and trust are already part of my business &mdash; this just turns each visit into a measurable security improvement.</p>
+            <ul class="project-stack">
+                <li>Network scanning</li>
+                <li>Router hardening</li>
+                <li>IoT segmentation</li>
+                <li>Client reporting</li>
+            </ul>
+        </div>
+    </section>
+
+    <p class="projects-outro">Have an idea or want to collaborate? Reach out using the links below.</p>
+
+    <div class="footer-container">
+        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
+            <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
+        </a>
+        <a href="mailto:aaronmpolar@gmail.com">
+            <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
+        </a>
+        <a href="https://www.github.com/aaronpolar" target="_blank">
+            <img src="docs/assets/githublogo.png" alt="GitHub Logo">
+        </a>
+    </div>
+</body>
+</html>
