@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="SeniorShield phishing awareness toolkit">
+  <defs>
+    <linearGradient id="ssBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b5c39"/>
+      <stop offset="1" stop-color="#05311f"/>
+    </linearGradient>
+    <linearGradient id="ssShield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf9f6"/>
+      <stop offset="1" stop-color="#d7e7dc"/>
+    </linearGradient>
+    <filter id="ssSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#ssBg)"/>
+  <circle cx="950" cy="180" r="320" fill="#ffffff" opacity="0.05"/>
+  <circle cx="220" cy="660" r="260" fill="#ffffff" opacity="0.05"/>
+  <g filter="url(#ssSoft)">
+    <path d="M600 180 L770 250 V430 C770 540 690 612 600 650 C510 612 430 540 430 430 V250 Z" fill="url(#ssShield)"/>
+  </g>
+  <path d="M520 430 l55 55 l110 -130" fill="none" stroke="#0b5c39" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#9fd3b0" stroke-width="7" stroke-linecap="round" opacity="0.85">
+    <path d="M300 300 q-40 30 0 60" fill="none"/>
+    <path d="M280 280 q-70 50 0 100" fill="none"/>
+    <path d="M900 300 q40 30 0 60" fill="none"/>
+    <path d="M920 280 q70 50 0 100" fill="none"/>
+  </g>
+</svg>
