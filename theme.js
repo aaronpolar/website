@@ -26,8 +26,8 @@
     function updateButton(btn, theme) {
         if (!btn) return;
         var dark = theme === 'dark';
-        btn.textContent = dark ? '☀' : '☾'; // sun in dark mode, moon in light
-        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        // The knob icon is rendered via CSS; here we only reflect state.
+        btn.setAttribute('aria-checked', dark ? 'true' : 'false');
         btn.setAttribute('title', dark ? 'Switch to light mode' : 'Switch to dark mode');
     }
 
