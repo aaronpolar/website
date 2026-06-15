@@ -258,6 +258,175 @@
                 font-size: 32px;
             }
         }
+        /* --- Certification roadmap --- */
+        .certs-hero {
+            text-align: center;
+            padding: 50px 24px 10px;
+        }
+
+        .certs-hero h1 {
+            font-size: 52px;
+            margin: 0 0 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .certs-hero p {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #555;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .overall {
+            max-width: 680px;
+            margin: 30px auto 10px;
+            padding: 0 24px;
+        }
+
+        .overall-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #05472A;
+            margin-bottom: 8px;
+        }
+
+        .overall-track {
+            height: 10px;
+            background-color: #e3e3dd;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .overall-track > span {
+            display: block;
+            height: 100%;
+            width: 31%;
+            background: linear-gradient(90deg, #0b5c39, #05472A);
+            border-radius: 999px;
+        }
+
+        .roadmap {
+            max-width: 760px;
+            margin: 30px auto 50px;
+            padding: 0 24px;
+        }
+
+        .cert-step {
+            position: relative;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 20px;
+            padding-bottom: 28px;
+        }
+
+        .cert-marker {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cert-node {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 3px solid #05472A;
+            z-index: 2;
+            margin-top: 4px;
+        }
+
+        .cert-node.done {
+            background-color: #05472A;
+        }
+
+        .cert-node.active {
+            background-color: #05472A;
+            box-shadow: 0 0 0 5px rgba(5, 71, 42, 0.18);
+        }
+
+        .cert-rail {
+            position: absolute;
+            top: 8px;
+            bottom: -28px;
+            width: 3px;
+            background-color: #cfd6cf;
+        }
+
+        .cert-step:last-child .cert-rail {
+            display: none;
+        }
+
+        .cert-card {
+            background-color: #fff;
+            border: 1px solid #e6e6df;
+            border-radius: 16px;
+            padding: 22px 24px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+        }
+
+        .cert-card h2 {
+            font-size: 24px;
+            margin: 0 0 4px;
+        }
+
+        .cert-meta {
+            font-size: 15px;
+            color: #666;
+            margin: 0 0 14px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
+        .status-progress { background-color: #e3f1e9; color: #05472A; }
+        .status-next     { background-color: #eef0ec; color: #555; }
+        .status-planned  { background-color: #f1efe9; color: #8a7f6a; }
+
+        .progress {
+            height: 12px;
+            background-color: #ecece6;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #0b5c39, #05472A);
+            border-radius: 999px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #555;
+            margin-top: 8px;
+        }
+
+        .section-divider {
+            max-width: 760px;
+            margin: 0 auto;
+            border: none;
+            border-top: 1px solid #e2e1d8;
+        }
+
+        @media (max-width: 768px) {
+            .certs-hero h1 {
+                font-size: 38px;
+            }
+        }
     </style>
     <link rel="stylesheet" href="theme.css">
     <script src="theme.js"></script>
@@ -272,7 +441,6 @@
             <a href="aboutme.html" class="green-button">About Me</a>
             <a href="fishing.html" class="green-button">Fishing</a>
             <a href="projects.html" class="green-button">Projects</a>
-            <a href="certifications.html" class="green-button">Certs</a>
             <button id="themeToggle" class="theme-switch" type="button" role="switch" aria-label="Toggle dark mode"></button>
         </div>
     </div>
@@ -280,6 +448,83 @@
     <div class="back-button-bar">
         <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
     </div>
+
+    <section class="certs-hero">
+        <h1>Certification Roadmap</h1>
+        <p>My path into GRC and cybersecurity, one credential at a time. Here's where I am today and what's next.</p>
+    </section>
+
+    <div class="overall">
+        <div class="overall-top">
+            <span>Overall progress</span>
+            <span>Step 1 of 4</span>
+        </div>
+        <div class="overall-track"><span></span></div>
+    </div>
+
+    <section class="roadmap">
+        <!-- Step 1: A+ in progress -->
+        <div class="cert-step">
+            <div class="cert-marker">
+                <div class="cert-rail"></div>
+                <div class="cert-node active"></div>
+            </div>
+            <div class="cert-card">
+                <span class="status-badge status-progress">In progress</span>
+                <h2>CompTIA A+</h2>
+                <p class="cert-meta">Core 1 (220-1101) &amp; Core 2 (220-1102) &middot; the foundation</p>
+                <div class="progress"><div class="progress-bar" style="width: 25%;"></div></div>
+                <p class="progress-text">Currently studying Core 1. On track to certify within ~45 days, with Core 2 to follow. (25%)</p>
+            </div>
+        </div>
+
+        <!-- Step 2: Security+ -->
+        <div class="cert-step">
+            <div class="cert-marker">
+                <div class="cert-rail"></div>
+                <div class="cert-node"></div>
+            </div>
+            <div class="cert-card">
+                <span class="status-badge status-next">Up next</span>
+                <h2>CompTIA Security+</h2>
+                <p class="cert-meta">Core security skills &middot; the GRC starting line</p>
+                <div class="progress"><div class="progress-bar" style="width: 0%;"></div></div>
+                <p class="progress-text">Begins after A+. The baseline credential most security and GRC roles look for. (0%)</p>
+            </div>
+        </div>
+
+        <!-- Step 3: ISC2 CC -->
+        <div class="cert-step">
+            <div class="cert-marker">
+                <div class="cert-rail"></div>
+                <div class="cert-node"></div>
+            </div>
+            <div class="cert-card">
+                <span class="status-badge status-planned">Planned</span>
+                <h2>ISC2 Certified in Cybersecurity (CC)</h2>
+                <p class="cert-meta">Security principles &amp; governance fundamentals</p>
+                <div class="progress"><div class="progress-bar" style="width: 0%;"></div></div>
+                <p class="progress-text">Builds vendor-neutral foundations that map directly to GRC work. (0%)</p>
+            </div>
+        </div>
+
+        <!-- Step 4: CySA+ -->
+        <div class="cert-step">
+            <div class="cert-marker">
+                <div class="cert-rail"></div>
+                <div class="cert-node"></div>
+            </div>
+            <div class="cert-card">
+                <span class="status-badge status-planned">Planned</span>
+                <h2>CompTIA CySA+</h2>
+                <p class="cert-meta">Threat detection &amp; security analytics &middot; the goal</p>
+                <div class="progress"><div class="progress-bar" style="width: 0%;"></div></div>
+                <p class="progress-text">The capstone of this roadmap, validating hands-on analyst and GRC capability. (0%)</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
 
     <section class="projects-hero">
         <div class="eyebrow">Cybersecurity</div>

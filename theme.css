@@ -185,6 +185,10 @@ html[data-theme="dark"] .cert-rail {
     background-color: #333333;
 }
 
+html[data-theme="dark"] .section-divider {
+    border-top-color: #333333;
+}
+
 html[data-theme="dark"] .filter-bar select {
     background-color: #1e1e1e;
     color: #e8e8e8;
