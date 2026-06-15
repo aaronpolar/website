@@ -1,0 +1,185 @@
+/* ============================================================
+   Shared cross-page styles: navigation behavior, theme toggle
+   button, and the full dark-mode palette.
+   Loaded after each page's inline <style> so it can override.
+   ============================================================ */
+
+/* --- Navigation: allow the larger nav to wrap cleanly --- */
+.header {
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+.header-right {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    align-items: center;
+}
+
+.header-right .green-button {
+    margin-left: 0;
+}
+
+/* --- Theme toggle button (works in both modes) --- */
+.theme-toggle {
+    background-color: transparent;
+    border: 1px solid #05472A;
+    color: #05472A;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: baskerville, serif;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(5, 71, 42, 0.08);
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+html[data-theme="dark"] body {
+    background-color: #121212;
+    color: #e8e8e8;
+}
+
+html[data-theme="dark"] .header {
+    background-color: #1c1c1c;
+    color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="dark"] .header-left a {
+    color: #f0f0f0;
+}
+
+html[data-theme="dark"] .green-button {
+    background-color: #0d7a48;
+    color: #ffffff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="dark"] .theme-toggle {
+    border-color: #5fd39a;
+    color: #5fd39a;
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+    background-color: rgba(95, 211, 154, 0.12);
+}
+
+html[data-theme="dark"] .fixed-buttons a {
+    background-color: #2a2a2a;
+    color: #e8e8e8;
+}
+
+html[data-theme="dark"] .footer-container {
+    background-color: #000000;
+}
+
+html[data-theme="dark"] .back-button {
+    color: #5fd39a;
+}
+
+/* Body text across pages */
+html[data-theme="dark"] .header-text p,
+html[data-theme="dark"] .text-container,
+html[data-theme="dark"] .text-container h2,
+html[data-theme="dark"] .text-container h3,
+html[data-theme="dark"] .text-container h4,
+html[data-theme="dark"] .container-text,
+html[data-theme="dark"] .container-text h2,
+html[data-theme="dark"] .container-text h3 {
+    color: #e8e8e8;
+}
+
+/* Projects page */
+html[data-theme="dark"] .projects-hero p,
+html[data-theme="dark"] .project-body p,
+html[data-theme="dark"] .projects-outro {
+    color: #cfcfcf;
+}
+
+html[data-theme="dark"] .project-tag {
+    background-color: #15321f;
+    color: #7fdca9;
+}
+
+html[data-theme="dark"] .project-stack li {
+    background-color: #1e1e1e;
+    border-color: #333333;
+    color: #d8d8d8;
+}
+
+/* Shared card surfaces (certs, yelp, dashboard) */
+html[data-theme="dark"] .cert-card,
+html[data-theme="dark"] .review-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .map-card,
+html[data-theme="dark"] .log-card {
+    background-color: #1e1e1e;
+    border-color: #333333;
+    color: #e8e8e8;
+}
+
+html[data-theme="dark"] .certs-hero p,
+html[data-theme="dark"] .yelp-hero p,
+html[data-theme="dark"] .dash-hero p,
+html[data-theme="dark"] .cert-meta,
+html[data-theme="dark"] .review-sub,
+html[data-theme="dark"] .review-text,
+html[data-theme="dark"] .review-date,
+html[data-theme="dark"] .stat-label {
+    color: #b6b6b6;
+}
+
+html[data-theme="dark"] .progress,
+html[data-theme="dark"] .overall-track {
+    background-color: #2a2a2a;
+}
+
+html[data-theme="dark"] .cert-node {
+    background-color: #1c1c1c;
+    border-color: #5fd39a;
+}
+
+html[data-theme="dark"] .cert-rail {
+    background-color: #333333;
+}
+
+html[data-theme="dark"] .filter-bar select {
+    background-color: #1e1e1e;
+    color: #e8e8e8;
+    border-color: #444444;
+}
+
+html[data-theme="dark"] .log-table th {
+    background-color: #242424;
+    color: #f0f0f0;
+}
+
+html[data-theme="dark"] .log-table td {
+    border-color: #333333;
+}
+
+html[data-theme="dark"] .log-table tr:nth-child(even) td {
+    background-color: #181818;
+}
+
+/* Darken light map tiles so the map blends with dark mode */
+html[data-theme="dark"] .leaflet-tile {
+    filter: brightness(0.65) invert(1) contrast(0.9) hue-rotate(180deg) saturate(0.6);
+}
+
+html[data-theme="dark"] .leaflet-container {
+    background-color: #1e1e1e;
+}
