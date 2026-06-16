@@ -6,11 +6,73 @@
     <title>LOG A CATCH - Aaron Polar</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        .gate {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 360px;
+            flex: 1;
+            padding: 0 16px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .gate h2 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .gate p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .gate input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: baskerville, serif;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .gate button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #05472A;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: baskerville, serif;
+            font-size: 16px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .gate button:hover {
+            background-color: #033d23;
+        }
+
+        .gate-error {
+            color: #b00020;
+            font-size: 14px;
+            min-height: 18px;
+            margin-top: 10px;
+        }
+
         .log-entry-form {
             text-align: center;
             margin: 20px auto;
-            max-width: 400px;
+            max-width: 440px;
             flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 16px;
         }
 
         .log-entry-form h2 {
@@ -18,19 +80,44 @@
             margin-bottom: 20px;
         }
 
+        .log-entry-form label {
+            display: block;
+            text-align: left;
+            width: 80%;
+            margin: 14px auto 4px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .log-entry-form label .req {
+            color: #b00020;
+        }
+
         .log-entry-form input,
+        .log-entry-form select,
+        .log-entry-form textarea,
         .log-entry-form button {
             display: block;
             padding: 10px;
-            margin: 8px auto;
+            margin: 0 auto;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-family: baskerville, serif;
             font-size: 16px;
             width: 80%;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        .log-entry-form textarea {
+            resize: vertical;
+            min-height: 70px;
         }
 
         .log-entry-form button {
+            margin-top: 24px;
             background-color: #05472A;
             color: white;
             border: none;
@@ -42,6 +129,33 @@
 
         .log-entry-form button:hover {
             background-color: #033d23;
+        }
+
+        .log-entry-form button:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .success-msg {
+            background-color: #e3f1e9;
+            color: #05472A;
+            border: 1px solid #b9e0c9;
+            border-radius: 8px;
+            padding: 14px;
+            margin: 0 auto 16px;
+            max-width: 80%;
+            font-weight: bold;
+        }
+
+        .form-error {
+            color: #b00020;
+            font-size: 14px;
+            min-height: 18px;
+            margin-top: 6px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
     <link rel="stylesheet" href="theme.css">
@@ -67,14 +181,79 @@
         <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
     </div>
 
-    <div class="log-entry-form">
+    <!-- Password gate: form stays hidden until unlocked -->
+    <div class="gate" id="gate">
+        <h2>Private Log</h2>
+        <p>This page is for Aaron only. Enter the password to log a catch.</p>
+        <input type="password" id="gatePassword" placeholder="Password" autocomplete="current-password">
+        <button type="button" id="gateButton">Unlock</button>
+        <div class="gate-error" id="gateError"></div>
+    </div>
+
+    <!-- Catch log form (revealed after password) -->
+    <div class="log-entry-form hidden" id="logSection">
         <h2>Log a New Catch</h2>
-        <form id="logForm">
-            <input type="datetime-local" id="datetime" name="datetime" required>
-            <input type="text" id="location" name="location" placeholder="Location" required>
-            <input type="text" id="species" name="species" placeholder="Species" required>
-            <input type="number" id="length" name="length" placeholder="Length (optional)" step="0.01">
-            <input type="number" id="weight" name="weight" placeholder="Weight (optional)" step="0.01">
+        <div class="success-msg hidden" id="successMsg">&#10003; Catch logged! Tight lines.</div>
+        <form id="logForm" novalidate>
+            <label for="date">Date <span class="req">*</span></label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="species">Species <span class="req">*</span></label>
+            <select id="species" name="species" required>
+                <option value="">Select species&hellip;</option>
+                <option>Rainbow Trout</option>
+                <option>Brown Trout</option>
+                <option>Largemouth Bass</option>
+                <option>Smallmouth Bass</option>
+                <option>Striped Bass</option>
+                <option>Catfish</option>
+                <option>Bluegill</option>
+                <option>Crappie</option>
+                <option>Salmon</option>
+                <option>Steelhead</option>
+                <option>Sturgeon</option>
+                <option>Other</option>
+            </select>
+
+            <label for="location">Location <span class="req">*</span></label>
+            <input type="text" id="location" name="location" placeholder="e.g. Folsom Lake" required>
+
+            <label for="weight">Weight (lbs)</label>
+            <input type="number" id="weight" name="weight" min="0" step="0.01" placeholder="Optional">
+
+            <label for="length">Length (inches)</label>
+            <input type="number" id="length" name="length" min="0" step="0.01" placeholder="Optional">
+
+            <label for="waterType">Water Type</label>
+            <select id="waterType" name="waterType">
+                <option value="">Select&hellip;</option>
+                <option>Lake</option>
+                <option>River</option>
+                <option>Ocean</option>
+                <option>Bay</option>
+            </select>
+
+            <label for="bait">Bait / Lure Used</label>
+            <input type="text" id="bait" name="bait" placeholder="Optional">
+
+            <label for="timeOfDay">Time of Day</label>
+            <select id="timeOfDay" name="timeOfDay">
+                <option value="">Select&hellip;</option>
+                <option>Dawn</option>
+                <option>Morning</option>
+                <option>Midday</option>
+                <option>Afternoon</option>
+                <option>Evening</option>
+                <option>Night</option>
+            </select>
+
+            <label for="weather">Weather</label>
+            <input type="text" id="weather" name="weather" placeholder="Optional, e.g. Sunny, 65&deg;F">
+
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Optional"></textarea>
+
+            <div class="form-error hidden" id="formError"></div>
             <button type="submit">Log Catch</button>
         </form>
     </div>
@@ -92,38 +271,117 @@
     </div>
 
     <script>
-        document.getElementById('logForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        (function () {
+            // SHA-256 of the chosen password (plaintext is never stored).
+            var PASSWORD_HASH = 'b474a99a2705e23cf905a484ec6d14ef58b56bbe62e9292783466ec363b5072d';
+            var AUTH_KEY = 'fishlog-auth';
+            // Paste your deployed Google Apps Script Web App URL here.
+            var APPS_SCRIPT_URL = 'REPLACE_WITH_YOUR_APPS_SCRIPT_WEB_APP_URL';
 
-            var datetime = document.getElementById('datetime').value;
-            var location = document.getElementById('location').value;
-            var species = document.getElementById('species').value;
-            var length = document.getElementById('length').value || 'Not specified';
-            var weight = document.getElementById('weight').value || 'Not specified';
+            var gate = document.getElementById('gate');
+            var logSection = document.getElementById('logSection');
 
-            var dateTimeParts = datetime.split('T');
-            var date = dateTimeParts[0];
-            var time = dateTimeParts[1];
+            function unlock() {
+                gate.classList.add('hidden');
+                logSection.classList.remove('hidden');
+            }
 
-            var templateParams = {
-                date: date,
-                time: time,
-                location: location,
-                species: species,
-                length: length,
-                weight: weight
-            };
+            async function sha256(str) {
+                var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+                return Array.from(new Uint8Array(buf))
+                    .map(function (b) { return b.toString(16).padStart(2, '0'); })
+                    .join('');
+            }
 
-            emailjs.send('service_fuwd637', 'template_84duy1a', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    alert('Log entry submitted successfully!');
-                    document.getElementById('logForm').reset();
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    alert('Failed to submit log entry. Please try again later.');
+            // Remember unlock on this device.
+            if (localStorage.getItem(AUTH_KEY) === PASSWORD_HASH) {
+                unlock();
+            }
+
+            async function tryUnlock() {
+                var err = document.getElementById('gateError');
+                var pw = document.getElementById('gatePassword').value;
+                var hash = await sha256(pw);
+                if (hash === PASSWORD_HASH) {
+                    try { localStorage.setItem(AUTH_KEY, PASSWORD_HASH); } catch (e) {}
+                    err.textContent = '';
+                    unlock();
+                } else {
+                    err.textContent = 'Incorrect password. Try again.';
+                }
+            }
+
+            document.getElementById('gateButton').addEventListener('click', tryUnlock);
+            document.getElementById('gatePassword').addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') tryUnlock();
+            });
+
+            var form = document.getElementById('logForm');
+            var formError = document.getElementById('formError');
+            var successMsg = document.getElementById('successMsg');
+
+            function showError(msg) {
+                formError.textContent = msg;
+                formError.classList.remove('hidden');
+                return false;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                formError.classList.add('hidden');
+                formError.textContent = '';
+                successMsg.classList.add('hidden');
+
+                var data = {
+                    date: form.date.value.trim(),
+                    species: form.species.value,
+                    weight: form.weight.value,
+                    length: form.length.value,
+                    location: form.location.value.trim(),
+                    waterType: form.waterType.value,
+                    bait: form.bait.value.trim(),
+                    notes: form.notes.value.trim(),
+                    weather: form.weather.value.trim(),
+                    timeOfDay: form.timeOfDay.value
+                };
+
+                // Required fields
+                if (!data.date || !data.species || !data.location) {
+                    return showError('Please fill in Date, Species, and Location.');
+                }
+                // Optional numeric fields must be valid if present
+                if (data.weight && (isNaN(data.weight) || Number(data.weight) < 0)) {
+                    return showError('Weight must be a positive number.');
+                }
+                if (data.length && (isNaN(data.length) || Number(data.length) < 0)) {
+                    return showError('Length must be a positive number.');
+                }
+
+                if (APPS_SCRIPT_URL.indexOf('REPLACE_WITH') === 0) {
+                    return showError('Submission endpoint is not configured yet.');
+                }
+
+                var btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                btn.textContent = 'Logging…';
+
+                fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: new URLSearchParams(data)
+                }).then(function () {
+                    successMsg.classList.remove('hidden');
+                    form.reset();
+                    btn.disabled = false;
+                    btn.textContent = 'Log Catch';
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }).catch(function () {
+                    btn.disabled = false;
+                    btn.textContent = 'Log Catch';
+                    showError('Could not submit. Check your connection and try again.');
                 });
-        });
+            });
+        })();
     </script>
 </body>
 </html>
