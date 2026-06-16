@@ -193,6 +193,23 @@ html[data-theme="dark"] .section-divider {
     border-top-color: #333333;
 }
 
+/* 404 page */
+html[data-theme="dark"] .notfound h1 {
+    color: #5fd39a;
+}
+
+html[data-theme="dark"] .notfound p {
+    color: #b6b6b6;
+}
+
+html[data-theme="dark"] .notfound .sub {
+    color: #999999;
+}
+
+html[data-theme="dark"] .home-button {
+    background-color: #0d7a48;
+}
+
 html[data-theme="dark"] .filter-bar select {
     background-color: #1e1e1e;
     color: #e8e8e8;
