@@ -22,6 +22,10 @@ html {
     align-items: center;
 }
 
+.green-button {
+    box-sizing: border-box;
+}
+
 .header-right .green-button {
     margin-left: 0;
 }

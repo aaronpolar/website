@@ -68,21 +68,6 @@ body {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
 }
 
-.header-text {
-    margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
-    flex: 1; /* Take up remaining space */
-    display: flex;
-    flex-direction: column; /* Stack text vertically */
-    align-items: center; /* Align text to the center */
-    padding: 0 40px; /* Add padding to the sides */
-}
-
-.header-text p {
-    margin: 20px 0; /* Add margin around paragraphs */
-    font-size: 24px;
-    text-align: center; /* Center text */
-}
-
 .header-image {
     width: 100%;
     height: calc(100vh - 120px); /* Adjust height for header and footer */
@@ -116,66 +101,6 @@ body {
     margin: 0 5px; /* Add space between images */
 }
 
-.fixed-buttons {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.fixed-buttons a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #D3D3D3; /* Lighter grey color */
-    border: none; /* Remove button border */
-    margin: 0 5px; /* Add margin around buttons */
-}
-
-.caption {
-    text-align: center;
-    font-size: 18px;
-    padding: 10px 0;
-    height: 40px;
-}
-
-.scroll-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-}
-
-.scroll-button-left {
-    left: 10%;
-}
-
-.scroll-button-right {
-    right: 10%;
-}
-
-.centered-content {
-    text-align: center;
-}
-
-.centered-text {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
 @media (max-width: 768px) {
     .header-right {
         flex-direction: column; /* Stack buttons vertically on mobile */
@@ -192,20 +117,6 @@ body {
     .header-left {
         margin-left: 10px; /* Add gap between left edge and text */
         margin-right: auto; /* Ensure text and buttons are aligned to the right */
-    }
-
-    .fixed-buttons {
-        margin-top: 10px; /* Add margin at the top on mobile */
-    }
-
-    .slides {
-        width: 50vw; /* Set width to 50% of the viewport width on mobile */
-        height: 50vw; /* Set a fixed height based on the width on mobile */
-    }
-
-    .centered-image {
-        width: 50vw; /* Set width to 50% of the viewport width on mobile */
-        height: 50vw; /* Set a fixed height based on the width on mobile */
     }
 }
 
