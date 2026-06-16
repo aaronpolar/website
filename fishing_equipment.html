@@ -4,112 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FISHING EQUIPMENT - Aaron Polar</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: baskerville, serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FAF9F6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .header {
-            background-color: white;
-            color: black;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0px;
-        }
-
-        .header-left {
-            margin-right: auto;
-            width: calc(100% / 3); /* Divide the page into thirds */
-        }
-
-        .header-left a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            font-size: 24px;
-            display: block; /* Display as block to stack text */
-            text-transform: uppercase; /* Convert text to all caps */
-            text-align: center; /* Align text to the center */
-        }
-
-        .header-right {
-            margin-left: auto;
-            display: flex; /* Ensure buttons are in a row */
-            justify-content: flex-end; /* Align buttons to the right */
-            align-items: center; /* Center vertically */
-            width: calc(100% / 3); /* Divide the page into thirds */
-        }
-
-        .green-button {
-            background-color: #05472A; /* Updated color */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-family: baskerville, serif;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 10px;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .back-button-bar {
-            padding: 12px 40px;
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: #05472A;
-            font-family: baskerville, serif;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .back-button:hover {
-            text-decoration: underline;
-        }
-
-        /* Style for the text */
-        .header-text {
-            margin: 20px 0; /* Add margin at the top and bottom */
-            margin-left: calc(100% / 3); /* Space between text and buttons */
-            flex: 1; /* Take up remaining space */
-            display: flex;
-            flex-direction: column; /* Stack text vertically */
-            align-items: center; /* Align text to the center */
-            padding: 0 40px; /* Add padding to the sides */
-        }
-
-        .header-text p {
-            margin: 20px 0; /* Add margin around paragraphs */
-            font-size: 24px;
-            text-align: center; /* Center text */
-        }
-
-        /* Style for the image */
-        .header-image img {
-            width: 50vw; /* Set image width */
-            margin-bottom: 20px; /* Add space below image */
-        }
-
         .container {
             display: flex;
             align-items: flex-start;
@@ -117,18 +13,18 @@
         }
 
         .container-image {
-            width: 50%; /* Set container width to 50% */
+            width: 50%;
             display: flex;
-            justify-content: center; /* Center the image horizontally */
+            justify-content: center;
         }
 
         .container-image img {
-            width: 75%; /* Set image width to 75% of the container */
+            width: 75%;
             height: auto;
         }
 
         .container-text {
-            width: 50%; /* Set container width to 50% */
+            width: 50%;
             padding-left: 20px;
         }
 
@@ -145,63 +41,19 @@
             margin-bottom: 5px;
         }
 
-        .footer-container {
-            width: 100%;
-            background-color: #333;
-            text-align: center;
-            padding: 10px 0;
-            color: white;
-            margin-top: auto;
-        }
-
-        .footer-container img {
-            width: 25px; /* Set image width to 25px for a quarter size */
-            margin: 0 5px; /* Add space between images */
-        }
-
-        /* Media query for mobile devices */
         @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
-            }
-
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
-
-            .header-text {
-                display: block; /* Display text on mobile */
-                margin: 20px 20px; /* Add margin around text on mobile */
-                align-items: center; /* Center text vertically on mobile */
-                padding: 0; /* Remove padding on mobile */
-            }
-
-            .header-text p {
-                font-size: 20px; /* Decrease font size for mobile */
-                text-align: center; /* Center text horizontally on mobile */
-            }
-
             .container {
-                flex-direction: column; /* Stack image and text vertically on mobile */
-                align-items: center; /* Center items horizontally */
+                flex-direction: column;
+                align-items: center;
             }
 
             .container-image, .container-text {
-                width: 100%; /* Set containers to full width on mobile */
-                padding: 0; /* Remove padding */
+                width: 100%;
+                padding: 0;
             }
 
             .container-image img {
-                width: 75%; /* Keep image at 75% of its container */
+                width: 75%;
                 height: auto;
             }
         }
