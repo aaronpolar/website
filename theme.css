@@ -234,7 +234,8 @@ html[data-theme="dark"] .lin-value {
 
 html[data-theme="dark"] .lin-sub,
 html[data-theme="dark"] .lin-range-label,
-html[data-theme="dark"] .lin-updated {
+html[data-theme="dark"] .lin-updated,
+html[data-theme="dark"] .lin-unit {
     color: #b6b6b6;
 }
 
