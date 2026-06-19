@@ -235,8 +235,13 @@ html[data-theme="dark"] .lin-value {
 html[data-theme="dark"] .lin-sub,
 html[data-theme="dark"] .lin-range-label,
 html[data-theme="dark"] .lin-updated,
-html[data-theme="dark"] .lin-unit {
+html[data-theme="dark"] .lin-unit,
+html[data-theme="dark"] .lin-note {
     color: #b6b6b6;
+}
+
+html[data-theme="dark"] .lin-note strong {
+    color: #5fd39a;
 }
 
 html[data-theme="dark"] .lin-range-select {

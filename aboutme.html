@@ -132,6 +132,19 @@
             letter-spacing: 0.3px;
         }
 
+        .lin-note {
+            font-size: 12px;
+            color: #9a9a9a;
+            margin: 10px 0 0;
+            font-style: italic;
+        }
+
+        .lin-note strong {
+            font-style: normal;
+            color: #05472A;
+            font-weight: bold;
+        }
+
         .lin-updated {
             font-size: 13px;
             color: #999;
@@ -215,10 +228,11 @@
                 </span>
                 <p class="lin-value" id="linSteam">&mdash;</p>
                 <p class="lin-unit">hours played</p>
+                <p class="lin-note" id="linSteamRecent">all-time</p>
             </div>
             <div class="lin-card lin-card-psn">
                 <span class="lin-logo" role="img" aria-label="PlayStation trophies" title="PlayStation trophies">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.985 2.596v17.548l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.181.763.814.763 1.501v5.875c2.661 1.221 4.684-.151 4.684-3.457 0-3.393-1.146-4.909-4.48-6.022-1.64-.551-3.642-1.057-5.676-1zM0 17.332l6.555 2.105V17.02l-4.781-1.54v-1.393l4.781 1.54V13.22L0 11.127zM24 13.78l-7.104-1.94v2.417l4.861 1.396v1.393l-4.861-1.396v2.417L24 19.75z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.984 2.596v17.547l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.18.76.814.76 1.505v5.875c2.441 1.193 4.362-.002 4.362-3.152 0-3.237-1.126-4.675-4.438-5.827-1.307-.448-3.728-1.186-5.39-1.502zm4.656 16.241l6.296-2.275c.715-.258.826-.625.246-.818-.586-.192-1.637-.139-2.357.123l-4.205 1.5V14.98l.24-.085s1.201-.42 2.913-.615c1.696-.18 3.785.03 5.437.661 1.848.601 2.04 1.472 1.576 2.072-.465.6-1.622 1.036-1.622 1.036l-8.544 3.107V18.86zM1.807 18.6c-1.9-.545-2.214-1.668-1.352-2.32.801-.586 2.16-1.052 2.16-1.052l5.615-2.013v2.313L4.205 17c-.705.271-.825.632-.239.826.586.195 1.637.15 2.343-.12L8.247 17v2.074c-.12.03-.256.044-.39.073-1.939.331-3.996.196-6.038-.479z"/></svg>
                 </span>
                 <div class="lin-split">
                     <div class="lin-split-item">
@@ -230,6 +244,7 @@
                         <p class="lin-unit">total trophies</p>
                     </div>
                 </div>
+                <p class="lin-note">all-time</p>
             </div>
         </div>
         <p class="lin-updated" id="linUpdated"></p>
@@ -279,10 +294,24 @@
             }
 
             function render() {
+                // GitHub & Spotify support arbitrary date ranges.
                 setVal('linGithub', data ? pick('github') : null);
                 setVal('linLastfm', data ? pick('lastfm') : null);
-                setVal('linSteam', data ? pick('steam') : null);
-                // PSN trophies are all-time totals only — not range-filtered
+
+                // Steam's API only exposes lifetime + last-2-weeks playtime, so
+                // this card always shows the all-time total and surfaces recent
+                // activity (e.g. this week's CS2 sessions) as a sub-note.
+                var steam = data && data.metrics && data.metrics.steam;
+                setVal('linSteam', steam ? steam.ranges.all : null);
+                var recentEl = document.getElementById('linSteamRecent');
+                var twoWk = steam && steam.twoWeekHours;
+                if (twoWk && twoWk > 0) {
+                    recentEl.innerHTML = '<strong>' + twoWk + ' hrs</strong> in the last 2 weeks';
+                } else {
+                    recentEl.textContent = 'all-time';
+                }
+
+                // PSN trophies are all-time totals only — not range-filtered.
                 var psn = data && data.metrics && data.metrics.psn;
                 setVal('linPsnPlatinum', psn ? psn.platinum : null);
                 setVal('linPsnTotal', psn ? psn.total : null);
