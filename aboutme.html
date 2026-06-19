@@ -4,177 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABOUT ME - Aaron Polar</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: baskerville, serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FAF9F6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .header {
-            background-color: white;
-            color: black;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0px;
-        }
-
-        .header-left {
-            margin-right: auto;
-            width: calc(100% / 3); /* Divide the page into thirds */
-        }
-
-        .header-left a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            font-size: 24px;
-            display: block; /* Display as block to stack text */
-            text-transform: uppercase; /* Convert text to all caps */
-            text-align: center; /* Align text to the center */
-        }
-
-        .header-right {
-            margin-left: auto;
-            display: flex; /* Ensure buttons are in a row */
-            justify-content: flex-end; /* Align buttons to the right */
-            align-items: center; /* Center vertically */
-            width: calc(100% / 3); /* Divide the page into thirds */
-        }
-
-        .green-button {
-            background-color: #05472A; /* Updated color */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-family: baskerville, serif;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 10px;
-            font-size: 16px;
-            text-align: center; /* Center text in buttons */
-            text-decoration: none; /* Remove underline */
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add slight drop shadow */
-        }
-
-        /* Style for the text */
         .header-text {
             margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
             flex: 1; /* Take up remaining space */
             display: flex;
-            flex-direction: column; /* Stack text vertically */
-            align-items: center; /* Align text to the center */
-            padding: 0 40px; /* Add padding to the sides */
+            flex-direction: column;
+            align-items: center;
+            padding: 0 40px;
         }
 
         .header-text p {
-            margin: 20px 0; /* Add margin around paragraphs */
+            margin: 20px 0;
             font-size: 24px;
-            text-align: center; /* Center text */
-        }
-
-        /* Style for the image */
-        .header-image img {
-            display: none; /* Hide the image */
-        }
-
-        .footer-container {
-            width: 100%;
-            background-color: #333; /* Background color for better visibility */
             text-align: center;
-            padding: 10px 0; /* Padding for better spacing */
-            color: white;
-            margin-top: auto; /* Push footer to the bottom */
         }
 
-        .footer-container img {
-            width: 25px; /* Set image width to 25px for a quarter size */
-            margin: 0 5px; /* Add space between images */
+        /* My Life in Numbers dashboard */
+        .lin-section {
+            max-width: 900px;
+            margin: 10px auto 40px;
+            padding: 20px 24px 0;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
         }
 
-        .fixed-buttons {
+        .lin-section h2 {
+            font-size: 32px;
+            margin: 0 0 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .lin-sub {
+            color: #666;
+            font-size: 16px;
+            margin: 0 0 22px;
+        }
+
+        .lin-controls {
             display: flex;
             justify-content: center;
-            margin: 20px 0;
-        }
-
-        .fixed-buttons a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #D3D3D3;
-            border: none;
-            margin: 0 5px;
-        }
-
-        .back-button-bar {
-            padding: 12px 40px;
-        }
-
-        .back-button {
-            display: inline-flex;
             align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: #05472A;
-            font-family: baskerville, serif;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .lin-range-label {
             font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #555;
         }
 
-        .back-button:hover {
-            text-decoration: underline;
+        .lin-range-select {
+            font-family: baskerville, serif;
+            font-size: 16px;
+            padding: 8px 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #05472A;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .lin-card {
+            background-color: #fff;
+            border: 1px solid #e6e6df;
+            border-radius: 16px;
+            padding: 24px 18px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+        }
+
+        .lin-value {
+            font-size: 38px;
+            font-weight: bold;
+            color: #05472A;
+            line-height: 1.1;
+            margin: 0 0 6px;
+        }
+
+        .lin-logo {
+            display: block;
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 14px;
+        }
+
+        .lin-logo svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            fill: currentColor;
+        }
+
+        .lin-card-github .lin-logo { color: #24292f; }
+        .lin-card-spotify .lin-logo { color: #1DB954; }
+        .lin-card-steam .lin-logo { color: #171a21; }
+
+        .lin-updated {
+            font-size: 13px;
+            color: #999;
+            margin-top: 18px;
         }
 
         @media (max-width: 768px) {
-            .header-right {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: flex-end; /* Align buttons to the right on mobile */
-                margin-top: 10px; /* Add margin between buttons and text */
+            .lin-grid {
+                grid-template-columns: 1fr;
             }
 
-            .green-button {
-                margin-bottom: 5px; /* Add space between buttons on mobile */
-                width: 100%; /* Make buttons full width on mobile */
-                margin-left: 0; /* Reset left margin for buttons */
-            }
-
-            .header-left {
-                margin-left: 10px; /* Add gap between left edge and text */
-                margin-right: auto; /* Ensure text and buttons are aligned to the right */
-            }
-
-            .fixed-buttons {
-                margin-top: 10px; /* Add margin at the top on mobile */
+            .lin-section h2 {
+                font-size: 26px;
             }
         }
     </style>
+    <link rel="stylesheet" href="theme.css">
+    <script src="theme.js"></script>
+    <!-- Umami analytics (privacy-friendly) -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="32455286-fe20-4036-8269-8ed9782967e7"></script>
 </head>
 <body>
     <div class="header">
         <div class="header-left">
-            <a href="index.html">AARON</a>
-            <a href="index.html">POLAR</a>
+            <a href="/">AARON</a>
+            <a href="/">POLAR</a>
         </div>
         <div class="header-right">
-            <a href="aboutme.html" class="green-button">About Me</a>
-            <a href="fishing.html" class="green-button">Fishing</a>
-            <a href="projects.html" class="green-button">Projects</a>
+            <a href="aboutme" class="green-button">About Me</a>
+            <a href="fishing" class="green-button">Fishing</a>
+            <a href="projects" class="green-button">Projects</a>
+            <button id="themeToggle" class="theme-switch" type="button" role="switch" aria-label="Toggle dark mode"></button>
         </div>
     </div>
 
@@ -183,27 +151,105 @@
     </div>
 
 <div class="header-text">
-    <p>Hey! I'm Aaron, a tech consultant based in San Francisco with a passion for making technology accessible and empowering people to use it confidently. By day, I work as an IT Consultant, and on the side, I run my own tech consulting business helping clients navigate the technology in their everyday lives. Many of them are retirees learning to set up new devices and build real digital confidence.</p>
+    <p>Hey! I'm Aaron Polar, based in San Francisco. I work as an IT Consultant, and I also run my own independent practice, SF Tech Consultants, where I help clients &mdash; including retirees learning to navigate today's technology &mdash; use their devices with real confidence.</p>
 
-    <p>Looking ahead, I'm driven by the intersection of technology, data, and finance. With a background in economics and hands-on experience across consulting and client services, I'm focused on roles where I can apply analytical thinking to real-world problems. That includes financial analysis, data-driven operations, and economics research. I'm passionate about using data to tell stories that help people and organizations make smarter decisions.</p>
+    <p>Right now I'm focused on building a career in GRC and cybersecurity, working toward roles in governance, risk, and compliance. I'm following a structured certification roadmap, starting with CompTIA A+, to pair that goal with recognized, hands-on skills. My foundation is a B.S. in Economics from the University of San Francisco, which shapes the analytical, risk-aware way I approach problems.</p>
 
-    <p>In my free time, I love exploring new restaurants and sharing my experiences on my Yelp page. Whether it's a hidden gem or a local favorite, I enjoy trying different cuisines and writing reviews to help others discover great dining spots. You can check out my Yelp page below.</p>
-
-    <p>I'm also passionate about fishing and spend as much time as I can out on the water. It's a relaxing way to unwind and connect with nature. If you're interested, you can see some of my fishing adventures on my website's fishing log.</p>
-
-    <p>I created this website as a personal project on March 12, 2024, to share my love for fishing and finance, and it's grown right along with me since then!</p>
+    <p>Outside of work, you'll usually find me out on the water fishing, exploring new restaurants and writing reviews on Yelp, or gaming. I created this website as a personal project on March 12, 2024, and it's grown right alongside me ever since.</p>
 </div>
 
+    <section class="lin-section" id="lifeInNumbers">
+        <h2>My Life in Numbers</h2>
+        <p class="lin-sub">An automated snapshot of what I've been up to lately.</p>
+        <div class="lin-controls">
+            <label class="lin-range-label" for="linRange">Range</label>
+            <select id="linRange" class="lin-range-select">
+                <option value="7d">Last 7 days</option>
+                <option value="30d" selected>Last 30 days</option>
+                <option value="90d">Last 3 months</option>
+                <option value="180d">Last 6 months</option>
+                <option value="ytd">Year to date</option>
+                <option value="all">All time</option>
+            </select>
+        </div>
+        <div class="lin-grid">
+            <div class="lin-card lin-card-github">
+                <span class="lin-logo" role="img" aria-label="GitHub commits" title="GitHub commits">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </span>
+                <p class="lin-value" id="linGithub">&mdash;</p>
+            </div>
+            <div class="lin-card lin-card-spotify">
+                <span class="lin-logo" role="img" aria-label="Spotify tracks played" title="Spotify tracks played">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                </span>
+                <p class="lin-value" id="linLastfm">&mdash;</p>
+            </div>
+            <div class="lin-card lin-card-steam">
+                <span class="lin-logo" role="img" aria-label="Steam gaming hours" title="Steam gaming hours">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>
+                </span>
+                <p class="lin-value" id="linSteam">&mdash;</p>
+            </div>
+        </div>
+        <p class="lin-updated" id="linUpdated"></p>
+    </section>
+
     <div class="footer-container">
-        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank">
+        <a href="https://www.linkedin.com/in/aaronpolar" target="_blank" rel="noopener noreferrer">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
         </a>
         <a href="mailto:aaronmpolar@gmail.com">
             <img src="docs/assets/gmaillogo.png" alt="Gmail Logo">
         </a>
-        <a href="https://www.github.com/aaronpolar" target="_blank">
+        <a href="https://www.github.com/aaronpolar" target="_blank" rel="noopener noreferrer">
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        (function () {
+            var DATA_URL = 'docs/data/life-in-numbers.json';
+            var current = '30d';
+            var data = null;
+
+            function fmt(n) {
+                if (n === null || n === undefined) return '—';
+                return Number(n).toLocaleString();
+            }
+
+            function pick(metric) {
+                try {
+                    var v = data.metrics[metric].ranges[current];
+                    return (v === null || v === undefined) ? null : v;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function render() {
+                document.getElementById('linGithub').textContent = data ? fmt(pick('github')) : '—';
+                document.getElementById('linLastfm').textContent = data ? fmt(pick('lastfm')) : '—';
+                document.getElementById('linSteam').textContent = data ? fmt(pick('steam')) : '—';
+            }
+
+            document.getElementById('linRange').addEventListener('change', function () {
+                current = this.value;
+                render();
+            });
+
+            fetch(DATA_URL, { cache: 'no-store' })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (json) {
+                    data = json;
+                    if (json && json.updated) {
+                        document.getElementById('linUpdated').textContent =
+                            'Last updated ' + new Date(json.updated).toLocaleDateString();
+                    }
+                    render();
+                })
+                .catch(function () { render(); });
+        })();
+    </script>
 </body>
 </html>

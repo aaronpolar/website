@@ -1,0 +1,37 @@
+name: Update Life in Numbers
+
+on:
+  schedule:
+    - cron: '17 8 * * *'   # daily, ~08:17 UTC
+  workflow_dispatch:        # allows manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build dashboard data
+        env:
+          GH_USER: aaronpolar
+          LASTFM_USER: ralop8
+          STEAMID: '76561198139249206'
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/build-life-in-numbers.mjs
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/life-in-numbers.json
+          git diff --staged --quiet || git commit -m "Update life-in-numbers data [skip ci]"
+          git push

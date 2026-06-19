@@ -1,0 +1,279 @@
+/* ============================================================
+   Shared cross-page styles: navigation behavior, theme toggle
+   button, and the full dark-mode palette.
+   Loaded after each page's inline <style> so it can override.
+   ============================================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Navigation: allow the larger nav to wrap cleanly --- */
+.header {
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+.header-right {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    align-items: center;
+}
+
+.green-button {
+    box-sizing: border-box;
+}
+
+.header-right .green-button {
+    margin-left: 0;
+}
+
+/* Mobile: tighten the vertically-stacked nav so the header stays compact */
+@media (max-width: 768px) {
+    .header-right {
+        gap: 4px;
+        margin-top: 6px;
+    }
+
+    .header-right .green-button {
+        margin-bottom: 0;
+    }
+}
+
+/* --- Horizontal theme switch (works in both modes) --- */
+.theme-switch {
+    position: relative;
+    width: 58px;
+    height: 30px;
+    flex: 0 0 auto;
+    margin-left: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background-color: #c9c4b6;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Sliding knob with an icon for the current mode */
+.theme-switch::before {
+    content: "\2600"; /* sun (light mode) */
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 1;
+    color: #b8860b;
+    transition: left 0.3s ease;
+}
+
+.theme-switch:hover {
+    filter: brightness(0.97);
+}
+
+.theme-switch:focus-visible {
+    outline: 2px solid #05472A;
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+html[data-theme="dark"] body {
+    background-color: #121212;
+    color: #e8e8e8;
+}
+
+html[data-theme="dark"] .header {
+    background-color: #1c1c1c;
+    color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="dark"] .header-left a {
+    color: #f0f0f0;
+}
+
+html[data-theme="dark"] .green-button {
+    background-color: #0d7a48;
+    color: #ffffff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="dark"] .theme-switch {
+    background-color: #0d7a48;
+}
+
+html[data-theme="dark"] .theme-switch::before {
+    content: "\263E"; /* moon (dark mode) */
+    left: 31px;
+    color: #355e4a;
+}
+
+html[data-theme="dark"] .fixed-buttons a {
+    background-color: #2a2a2a;
+    color: #e8e8e8;
+}
+
+html[data-theme="dark"] .footer-container {
+    background-color: #000000;
+}
+
+html[data-theme="dark"] .back-button {
+    color: #5fd39a;
+}
+
+/* Body text across pages */
+html[data-theme="dark"] .header-text p,
+html[data-theme="dark"] .text-container,
+html[data-theme="dark"] .text-container h2,
+html[data-theme="dark"] .text-container h3,
+html[data-theme="dark"] .text-container h4,
+html[data-theme="dark"] .container-text,
+html[data-theme="dark"] .container-text h2,
+html[data-theme="dark"] .container-text h3 {
+    color: #e8e8e8;
+}
+
+/* Projects page */
+html[data-theme="dark"] .projects-hero p,
+html[data-theme="dark"] .project-body p,
+html[data-theme="dark"] .projects-outro {
+    color: #cfcfcf;
+}
+
+html[data-theme="dark"] .project-tag {
+    background-color: #15321f;
+    color: #7fdca9;
+}
+
+html[data-theme="dark"] .project-stack li {
+    background-color: #1e1e1e;
+    border-color: #333333;
+    color: #d8d8d8;
+}
+
+/* Shared card surfaces (certs, yelp, dashboard) */
+html[data-theme="dark"] .cert-card,
+html[data-theme="dark"] .review-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .map-card,
+html[data-theme="dark"] .log-card {
+    background-color: #1e1e1e;
+    border-color: #333333;
+    color: #e8e8e8;
+}
+
+html[data-theme="dark"] .certs-hero p,
+html[data-theme="dark"] .yelp-hero p,
+html[data-theme="dark"] .dash-hero p,
+html[data-theme="dark"] .cert-meta,
+html[data-theme="dark"] .review-sub,
+html[data-theme="dark"] .review-text,
+html[data-theme="dark"] .review-date,
+html[data-theme="dark"] .stat-label {
+    color: #b6b6b6;
+}
+
+html[data-theme="dark"] .progress,
+html[data-theme="dark"] .overall-track {
+    background-color: #2a2a2a;
+}
+
+html[data-theme="dark"] .cert-node {
+    background-color: #1c1c1c;
+    border-color: #5fd39a;
+}
+
+html[data-theme="dark"] .cert-rail {
+    background-color: #333333;
+}
+
+html[data-theme="dark"] .section-divider {
+    border-top-color: #333333;
+}
+
+/* 404 page */
+html[data-theme="dark"] .notfound h1 {
+    color: #5fd39a;
+}
+
+html[data-theme="dark"] .notfound p {
+    color: #b6b6b6;
+}
+
+html[data-theme="dark"] .notfound .sub {
+    color: #999999;
+}
+
+html[data-theme="dark"] .home-button {
+    background-color: #0d7a48;
+}
+
+/* My Life in Numbers dashboard */
+html[data-theme="dark"] .lin-card {
+    background-color: #1e1e1e;
+    border-color: #333333;
+}
+
+html[data-theme="dark"] .lin-value {
+    color: #5fd39a;
+}
+
+html[data-theme="dark"] .lin-sub,
+html[data-theme="dark"] .lin-range-label,
+html[data-theme="dark"] .lin-updated {
+    color: #b6b6b6;
+}
+
+html[data-theme="dark"] .lin-range-select {
+    background-color: #1e1e1e;
+    border-color: #444444;
+    color: #9fe3bd;
+}
+
+/* GitHub & Steam marks are dark by default; flip to white for dark cards */
+html[data-theme="dark"] .lin-card-github .lin-logo,
+html[data-theme="dark"] .lin-card-steam .lin-logo {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .filter-bar select {
+    background-color: #1e1e1e;
+    color: #e8e8e8;
+    border-color: #444444;
+}
+
+html[data-theme="dark"] .log-table th {
+    background-color: #242424;
+    color: #f0f0f0;
+}
+
+html[data-theme="dark"] .log-table td {
+    border-color: #333333;
+}
+
+html[data-theme="dark"] .log-table tr:nth-child(even) td {
+    background-color: #181818;
+}
+
+/* Darken light map tiles so the map blends with dark mode */
+html[data-theme="dark"] .leaflet-tile {
+    filter: brightness(0.65) invert(1) contrast(0.9) hue-rotate(180deg) saturate(0.6);
+}
+
+html[data-theme="dark"] .leaflet-container {
+    background-color: #1e1e1e;
+}
