@@ -73,7 +73,7 @@
 
         .lin-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
 
@@ -110,6 +110,19 @@
         .lin-card-github .lin-logo { color: #24292f; }
         .lin-card-spotify .lin-logo { color: #1DB954; }
         .lin-card-steam .lin-logo { color: #171a21; }
+        .lin-card-psn .lin-logo { color: #003791; }
+
+        .lin-split {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .lin-split-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         .lin-unit {
             font-size: 13px;
@@ -201,6 +214,21 @@
                 <p class="lin-value" id="linSteam">&mdash;</p>
                 <p class="lin-unit">hours played</p>
             </div>
+            <div class="lin-card lin-card-psn">
+                <span class="lin-logo" role="img" aria-label="PlayStation trophies" title="PlayStation trophies">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.985 2.596v17.548l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.181.763.814.763 1.501v5.875c2.661 1.221 4.684-.151 4.684-3.457 0-3.393-1.146-4.909-4.48-6.022-1.64-.551-3.642-1.057-5.676-1zM0 17.332l6.555 2.105V17.02l-4.781-1.54v-1.393l4.781 1.54V13.22L0 11.127zM24 13.78l-7.104-1.94v2.417l4.861 1.396v1.393l-4.861-1.396v2.417L24 19.75z"/></svg>
+                </span>
+                <div class="lin-split">
+                    <div class="lin-split-item">
+                        <p class="lin-value" id="linPsnPlatinum">&mdash;</p>
+                        <p class="lin-unit">platinum</p>
+                    </div>
+                    <div class="lin-split-item">
+                        <p class="lin-value" id="linPsnTotal">&mdash;</p>
+                        <p class="lin-unit">total trophies</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <p class="lin-updated" id="linUpdated"></p>
     </section>
@@ -241,6 +269,10 @@
                 document.getElementById('linGithub').textContent = data ? fmt(pick('github')) : '—';
                 document.getElementById('linLastfm').textContent = data ? fmt(pick('lastfm')) : '—';
                 document.getElementById('linSteam').textContent = data ? fmt(pick('steam')) : '—';
+                // PSN trophies are all-time totals only — not range-filtered
+                var psn = data && data.metrics && data.metrics.psn;
+                document.getElementById('linPsnPlatinum').textContent = psn ? fmt(psn.platinum) : '—';
+                document.getElementById('linPsnTotal').textContent = psn ? fmt(psn.total) : '—';
             }
 
             document.getElementById('linRange').addEventListener('change', function () {
