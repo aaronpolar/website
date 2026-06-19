@@ -40,6 +40,11 @@ html {
     .header-right .green-button {
         margin-bottom: 0;
     }
+
+    /* Double the gap (4px -> 8px) between the Projects button and the toggle */
+    .header-right .theme-switch {
+        margin-top: 4px;
+    }
 }
 
 /* --- Horizontal theme switch (works in both modes) --- */
@@ -233,21 +238,9 @@ html[data-theme="dark"] .lin-value {
 }
 
 html[data-theme="dark"] .lin-sub,
-html[data-theme="dark"] .lin-range-label,
 html[data-theme="dark"] .lin-updated,
-html[data-theme="dark"] .lin-unit,
-html[data-theme="dark"] .lin-note {
+html[data-theme="dark"] .lin-unit {
     color: #b6b6b6;
-}
-
-html[data-theme="dark"] .lin-note strong {
-    color: #5fd39a;
-}
-
-html[data-theme="dark"] .lin-range-select {
-    background-color: #1e1e1e;
-    border-color: #444444;
-    color: #9fe3bd;
 }
 
 /* GitHub, Steam & PSN marks are dark/navy by default; flip to white for dark cards */

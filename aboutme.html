@@ -44,34 +44,6 @@
             margin: 0 0 22px;
         }
 
-        .lin-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 24px;
-        }
-
-        .lin-range-label {
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #555;
-        }
-
-        .lin-range-select {
-            font-family: baskerville, serif;
-            font-size: 16px;
-            padding: 8px 14px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #fff;
-            color: #05472A;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
         .lin-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -132,19 +104,6 @@
             letter-spacing: 0.3px;
         }
 
-        .lin-note {
-            font-size: 12px;
-            color: #9a9a9a;
-            margin: 10px 0 0;
-            font-style: italic;
-        }
-
-        .lin-note strong {
-            font-style: normal;
-            color: #05472A;
-            font-weight: bold;
-        }
-
         .lin-updated {
             font-size: 13px;
             color: #999;
@@ -195,18 +154,7 @@
 
     <section class="lin-section" id="lifeInNumbers">
         <h2>My Life in Numbers</h2>
-        <p class="lin-sub">An automated snapshot of what I've been up to lately.</p>
-        <div class="lin-controls">
-            <label class="lin-range-label" for="linRange">Range</label>
-            <select id="linRange" class="lin-range-select">
-                <option value="7d">Last 7 days</option>
-                <option value="30d" selected>Last 30 days</option>
-                <option value="90d">Last 3 months</option>
-                <option value="180d">Last 6 months</option>
-                <option value="ytd">Year to date</option>
-                <option value="all">All time</option>
-            </select>
-        </div>
+        <p class="lin-sub">An automated snapshot of my lifetime stats.</p>
         <div class="lin-grid">
             <div class="lin-card lin-card-github">
                 <span class="lin-logo" role="img" aria-label="GitHub commits" title="GitHub commits">
@@ -228,7 +176,6 @@
                 </span>
                 <p class="lin-value" id="linSteam">&mdash;</p>
                 <p class="lin-unit">hours played</p>
-                <p class="lin-note" id="linSteamRecent">all-time</p>
             </div>
             <div class="lin-card lin-card-psn">
                 <span class="lin-logo" role="img" aria-label="PlayStation trophies" title="PlayStation trophies">
@@ -244,7 +191,6 @@
                         <p class="lin-unit">total trophies</p>
                     </div>
                 </div>
-                <p class="lin-note">all-time</p>
             </div>
         </div>
         <p class="lin-updated" id="linUpdated"></p>
@@ -265,7 +211,6 @@
     <script>
         (function () {
             var DATA_URL = 'docs/data/life-in-numbers.json';
-            var current = '30d';
             var data = null;
 
             function fmt(n) {
@@ -273,9 +218,10 @@
                 return Number(n).toLocaleString();
             }
 
-            function pick(metric) {
+            // Read a metric's lifetime (all-time) value from the data.
+            function lifetime(metric) {
                 try {
-                    var v = data.metrics[metric].ranges[current];
+                    var v = data.metrics[metric].ranges.all;
                     return (v === null || v === undefined) ? null : v;
                 } catch (e) {
                     return null;
@@ -294,33 +240,13 @@
             }
 
             function render() {
-                // GitHub & Spotify support arbitrary date ranges.
-                setVal('linGithub', data ? pick('github') : null);
-                setVal('linLastfm', data ? pick('lastfm') : null);
-
-                // Steam's API only exposes lifetime + last-2-weeks playtime, so
-                // this card always shows the all-time total and surfaces recent
-                // activity (e.g. this week's CS2 sessions) as a sub-note.
-                var steam = data && data.metrics && data.metrics.steam;
-                setVal('linSteam', steam ? steam.ranges.all : null);
-                var recentEl = document.getElementById('linSteamRecent');
-                var twoWk = steam && steam.twoWeekHours;
-                if (twoWk && twoWk > 0) {
-                    recentEl.innerHTML = '<strong>' + twoWk + ' hrs</strong> in the last 2 weeks';
-                } else {
-                    recentEl.textContent = 'all-time';
-                }
-
-                // PSN trophies are all-time totals only — not range-filtered.
+                setVal('linGithub', data ? lifetime('github') : null);
+                setVal('linLastfm', data ? lifetime('lastfm') : null);
+                setVal('linSteam', data ? lifetime('steam') : null);
                 var psn = data && data.metrics && data.metrics.psn;
                 setVal('linPsnPlatinum', psn ? psn.platinum : null);
                 setVal('linPsnTotal', psn ? psn.total : null);
             }
-
-            document.getElementById('linRange').addEventListener('change', function () {
-                current = this.value;
-                render();
-            });
 
             fetch(DATA_URL, { cache: 'no-store' })
                 .then(function (r) { return r.ok ? r.json() : null; })
