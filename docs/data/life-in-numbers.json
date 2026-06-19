@@ -1,9 +1,42 @@
 {
-  "updated": null,
+  "updated": "2026-06-19T05:09:25.937Z",
   "metrics": {
-    "github": { "ranges": { "7d": null, "30d": null, "90d": null, "180d": null, "ytd": null, "all": null } },
-    "lastfm": { "ranges": { "7d": null, "30d": null, "90d": null, "180d": null, "ytd": null, "all": null } },
-    "steam": { "ranges": { "7d": null, "30d": null, "90d": null, "180d": null, "ytd": null, "all": null }, "twoWeekHours": null }
+    "github": {
+      "ranges": {
+        "7d": 1,
+        "30d": 15,
+        "90d": 15,
+        "180d": 15,
+        "ytd": 15,
+        "all": 348
+      }
+    },
+    "lastfm": {
+      "ranges": {
+        "7d": 0,
+        "30d": 0,
+        "90d": 0,
+        "180d": 0,
+        "ytd": 0,
+        "all": 0
+      }
+    },
+    "steam": {
+      "ranges": {
+        "all": 1533,
+        "7d": null,
+        "30d": null,
+        "90d": null,
+        "180d": null,
+        "ytd": null
+      },
+      "twoWeekHours": 3.7
+    }
   },
-  "steamHistory": []
+  "steamHistory": [
+    {
+      "date": "2026-06-19",
+      "totalMinutes": 91959
+    }
+  ]
 }
