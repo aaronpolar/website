@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABOUT ME - Aaron Polar</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
     <style>
         .header-text {
             margin: 20px 10%; /* Add margin at the top and bottom, and 10% on left and right */
@@ -149,6 +150,7 @@
     </style>
     <link rel="stylesheet" href="theme.css">
     <script src="theme.js"></script>
+    <script defer src="animations.js"></script>
     <!-- Umami analytics (privacy-friendly) -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="32455286-fe20-4036-8269-8ed9782967e7"></script>
 </head>
@@ -265,14 +267,25 @@
                 }
             }
 
+            // Set a stat, counting up to numeric values when possible.
+            function setVal(id, value) {
+                var el = document.getElementById(id);
+                if (value === null || value === undefined) { el.textContent = '—'; return; }
+                if (typeof window.animateCount === 'function' && typeof value === 'number') {
+                    window.animateCount(el, value);
+                } else {
+                    el.textContent = fmt(value);
+                }
+            }
+
             function render() {
-                document.getElementById('linGithub').textContent = data ? fmt(pick('github')) : '—';
-                document.getElementById('linLastfm').textContent = data ? fmt(pick('lastfm')) : '—';
-                document.getElementById('linSteam').textContent = data ? fmt(pick('steam')) : '—';
+                setVal('linGithub', data ? pick('github') : null);
+                setVal('linLastfm', data ? pick('lastfm') : null);
+                setVal('linSteam', data ? pick('steam') : null);
                 // PSN trophies are all-time totals only — not range-filtered
                 var psn = data && data.metrics && data.metrics.psn;
-                document.getElementById('linPsnPlatinum').textContent = psn ? fmt(psn.platinum) : '—';
-                document.getElementById('linPsnTotal').textContent = psn ? fmt(psn.total) : '—';
+                setVal('linPsnPlatinum', psn ? psn.platinum : null);
+                setVal('linPsnTotal', psn ? psn.total : null);
             }
 
             document.getElementById('linRange').addEventListener('change', function () {
