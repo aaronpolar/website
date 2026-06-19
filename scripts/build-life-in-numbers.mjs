@@ -13,15 +13,15 @@
  *   - Steam: only TOTAL hours + last-2-weeks. Arbitrary ranges are derived by
  *     diffing daily snapshots we accumulate over time, so 7d/30d/... stay null
  *     until enough history exists. "All Time" (total hours) is available immediately.
- *   - PSN: scraped from PSNProfiles public profile. Returns all-time totals only
- *     (platinum count + total trophies). No range filtering available.
+ *   - PSN: set manually in the JSON (Sony has no public stats API and
+ *     PSNProfiles blocks CI requests). The daily job carries the values
+ *     forward so they are never overwritten.
  */
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
 
 const GH_USER = process.env.GH_USER || 'aaronpolar';
 const LASTFM_USER = process.env.LASTFM_USER || 'ralop8';
 const STEAMID = process.env.STEAMID || '76561198139249206';
-const PSN_USER = process.env.PSN_USER || 'ralop8';
 const LASTFM_KEY = process.env.LASTFM_API_KEY;
 const STEAM_KEY = process.env.STEAM_API_KEY;
 const GH_TOKEN = process.env.GITHUB_TOKEN;
@@ -64,47 +64,6 @@ async function lastfmScrobbles(since) {
   const j = await res.json();
   const total = j && j.recenttracks && j.recenttracks['@attr'] && j.recenttracks['@attr'].total;
   return total != null ? Number(total) : null;
-}
-
-async function psnTrophies(username) {
-  const res = await fetch(`https://psnprofiles.com/${encodeURIComponent(username)}`, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-      'Accept-Language': 'en-US,en;q=0.9',
-    }
-  });
-  if (!res.ok) throw new Error('psnprofiles HTTP ' + res.status);
-  const html = await res.text();
-
-  function pick(pattern) {
-    const m = html.match(pattern);
-    return m ? parseInt(m[1].replace(/,/g, ''), 10) : null;
-  }
-
-  // PSNProfiles renders trophy counts in a <ul class="stats"> block.
-  // Each <li> has a trophy type class followed by a <b> count.
-  const platinum =
-    pick(/trophy-s platinum[\s\S]{1,300}<b>([\d,]+)<\/b>/i) ||
-    pick(/class="[^"]*platinum[^"]*"[\s\S]{1,300}<b>([\d,]+)<\/b>/i) ||
-    pick(/<b>([\d,]+)<\/b>[^<]*<\/p>[^<]*<p[^>]*>\s*Platinum/i);
-
-  // "Total" is sometimes its own stat; fall back to summing the four types.
-  let total =
-    pick(/trophy-s total[\s\S]{1,300}<b>([\d,]+)<\/b>/i) ||
-    pick(/<b>([\d,]+)<\/b>[^<]*<\/p>[^<]*<p[^>]*>\s*Total/i);
-
-  if (total === null) {
-    const gold   = pick(/trophy-s gold[\s\S]{1,300}<b>([\d,]+)<\/b>/i);
-    const silver = pick(/trophy-s silver[\s\S]{1,300}<b>([\d,]+)<\/b>/i);
-    const bronze = pick(/trophy-s bronze[\s\S]{1,300}<b>([\d,]+)<\/b>/i);
-    if (platinum !== null && gold !== null && silver !== null && bronze !== null) {
-      total = platinum + gold + silver + bronze;
-    }
-  }
-
-  console.log(`PSN ${username}: platinum=${platinum} total=${total}`);
-  return { platinum, total };
 }
 
 async function steamTotals() {
@@ -166,13 +125,13 @@ try {
   out.metrics.steam.ranges.all = null;
 }
 
-try {
-  const psn = await psnTrophies(PSN_USER);
-  out.metrics.psn = { platinum: psn.platinum, total: psn.total };
-} catch (e) {
-  console.error('psn', e.message);
-  out.metrics.psn = { platinum: null, total: null };
-}
+// PSN trophies: PSNProfiles blocks datacenter IPs (HTTP 403) and Sony has no
+// public stats API, so there's no reliable way to scrape this from CI. Instead
+// we carry forward whatever values are already in the JSON (set manually), so
+// the daily job never wipes them.
+out.metrics.psn = (prev.metrics && prev.metrics.psn)
+  ? prev.metrics.psn
+  : { platinum: null, total: null };
 
 mkdirSync('docs/data', { recursive: true });
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');

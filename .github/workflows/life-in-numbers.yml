@@ -23,7 +23,6 @@ jobs:
           GH_USER: aaronpolar
           LASTFM_USER: ralop8
           STEAMID: '76561198139249206'
-          PSN_USER: ralop8
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
