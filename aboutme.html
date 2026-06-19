@@ -20,6 +20,101 @@
             font-size: 24px;
             text-align: center;
         }
+
+        /* My Life in Numbers dashboard */
+        .lin-section {
+            max-width: 900px;
+            margin: 10px auto 40px;
+            padding: 20px 24px 0;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .lin-section h2 {
+            font-size: 32px;
+            margin: 0 0 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .lin-sub {
+            color: #666;
+            font-size: 16px;
+            margin: 0 0 22px;
+        }
+
+        .lin-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .lin-filter-btn {
+            background-color: #fff;
+            border: 1px solid #d3d3cc;
+            color: #05472A;
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-family: baskerville, serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+
+        .lin-filter-btn.active {
+            background-color: #05472A;
+            border-color: #05472A;
+            color: #fff;
+        }
+
+        .lin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .lin-card {
+            background-color: #fff;
+            border: 1px solid #e6e6df;
+            border-radius: 16px;
+            padding: 24px 18px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+        }
+
+        .lin-value {
+            font-size: 38px;
+            font-weight: bold;
+            color: #05472A;
+            line-height: 1.1;
+            margin: 0 0 6px;
+        }
+
+        .lin-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+        }
+
+        .lin-updated {
+            font-size: 13px;
+            color: #999;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .lin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lin-section h2 {
+                font-size: 26px;
+            }
+        }
     </style>
     <link rel="stylesheet" href="theme.css">
     <script src="theme.js"></script>
@@ -52,6 +147,34 @@
     <p>Outside of work, you'll usually find me out on the water fishing, exploring new restaurants and writing reviews on Yelp, or gaming. I created this website as a personal project on March 12, 2024, and it's grown right alongside me ever since.</p>
 </div>
 
+    <section class="lin-section" id="lifeInNumbers">
+        <h2>My Life in Numbers</h2>
+        <p class="lin-sub">An automated snapshot of what I've been up to lately.</p>
+        <div class="lin-filters" id="linFilters">
+            <button type="button" class="lin-filter-btn" data-range="7d">7 Days</button>
+            <button type="button" class="lin-filter-btn active" data-range="30d">30 Days</button>
+            <button type="button" class="lin-filter-btn" data-range="90d">3 Months</button>
+            <button type="button" class="lin-filter-btn" data-range="180d">6 Months</button>
+            <button type="button" class="lin-filter-btn" data-range="ytd">YTD</button>
+            <button type="button" class="lin-filter-btn" data-range="all">All Time</button>
+        </div>
+        <div class="lin-grid">
+            <div class="lin-card">
+                <p class="lin-value" id="linGithub">&mdash;</p>
+                <div class="lin-label">GitHub Commits</div>
+            </div>
+            <div class="lin-card">
+                <p class="lin-value" id="linLastfm">&mdash;</p>
+                <div class="lin-label">Tracks Played</div>
+            </div>
+            <div class="lin-card">
+                <p class="lin-value" id="linSteam">&mdash;</p>
+                <div class="lin-label">Gaming Hours</div>
+            </div>
+        </div>
+        <p class="lin-updated" id="linUpdated"></p>
+    </section>
+
     <div class="footer-container">
         <a href="https://www.linkedin.com/in/aaronpolar" target="_blank" rel="noopener noreferrer">
             <img src="docs/assets/linkedinlogo.png" alt="LinkedIn Logo">
@@ -63,5 +186,55 @@
             <img src="docs/assets/githublogo.png" alt="GitHub Logo">
         </a>
     </div>
+
+    <script>
+        (function () {
+            var DATA_URL = 'docs/data/life-in-numbers.json';
+            var current = '30d';
+            var data = null;
+
+            function fmt(n) {
+                if (n === null || n === undefined) return '—';
+                return Number(n).toLocaleString();
+            }
+
+            function pick(metric) {
+                try {
+                    var v = data.metrics[metric].ranges[current];
+                    return (v === null || v === undefined) ? null : v;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function render() {
+                document.getElementById('linGithub').textContent = data ? fmt(pick('github')) : '—';
+                document.getElementById('linLastfm').textContent = data ? fmt(pick('lastfm')) : '—';
+                document.getElementById('linSteam').textContent = data ? fmt(pick('steam')) : '—';
+            }
+
+            document.getElementById('linFilters').addEventListener('click', function (e) {
+                var btn = e.target.closest('.lin-filter-btn');
+                if (!btn) return;
+                current = btn.getAttribute('data-range');
+                Array.prototype.forEach.call(this.querySelectorAll('.lin-filter-btn'), function (b) {
+                    b.classList.toggle('active', b === btn);
+                });
+                render();
+            });
+
+            fetch(DATA_URL, { cache: 'no-store' })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (json) {
+                    data = json;
+                    if (json && json.updated) {
+                        document.getElementById('linUpdated').textContent =
+                            'Last updated ' + new Date(json.updated).toLocaleDateString();
+                    }
+                    render();
+                })
+                .catch(function () { render(); });
+        })();
+    </script>
 </body>
 </html>

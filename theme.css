@@ -222,6 +222,34 @@ html[data-theme="dark"] .home-button {
     background-color: #0d7a48;
 }
 
+/* My Life in Numbers dashboard */
+html[data-theme="dark"] .lin-card {
+    background-color: #1e1e1e;
+    border-color: #333333;
+}
+
+html[data-theme="dark"] .lin-value {
+    color: #5fd39a;
+}
+
+html[data-theme="dark"] .lin-sub,
+html[data-theme="dark"] .lin-label,
+html[data-theme="dark"] .lin-updated {
+    color: #b6b6b6;
+}
+
+html[data-theme="dark"] .lin-filter-btn {
+    background-color: #1e1e1e;
+    border-color: #444444;
+    color: #9fe3bd;
+}
+
+html[data-theme="dark"] .lin-filter-btn.active {
+    background-color: #0d7a48;
+    border-color: #0d7a48;
+    color: #ffffff;
+}
+
 html[data-theme="dark"] .filter-bar select {
     background-color: #1e1e1e;
     color: #e8e8e8;
