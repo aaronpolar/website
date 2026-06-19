@@ -233,20 +233,20 @@ html[data-theme="dark"] .lin-value {
 }
 
 html[data-theme="dark"] .lin-sub,
-html[data-theme="dark"] .lin-label,
+html[data-theme="dark"] .lin-range-label,
 html[data-theme="dark"] .lin-updated {
     color: #b6b6b6;
 }
 
-html[data-theme="dark"] .lin-filter-btn {
+html[data-theme="dark"] .lin-range-select {
     background-color: #1e1e1e;
     border-color: #444444;
     color: #9fe3bd;
 }
 
-html[data-theme="dark"] .lin-filter-btn.active {
-    background-color: #0d7a48;
-    border-color: #0d7a48;
+/* GitHub & Steam marks are dark by default; flip to white for dark cards */
+html[data-theme="dark"] .lin-card-github .lin-logo,
+html[data-theme="dark"] .lin-card-steam .lin-logo {
     color: #ffffff;
 }
 
