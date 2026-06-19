@@ -234,7 +234,8 @@ html[data-theme="dark"] .lin-value {
 
 html[data-theme="dark"] .lin-sub,
 html[data-theme="dark"] .lin-range-label,
-html[data-theme="dark"] .lin-updated {
+html[data-theme="dark"] .lin-updated,
+html[data-theme="dark"] .lin-unit {
     color: #b6b6b6;
 }
 
@@ -244,9 +245,10 @@ html[data-theme="dark"] .lin-range-select {
     color: #9fe3bd;
 }
 
-/* GitHub & Steam marks are dark by default; flip to white for dark cards */
+/* GitHub, Steam & PSN marks are dark/navy by default; flip to white for dark cards */
 html[data-theme="dark"] .lin-card-github .lin-logo,
-html[data-theme="dark"] .lin-card-steam .lin-logo {
+html[data-theme="dark"] .lin-card-steam .lin-logo,
+html[data-theme="dark"] .lin-card-psn .lin-logo {
     color: #ffffff;
 }
 

@@ -3,7 +3,7 @@
  * dashboard on the About Me page. Run by .github/workflows/life-in-numbers.yml.
  *
  * Secrets/inputs come from environment variables (never hardcode keys here):
- *   GH_USER, LASTFM_USER, STEAMID  - public identifiers (set in the workflow)
+ *   GH_USER, LASTFM_USER, STEAMID, PSN_USER - public identifiers (set in the workflow)
  *   LASTFM_API_KEY, STEAM_API_KEY  - secrets (set in repo Actions secrets)
  *   GITHUB_TOKEN                   - provided automatically by Actions
  *
@@ -13,12 +13,15 @@
  *   - Steam: only TOTAL hours + last-2-weeks. Arbitrary ranges are derived by
  *     diffing daily snapshots we accumulate over time, so 7d/30d/... stay null
  *     until enough history exists. "All Time" (total hours) is available immediately.
+ *   - PSN: scraped from PSNProfiles public profile. Returns all-time totals only
+ *     (platinum count + total trophies). No range filtering available.
  */
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
 
 const GH_USER = process.env.GH_USER || 'aaronpolar';
 const LASTFM_USER = process.env.LASTFM_USER || 'ralop8';
 const STEAMID = process.env.STEAMID || '76561198139249206';
+const PSN_USER = process.env.PSN_USER || 'ralop8';
 const LASTFM_KEY = process.env.LASTFM_API_KEY;
 const STEAM_KEY = process.env.STEAM_API_KEY;
 const GH_TOKEN = process.env.GITHUB_TOKEN;
@@ -63,6 +66,47 @@ async function lastfmScrobbles(since) {
   return total != null ? Number(total) : null;
 }
 
+async function psnTrophies(username) {
+  const res = await fetch(`https://psnprofiles.com/${encodeURIComponent(username)}`, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      'Accept-Language': 'en-US,en;q=0.9',
+    }
+  });
+  if (!res.ok) throw new Error('psnprofiles HTTP ' + res.status);
+  const html = await res.text();
+
+  function pick(pattern) {
+    const m = html.match(pattern);
+    return m ? parseInt(m[1].replace(/,/g, ''), 10) : null;
+  }
+
+  // PSNProfiles renders trophy counts in a <ul class="stats"> block.
+  // Each <li> has a trophy type class followed by a <b> count.
+  const platinum =
+    pick(/trophy-s platinum[\s\S]{1,300}<b>([\d,]+)<\/b>/i) ||
+    pick(/class="[^"]*platinum[^"]*"[\s\S]{1,300}<b>([\d,]+)<\/b>/i) ||
+    pick(/<b>([\d,]+)<\/b>[^<]*<\/p>[^<]*<p[^>]*>\s*Platinum/i);
+
+  // "Total" is sometimes its own stat; fall back to summing the four types.
+  let total =
+    pick(/trophy-s total[\s\S]{1,300}<b>([\d,]+)<\/b>/i) ||
+    pick(/<b>([\d,]+)<\/b>[^<]*<\/p>[^<]*<p[^>]*>\s*Total/i);
+
+  if (total === null) {
+    const gold   = pick(/trophy-s gold[\s\S]{1,300}<b>([\d,]+)<\/b>/i);
+    const silver = pick(/trophy-s silver[\s\S]{1,300}<b>([\d,]+)<\/b>/i);
+    const bronze = pick(/trophy-s bronze[\s\S]{1,300}<b>([\d,]+)<\/b>/i);
+    if (platinum !== null && gold !== null && silver !== null && bronze !== null) {
+      total = platinum + gold + silver + bronze;
+    }
+  }
+
+  console.log(`PSN ${username}: platinum=${platinum} total=${total}`);
+  return { platinum, total };
+}
+
 async function steamTotals() {
   if (!STEAM_KEY) return null;
   const res = await fetch(
@@ -83,7 +127,7 @@ const steamHistory = Array.isArray(prev.steamHistory) ? prev.steamHistory : [];
 
 const out = {
   updated: now.toISOString(),
-  metrics: { github: { ranges: {} }, lastfm: { ranges: {} }, steam: { ranges: {} } },
+  metrics: { github: { ranges: {} }, lastfm: { ranges: {} }, steam: { ranges: {} }, psn: {} },
   steamHistory
 };
 
@@ -120,6 +164,14 @@ try {
 } catch (e) {
   console.error('steam', e.message);
   out.metrics.steam.ranges.all = null;
+}
+
+try {
+  const psn = await psnTrophies(PSN_USER);
+  out.metrics.psn = { platinum: psn.platinum, total: psn.total };
+} catch (e) {
+  console.error('psn', e.message);
+  out.metrics.psn = { platinum: null, total: null };
 }
 
 mkdirSync('docs/data', { recursive: true });

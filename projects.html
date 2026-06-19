@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECTS - Aaron Polar</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
     <style>
         /* ---- Apple-style projects layout ---- */
         .projects-hero {
@@ -332,6 +333,7 @@
     </style>
     <link rel="stylesheet" href="theme.css">
     <script src="theme.js"></script>
+    <script defer src="animations.js"></script>
     <!-- Umami analytics (privacy-friendly) -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="32455286-fe20-4036-8269-8ed9782967e7"></script>
 </head>
@@ -363,7 +365,7 @@
             <span>Overall progress</span>
             <span>Step 1 of 4</span>
         </div>
-        <div class="overall-track"><span></span></div>
+        <div class="overall-track"><span data-width="31%"></span></div>
     </div>
 
     <section class="roadmap">
@@ -377,7 +379,7 @@
                 <span class="status-badge status-progress">In progress</span>
                 <h2>CompTIA A+</h2>
                 <p class="cert-meta">Core 1 (220-1101) &amp; Core 2 (220-1102) &middot; the foundation</p>
-                <div class="progress"><div class="progress-bar" style="width: 25%;"></div></div>
+                <div class="progress"><div class="progress-bar" data-width="25%"></div></div>
                 <p class="progress-text">Currently studying Core 1. On track to certify within ~45 days, with Core 2 to follow. (25%)</p>
             </div>
         </div>
@@ -392,7 +394,7 @@
                 <span class="status-badge status-next">Up next</span>
                 <h2>CompTIA Security+</h2>
                 <p class="cert-meta">Core security skills &middot; the GRC starting line</p>
-                <div class="progress"><div class="progress-bar" style="width: 0%;"></div></div>
+                <div class="progress"><div class="progress-bar" data-width="0%"></div></div>
                 <p class="progress-text">Begins after A+. The baseline credential most security and GRC roles look for. (0%)</p>
             </div>
         </div>
@@ -407,7 +409,7 @@
                 <span class="status-badge status-planned">Planned</span>
                 <h2>ISC2 Certified in Cybersecurity (CC)</h2>
                 <p class="cert-meta">Security principles &amp; governance fundamentals</p>
-                <div class="progress"><div class="progress-bar" style="width: 0%;"></div></div>
+                <div class="progress"><div class="progress-bar" data-width="0%"></div></div>
                 <p class="progress-text">Builds vendor-neutral foundations that map directly to GRC work. (0%)</p>
             </div>
         </div>
@@ -422,7 +424,7 @@
                 <span class="status-badge status-planned">Planned</span>
                 <h2>CompTIA CySA+</h2>
                 <p class="cert-meta">Threat detection &amp; security analytics &middot; the goal</p>
-                <div class="progress"><div class="progress-bar" style="width: 0%;"></div></div>
+                <div class="progress"><div class="progress-bar" data-width="0%"></div></div>
                 <p class="progress-text">The capstone of this roadmap, validating hands-on analyst and GRC capability. (0%)</p>
             </div>
         </div>

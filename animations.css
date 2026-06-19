@@ -1,0 +1,166 @@
+/* ============================================================
+   Site-wide animations & micro-interactions.
+   Load order per page: styles.css -> animations.css -> inline -> theme.css
+   Paired with animations.js, which adds `.js-anim` to <html> and
+   reveals elements on scroll. CSS is guarded by `html.js-anim` so
+   content is never stuck hidden if JS fails to load.
+   ============================================================ */
+
+/* --- Scroll reveal: fade + slide in as elements enter the viewport --- */
+html.js-anim .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+}
+
+html.js-anim .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* --- Header drops in gently on every page load --- */
+.header {
+    animation: anim-fade-down 0.6s ease both;
+}
+
+/* --- Hero image: soft fade + slow zoom settle on load --- */
+.header-image {
+    animation: anim-fade-in 1s ease both;
+}
+
+.header-image img {
+    animation: anim-hero-zoom 1.6s ease both;
+}
+
+/* --- Card surfaces lift on hover --- */
+.lin-card,
+.stat-card,
+.cert-card,
+.map-card,
+.log-card,
+.review-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lin-card:hover,
+.stat-card:hover,
+.cert-card:hover,
+.map-card:hover,
+.review-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Project imagery gets a richer lift --- */
+.project-media img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-media img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
+}
+
+.project-stack li {
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.project-stack li:hover {
+    transform: translateY(-2px);
+    border-color: #05472A;
+    color: #05472A;
+}
+
+/* --- Nav buttons: tactile press feedback --- */
+.green-button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.green-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.45);
+}
+
+.green-button:active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Secondary (grey) buttons --- */
+.fixed-buttons a {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fixed-buttons a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* --- Footer social icons pop on hover --- */
+.footer-container img {
+    transition: transform 0.25s ease;
+}
+
+.footer-container a:hover img {
+    transform: translateY(-4px) scale(1.18);
+}
+
+/* --- Animated progress bars on the certification roadmap ---
+   Targets carry their final width in data-width; CSS starts them at 0
+   and animations.js sets the real width once the card is revealed. */
+html.js-anim .progress-bar[data-width],
+html.js-anim .overall-track > span[data-width] {
+    width: 0;
+    transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Keyframes --- */
+@keyframes anim-fade-down {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes anim-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes anim-hero-zoom {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1); }
+}
+
+/* --- Respect users who prefer reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+    html.js-anim .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .header,
+    .header-image,
+    .header-image img {
+        animation: none;
+    }
+
+    .lin-card,
+    .stat-card,
+    .cert-card,
+    .map-card,
+    .log-card,
+    .review-card,
+    .project-media img,
+    .project-stack li,
+    .green-button,
+    .fixed-buttons a,
+    .footer-container img {
+        transition: none;
+    }
+
+    html.js-anim .progress-bar[data-width],
+    html.js-anim .overall-track > span[data-width] {
+        transition: none;
+    }
+}
