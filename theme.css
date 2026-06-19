@@ -30,6 +30,18 @@ html {
     margin-left: 0;
 }
 
+/* Mobile: tighten the vertically-stacked nav so the header stays compact */
+@media (max-width: 768px) {
+    .header-right {
+        gap: 4px;
+        margin-top: 6px;
+    }
+
+    .header-right .green-button {
+        margin-bottom: 0;
+    }
+}
+
 /* --- Horizontal theme switch (works in both modes) --- */
 .theme-switch {
     position: relative;
