@@ -117,6 +117,10 @@ body {
     margin-top: auto;
 }
 
+.footer-container a {
+    text-decoration: none;
+}
+
 .footer-container img {
     width: 25px;
     margin: 0 5px;
