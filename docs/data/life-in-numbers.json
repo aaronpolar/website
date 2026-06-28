@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T10:23:34.205Z",
+  "updated": "2026-06-28T10:35:18.767Z",
   "metrics": {
     "github": {
       "ranges": {
@@ -13,12 +13,12 @@
     },
     "lastfm": {
       "ranges": {
-        "7d": null,
-        "30d": 294,
-        "90d": 294,
-        "180d": 294,
-        "ytd": 294,
-        "all": 294
+        "7d": 199,
+        "30d": 320,
+        "90d": 320,
+        "180d": 320,
+        "ytd": 320,
+        "all": 320
       }
     },
     "steam": {
@@ -30,7 +30,7 @@
         "180d": null,
         "ytd": null
       },
-      "twoWeekHours": 3.7
+      "twoWeekHours": 2.6
     },
     "psn": {
       "platinum": 11,
@@ -72,6 +72,10 @@
     },
     {
       "date": "2026-06-27",
+      "totalMinutes": 91959
+    },
+    {
+      "date": "2026-06-28",
       "totalMinutes": 91959
     }
   ]
