@@ -298,6 +298,7 @@
         .status-progress { background-color: #e3f1e9; color: #05472A; }
         .status-next     { background-color: #eef0ec; color: #555; }
         .status-planned  { background-color: #f1efe9; color: #8a7f6a; }
+        .status-done     { background-color: #05472A; color: #ffffff; }
 
         .progress {
             height: 12px;
@@ -363,24 +364,24 @@
     <div class="overall">
         <div class="overall-top">
             <span>Overall progress</span>
-            <span>Step 1 of 4</span>
+            <span>Step 2 of 4</span>
         </div>
-        <div class="overall-track"><span data-width="31%"></span></div>
+        <div class="overall-track"><span data-width="50%"></span></div>
     </div>
 
     <section class="roadmap">
-        <!-- Step 1: A+ in progress -->
+        <!-- Step 1: A+ certified -->
         <div class="cert-step">
             <div class="cert-marker">
                 <div class="cert-rail"></div>
-                <div class="cert-node active"></div>
+                <div class="cert-node done"></div>
             </div>
             <div class="cert-card">
-                <span class="status-badge status-progress">In progress</span>
+                <span class="status-badge status-done">Certified &middot; Aug 1, 2026</span>
                 <h2>CompTIA A+</h2>
                 <p class="cert-meta">Core 1 (220-1101) &amp; Core 2 (220-1102) &middot; the foundation</p>
-                <div class="progress"><div class="progress-bar" data-width="25%"></div></div>
-                <p class="progress-text">Currently studying Core 1. On track to certify within ~45 days, with Core 2 to follow. (25%)</p>
+                <div class="progress"><div class="progress-bar" data-width="100%"></div></div>
+                <p class="progress-text">Certified on August 1, 2026 &mdash; both Core 1 and Core 2 complete. (100%)</p>
             </div>
         </div>
 
@@ -388,7 +389,7 @@
         <div class="cert-step">
             <div class="cert-marker">
                 <div class="cert-rail"></div>
-                <div class="cert-node"></div>
+                <div class="cert-node active"></div>
             </div>
             <div class="cert-card">
                 <span class="status-badge status-next">Up next</span>
