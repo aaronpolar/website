@@ -22,55 +22,6 @@
             box-sizing: border-box;
         }
 
-        .dash-hero {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .dash-hero h2 {
-            font-size: 40px;
-            margin: 0 0 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .dash-hero p {
-            font-size: 18px;
-            color: #555;
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 26px;
-        }
-
-        .stat-card {
-            background-color: #fff;
-            border: 1px solid #e6e6df;
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-        }
-
-        .stat-value {
-            font-size: 34px;
-            font-weight: bold;
-            color: #05472A;
-            margin: 0 0 6px;
-            line-height: 1.1;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #777;
-        }
-
         .filter-bar {
             display: flex;
             align-items: center;
@@ -142,6 +93,182 @@
             border-top: 1px solid #ececec;
         }
 
+        /* --- Full-image hero with text overlay ---
+           The frame keeps the photo's exact 1436x958 ratio and is capped to the
+           viewport height, so the whole picture is always visible. Any leftover
+           width is filled with a blurred copy of the same photo. */
+        .fishing-hero {
+            position: relative;
+            overflow: hidden;
+            background-color: #1b2a22;
+        }
+
+        .fishing-hero-fill {
+            position: absolute;
+            inset: -40px;
+            background: url("docs/assets/fishingbackground.jpg") center / cover no-repeat;
+            filter: blur(28px) brightness(0.7) saturate(1.1);
+        }
+
+        .fishing-hero-frame {
+            position: relative;
+            margin: 0 auto;
+            width: min(100%, calc((100vh - 145px) * 1.499));
+            width: min(100%, calc((100svh - 145px) * 1.499));
+            container-type: inline-size;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .fishing-hero-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            animation: anim-fade-in 1s ease both;
+        }
+
+        /* Frosted panel sits over the open water, left of the dock */
+        .hero-panel {
+            position: absolute;
+            left: 3.5%;
+            bottom: 19%;
+            width: 41%;
+            box-sizing: border-box;
+            padding: clamp(14px, 2cqi, 26px) clamp(16px, 2.2cqi, 28px);
+            border-radius: 18px;
+            color: #fff;
+            background: rgba(12, 32, 22, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            -webkit-backdrop-filter: blur(12px) saturate(1.2);
+            backdrop-filter: blur(12px) saturate(1.2);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            animation: hero-panel-in 0.9s 0.25s ease both;
+        }
+
+        @keyframes hero-panel-in {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        .hero-eyebrow {
+            margin: 0 0 6px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #bfe9d2;
+        }
+
+        .hero-panel h1 {
+            margin: 0 0 8px;
+            font-size: clamp(28px, 4.2cqi, 50px);
+            line-height: 1.05;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-sub {
+            margin: 0 0 14px;
+            font-size: clamp(14px, 1.35cqi, 17px);
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 16px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .hero-stat {
+            padding: 0 12px;
+        }
+
+        .hero-stat:first-child { padding-left: 0; }
+
+        .hero-stat + .hero-stat {
+            border-left: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .hero-stat-value {
+            margin: 0 0 4px;
+            font-size: clamp(18px, 2.1cqi, 26px);
+            font-weight: bold;
+            line-height: 1.1;
+            color: #9fe3bf;
+        }
+
+        .hero-stat-label {
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 14px;
+        }
+
+        .hero-links a {
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.45);
+            text-underline-offset: 4px;
+        }
+
+        .hero-links a:hover,
+        .hero-links a:focus-visible {
+            text-decoration-color: #9fe3bf;
+        }
+
+        .hero-links .hero-link-primary {
+            text-decoration: none;
+            text-shadow: none;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background-color: #05472A;
+            transition: background-color 0.2s ease;
+        }
+
+        .hero-links .hero-link-primary:hover,
+        .hero-links .hero-link-primary:focus-visible {
+            background-color: #0a6a40;
+        }
+
+        #catch-dashboard {
+            scroll-margin-top: 12px;
+        }
+
+        /* Narrow frames (phones, small windows): photo on top, panel directly below
+           it (no overlap, so the whole photo stays visible). */
+        @container (max-width: 760px) {
+            .hero-panel {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                width: auto;
+                margin: 12px 14px 18px;
+                background: rgba(12, 32, 22, 0.88);
+            }
+            .hero-panel h1 { font-size: 30px; }
+            .hero-stat-value { font-size: 20px; }
+        }
+
+        @supports not (container-type: inline-size) {
+            @media (max-width: 900px) {
+                .hero-panel { position: relative; left: auto; bottom: auto; width: auto; margin: 12px 14px 18px; background: rgba(12, 32, 22, 0.88); }
+            }
+        }
+
+
         /* Scroll-reveal transition */
         .reveal {
             opacity: 0;
@@ -154,22 +281,11 @@
             transform: none;
         }
 
-        .stats-grid .stat-card:nth-child(2) { transition-delay: 0.12s; }
-        .stats-grid .stat-card:nth-child(3) { transition-delay: 0.24s; }
-
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-panel, .fishing-hero-img { animation: none; }
         }
 
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .dash-hero h2 {
-                font-size: 30px;
-            }
-        }
     </style>
     <link rel="stylesheet" href="theme.css">
     <script src="theme.js"></script>
@@ -195,35 +311,39 @@
         <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
     </div>
 
-    <div class="fixed-buttons">
-        <a href="fishing_equipment">Fishing Equipment</a>
-        <a href="fishinglog">Log a Catch</a>
-        <a href="personal_bests">Personal Bests</a>
-    </div>
-
-    <img src="docs/assets/fishingbackground.jpg" alt="Fishing Background Image" class="header-image">
+    <section class="fishing-hero" aria-labelledby="fishingTitle">
+        <div class="fishing-hero-fill" aria-hidden="true"></div>
+        <div class="fishing-hero-frame">
+            <img src="docs/assets/fishingbackground.jpg" alt="Aaron fishing off a dock on a lake below green hills" class="fishing-hero-img">
+            <div class="hero-panel">
+                <p class="hero-eyebrow">SF Bay Area &middot; Sacramento</p>
+                <h1 id="fishingTitle">Catch Map &amp; Stats</h1>
+                <p class="hero-sub">Every catch I&rsquo;ve logged, mapped. Filter by species below to update the map, stats, and log.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <p class="hero-stat-value" id="statTotal">&mdash;</p>
+                        <div class="hero-stat-label">Total Catches</div>
+                    </div>
+                    <div class="hero-stat">
+                        <p class="hero-stat-value" id="statSpecies">&mdash;</p>
+                        <div class="hero-stat-label">Top Species</div>
+                    </div>
+                    <div class="hero-stat">
+                        <p class="hero-stat-value" id="statMonth">&mdash;</p>
+                        <div class="hero-stat-label">Best Month</div>
+                    </div>
+                </div>
+                <nav class="hero-links" aria-label="Fishing pages">
+                    <a href="#catch-dashboard" class="hero-link-primary">See the map &darr;</a>
+                    <a href="fishing_equipment">Equipment</a>
+                    <a href="fishinglog">Log a Catch</a>
+                    <a href="personal_bests">Personal Bests</a>
+                </nav>
+            </div>
+        </div>
+    </section>
 
     <section class="dash-section" id="catch-dashboard">
-        <div class="dash-hero reveal">
-            <h2>Catch Map &amp; Stats</h2>
-            <p>My catches across the SF Bay Area and Sacramento region. Filter by species to update the map, stats, and log.</p>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card reveal">
-                <p class="stat-value" id="statTotal">&mdash;</p>
-                <div class="stat-label">Total Catches</div>
-            </div>
-            <div class="stat-card reveal">
-                <p class="stat-value" id="statSpecies">&mdash;</p>
-                <div class="stat-label">Most Common Species</div>
-            </div>
-            <div class="stat-card reveal">
-                <p class="stat-value" id="statMonth">&mdash;</p>
-                <div class="stat-label">Best Month</div>
-            </div>
-        </div>
-
         <div class="filter-bar reveal">
             <label for="speciesFilter">Filter by species:</label>
             <select id="speciesFilter">
